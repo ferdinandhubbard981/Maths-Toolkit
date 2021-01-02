@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+#random files
+temp.cpp
+test.cpp
