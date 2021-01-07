@@ -19,7 +19,7 @@ complex number operations
 3d plotter (lines, planes ...)
 maclaurin series
 de moivre
-simplex method
+simplex method - donea
 
 
 
