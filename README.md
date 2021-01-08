@@ -13,13 +13,13 @@ trigonometric identities solver (rad & deg)
 partial fractions solver
 SUVAT solver
 
-Matrice operations (arithmetic, transpose, inverse, simultaneous ...)
+Matrix operations (arithmetic, transpose, inverse, simultaneous ...)
 Invariant line solver and invariant line of points solver
 complex number operations
 3d plotter (lines, planes ...)
 maclaurin series
 de moivre
-simplex method - donea
+simplex method - done
 
 
 
