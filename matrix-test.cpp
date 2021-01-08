@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "matrix.cpp"
 
 double** getmatrixinput(int &height, int &width) {
@@ -7,9 +7,9 @@ double** getmatrixinput(int &height, int &width) {
   std::cout << std::endl << "enter matrix width: ";
   std::cin >> width;
   std::cout << std::endl << "enter all values of the matrix row by row going from left to right starting from the top" << std::endl;
-  double** m = initalizedouble2dpointerarray(height, width);
-  for (int i = 0; i < height; i++) {
-    for (int j = 0; j < width; j++) {
+  double** m = initializedouble2dpointerarray(width, height);
+  for (int j = 0; j < height; j++) {
+    for (int i = 0; i < width; i++) {
       std::cout << std::endl << "enter value for index " << i << "," << j << ": ";
       std::cin >> m[i][j];
     }
@@ -46,7 +46,7 @@ void minortest() {
   printmatrix(matrix, height, width);
   std::cout << "please enter i: ";
   std::cin >> i;
-  std::cout << std::endl << "please enter j: " << std::endl;
+  std::cout << std::endl << "please enter j: ";
   std::cin >> j;
   double** minor = findminor(matrix, height, width, i, j);
   printmatrix(minor, height-1, width-1);
