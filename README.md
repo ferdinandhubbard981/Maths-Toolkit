@@ -66,8 +66,8 @@ simplex method - done
 
 maybe:
   
-  mechanics problems helper
+      mechanics problems helper
   
-  roots of polynomials
+      roots of polynomials
   
-  method of differences
+      method of differences
