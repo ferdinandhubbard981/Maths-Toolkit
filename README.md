@@ -1,4 +1,27 @@
 # Maths-Toolkit
+ 
+ simplex-method.cpp:
+ Solves a simplex tableau
+ 
+ simplex-method-test.cpp:
+ for testing simplex-method.cpp
+ 
+ 
+ matrix.cpp:
+ performs many operations on matrices
+ 
+ matrix-test.cpp:
+ for testing matrix.cpp
+ 
+ 
+ simultaneous-equations-solver.cpp: 
+ solves linear simultaneous equations
+ 
+ simultaneous-equations-solver-test.cpp: 
+ for testing simultaneous-equations-solver.cpp
+
+
+
 polynomial-solver
 simultaneous equations solver
 differential solver
