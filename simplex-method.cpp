@@ -2,7 +2,7 @@
 void printsolution(std::string* varnames, float* solutions, int width) {
 
   for (int i = 0; i < width - 1; i++) {
-    std::cout <<varnames[i] << ": " << solutions[i] << std::endl;
+    std::cout <<varnames[i] << " = " << solutions[i] << std::endl;
   }
 }
 float* read_simplex(float** tableau, int width, int height) {
