@@ -80,10 +80,25 @@ void multiplybyconstanttest() {
 }
 
 int main() {
-  //multiplicationtest();
-  //determinanttest();
-  //minortest();
-  inversetest();
-  //multiplybyconstanttest();
+  std::cout << "Enter: 1 to test matrix multiplication \n 2 to test determinants \n 3 to test minors \n 4 to test inverse \n 5 to test multiplication by constant"
+  int choice << std::cin;
+  switch choice
+  {
+    case 1:
+      multiplicationtest();
+      break;
+    case 2:
+      determinanttest();
+      break;
+    case 3:
+      minortest();
+      break;
+    case 4:
+      inversetest();
+      break;
+    case 5:
+      multiplybyconstanttest();
+      break;
+  }
 
 }
