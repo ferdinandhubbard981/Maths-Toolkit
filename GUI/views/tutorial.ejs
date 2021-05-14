@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<p>Click the buttons to create and delete row(s) for the table.</p>
+
+
+<FORM METHOD="POST" ACTION="/tutorial">
+  <table id="myTable">
+    <tr>
+      <td>Row1 cell1</td>
+      <td>Row1 cell2</td>
+    </tr>
+    <tr>
+      <td>Row2 cell1</td>
+      <td>Row2 cell2</td>
+    </tr>
+  </table>
+<P><INPUT TYPE="SUBMIT" VALUE="Submit" NAME="B1"></P>
+</FORM>
+
+<button onclick="myCreateFunction()">Create row</button>
+<button onclick="myDeleteFunction()">Delete row</button>
+
+<script>
+function myCreateFunction() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(table.rows.length);
+
+  for (var i = 0; i < table.rows.length; i++) {
+    if (i < table.rows.length - 1) {
+    var cell = table.rows[i].insertCell(table.rows.length - 1);
+    cell.innerHTML = "NEW CELL" + String(table.rows.length - 1);
+  }
+    var cell = row.insertCell(i);
+    cell.innerHTML = "NEW CELL" + String(i);
+  }
+}
+
+function myDeleteFunction() {
+  table = document.getElementById("myTable");
+  table.deleteRow(table.rows.length - 1);
+  for (var i = 0; i < table.rows.length; i++) {
+    table.rows[i].deleteCell(table.rows.length);
+  }
+}
+</script>
+
+</body>
+</html>

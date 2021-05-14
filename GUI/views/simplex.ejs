@@ -1,0 +1,1929 @@
+<body style="position: relative; min-height: 100%; top: 0px;"><div id="MathJax_Message" style="display: none;"></div>
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">
+$(document).ready(function()
+{
+  document.cookie = "token2="+'71';
+});
+</script>
+<form method="post" action="./Simplex.aspx?q=sm" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ContentPlaceHolder1_BtnFind')" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="ContentPlaceHolder1_ToolkitScriptManager1_HiddenField" id="ContentPlaceHolder1_ToolkitScriptManager1_HiddenField" value=";;AjaxControlToolkit, Version=1.0.20229.33058, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:en-US:9921a0de-6050-4870-abd9-b41bbc96c02b:e2e86ef9:1df13a87:ee0a475d:c4c00916:9ea3f0e2:9e8e87e9:4c9865be:630bb7c2:ba594826:8c0f2dfd">
+<input type="hidden" name="ContentPlaceHolder1_TabContainer1_ClientState" id="ContentPlaceHolder1_TabContainer1_ClientState" value="{&quot;ActiveTabIndex&quot;:1,&quot;TabState&quot;:[true,true]}">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTE4MjkxNTI4NA9kFgJmDw8WAh4IQWRIZWlnaHQCR2QWBGYPZBYIAgEPFQoBLwEvAS8BLwEvAS8BLwEvAS8BL2QCAg8WAh4HY29udGVudAVjU2ltcGxleCBtZXRob2QgY2FsY3VsYXRvciAtIFNvbHZlIHRoZSBMaW5lYXIgcHJvZ3JhbW1pbmcgcHJvYmxlbSB1c2luZyBTaW1wbGV4IG1ldGhvZCwgc3RlcC1ieS1zdGVwZAIDDxYCHwEFY1NpbXBsZXggbWV0aG9kIGNhbGN1bGF0b3IgLSBTb2x2ZSB0aGUgTGluZWFyIHByb2dyYW1taW5nIHByb2JsZW0gdXNpbmcgU2ltcGxleCBtZXRob2QsIHN0ZXAtYnktc3RlcGQCCA8WAh4EVGV4dAXQATxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBzcmM9Ii8vc2VydmljZXMuYmlsc3luZGljYXRpb24uY29tL2FkdjEvP3E9OTYyZGVjNzhlYTE4MTY5YTg3ZWE4ODEyMmNkMDU1ZTYiIGRlZmVyPSIiIGFzeW5jPSIiPjwvc2NyaXB0PjxzY3JpcHQ+IHZhciB2aXRhZyA9IHZpdGFnIHx8IHt9OyB2aXRhZy5lbmFibGVHZW9Mb2NhdGlvbj0gdHJ1ZTs8L3NjcmlwdD5kAgEPZBYEAgEPZBYCAgEPZBYCZg9kFgICAQ8WAh4Fd2lkdGgFAzkwJRYCZg9kFgRmD2QWAgIBDw9kFgIeB29ua2V5dXAFGHJldHVybiB0eHQxX0tleXByZXNzMigpO2QCAQ9kFgICAQ8PZBYCHgdvbmNsaWNrBRhyZXR1cm4gQnRuRmluZDJfQ2xpY2soKTtkAgsPZBYKZg8WAh8CBRlkb2N1bWVudC5jb29raWUgPSAncjI9Mic7ZAICD2QWAmYPZBYCAgEPEA9kFgIeCG9uY2hhbmdlBR5kZGxGaW5kX2NoYW5nZSgpO3JldHVybiBmYWxzZTtkZGQCDQ8PZBYCHwUFF3JldHVybiBCdG5GaW5kX0NsaWNrKCk7ZAIPDxYCHglpbm5lcmh0bWwF5xU8bGkgb25jbGljaz0icmV0dXJuIGxiX2NsaWNrKCczYDNgbWF4YFpgeDEseDIseDNgMyw1LDRgMiwzLDA7MCwyLDU7MywyLDRgPD0sPD0sPD1gOCwxMCwxNWAnKTsiPm1heCBaID0gM3gxICsgNXgyICsgNHgzPGJyPnN1YmplY3QgdG88YnI+MngxICsgM3gyIDw9IDg8YnI+MngyICsgNXgzIDw9IDEwPGJyPjN4MSArIDJ4MiArIDR4MyA8PSAxNTxicj5hbmQgeDEseDIseDMgPj0gMCA8aHI+PC9saT48bGkgb25jbGljaz0icmV0dXJuIGxiX2NsaWNrKCczYDNgbWF4YFpgeDEseDIseDNgNSwxMCw4YDMsNSwyOzQsNCw0OzIsNCw1YDw9LDw9LDw9YDYwLDcyLDEwMGAnKTsiPm1heCBaID0gNXgxICsgMTB4MiArIDh4Mzxicj5zdWJqZWN0IHRvPGJyPjN4MSArIDV4MiArIDJ4MyA8PSA2MDxicj40eDEgKyA0eDIgKyA0eDMgPD0gNzI8YnI+MngxICsgNHgyICsgNXgzIDw9IDEwMDxicj5hbmQgeDEseDIseDMgPj0gMCA8aHI+PC9saT48bGkgb25jbGljaz0icmV0dXJuIGxiX2NsaWNrKCcyYDRgbWF4YFpgeDEseDJgNCwzYDIsMTsxLDE7MSwwOzAsMWA8PSw8PSw8PSw8PWAxMDAwLDgwMCw0MDAsNzAwYCcpOyI+bWF4IFogPSA0eDEgKyAzeDI8YnI+c3ViamVjdCB0bzxicj4yeDEgKyB4MiA8PSAxMDAwPGJyPngxICsgeDIgPD0gODAwPGJyPngxIDw9IDQwMDxicj54MiA8PSA3MDA8YnI+YW5kIHgxLHgyID49IDAgPGhyPjwvbGk+PGxpIG9uY2xpY2s9InJldHVybiBsYl9jbGljaygnMmAyYG1pbmBaYHgxLHgyYDEsMWAyLDQ7MSw3YD49LD49YDQsN2AnKTsiPm1pbiBaID0geDEgKyB4Mjxicj5zdWJqZWN0IHRvPGJyPjJ4MSArIDR4MiA+PSA0PGJyPngxICsgN3gyID49IDc8YnI+YW5kIHgxLHgyID49IDAgPGhyPjwvbGk+PGxpIG9uY2xpY2s9InJldHVybiBsYl9jbGljaygnMmAyYG1pbmBaYHgxLHgyYDYwMCw1MDBgMiwxOzEsMmA+PSw+PWA4MCw2MGAnKTsiPm1pbiBaID0gNjAweDEgKyA1MDB4Mjxicj5zdWJqZWN0IHRvPGJyPjJ4MSArIHgyID49IDgwPGJyPngxICsgMngyID49IDYwPGJyPmFuZCB4MSx4MiA+PSAwIDxocj48L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gbGJfY2xpY2soJzJgM2BtaW5gWmB4MSx4MmA1LDNgMiw0OzIsMjs1LDJgPD0sPSw+PWAxMiwxMCwxMGAnKTsiPm1pbiBaID0gNXgxICsgM3gyPGJyPnN1YmplY3QgdG88YnI+MngxICsgNHgyIDw9IDEyPGJyPjJ4MSArIDJ4MiA9IDEwPGJyPjV4MSArIDJ4MiA+PSAxMDxicj5hbmQgeDEseDIgPj0gMCA8aHI+PC9saT48bGkgb25jbGljaz0icmV0dXJuIGxiX2NsaWNrKCc0YDNgbWF4YFpgeDEseDIseDMseDRgMSwyLDMsLTFgMSwyLDMsMDsyLDEsNSwwOzEsMiwxLDFgPSw9LD1gMTUsMjAsMTBgJyk7Ij5tYXggWiA9IHgxICsgMngyICsgM3gzIC0geDQ8YnI+c3ViamVjdCB0bzxicj54MSArIDJ4MiArIDN4MyA9IDE1PGJyPjJ4MSArIHgyICsgNXgzID0gMjA8YnI+eDEgKyAyeDIgKyB4MyArIHg0ID0gMTA8YnI+YW5kIHgxLHgyLHgzLHg0ID49IDAgPGhyPjwvbGk+PGxpIG9uY2xpY2s9InJldHVybiBsYl9jbGljaygnMmAyYG1heGBaYHgxLHgyYDMsOWAxLDQ7MSwyYDw9LDw9YDgsNGAnKTsiPm1heCBaID0gM3gxICsgOXgyPGJyPnN1YmplY3QgdG88YnI+eDEgKyA0eDIgPD0gODxicj54MSArIDJ4MiA8PSA0PGJyPmFuZCB4MSx4MiA+PSAwIDxocj48L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gbGJfY2xpY2soJzNgMmBtYXhgWmB4MSx4Mix4M2AzLDIsMWAyLDUsMTszLDQsMGA9LD1gMTIsMTFgeDEnKTsiPm1heCBaID0gM3gxICsgMngyICsgeDM8YnI+c3ViamVjdCB0bzxicj4yeDEgKyA1eDIgKyB4MyA9IDEyPGJyPjN4MSArIDR4MiA9IDExPGJyPmFuZCB4Mix4MyA+PSAwIGFuZCB4MSB1bnJlc3RyaWN0ZWQgaW4gc2lnbjxocj48L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gbGJfY2xpY2soJzRgMmBtYXhgWmB4MSx4Mix4Myx4NGAzLDMsMiwxYDIsMiw1LDE7MywzLDQsMGA9LD1gMTIsMTFgJyk7Ij5tYXggWiA9IDN4MSArIDN4MiArIDJ4MyArIHg0PGJyPnN1YmplY3QgdG88YnI+MngxICsgMngyICsgNXgzICsgeDQgPSAxMjxicj4zeDEgKyAzeDIgKyA0eDMgPSAxMTxicj5hbmQgeDEseDIseDMseDQgPj0gMCA8aHI+PC9saT48bGkgb25jbGljaz0icmV0dXJuIGxiX2NsaWNrKCcyYDNgbWF4YFpgeDEseDJgNiw0YDIsMzszLDI7MSwxYDw9LDw9LD49YDMwLDI0LDNgJyk7Ij5tYXggWiA9IDZ4MSArIDR4Mjxicj5zdWJqZWN0IHRvPGJyPjJ4MSArIDN4MiA8PSAzMDxicj4zeDEgKyAyeDIgPD0gMjQ8YnI+eDEgKyB4MiA+PSAzPGJyPmFuZCB4MSx4MiA+PSAwIDxocj48L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gbGJfY2xpY2soJzJgM2BtYXhgWmB4MSx4MmAzLDVgMSwtMjsxLDA7MCwxYDw9LDw9LD49YDYsMTAsMWAnKTsiPm1heCBaID0gM3gxICsgNXgyPGJyPnN1YmplY3QgdG88YnI+eDEgLSAyeDIgPD0gNjxicj54MSA8PSAxMDxicj54MiA+PSAxPGJyPmFuZCB4MSx4MiA+PSAwIDxocj48L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gbGJfY2xpY2soJzJgMmBtYXhgWmB4MSx4MmA2LDRgMSwxOzAsMWA8PSw+PWA1LDhgJyk7Ij5tYXggWiA9IDZ4MSArIDR4Mjxicj5zdWJqZWN0IHRvPGJyPngxICsgeDIgPD0gNTxicj54MiA+PSA4PGJyPmFuZCB4MSx4MiA+PSAwIDxocj48L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gbGJfY2xpY2soJzJgMmBtYXhgWmB4MSx4MmA2LDRgLTEsLTE7MCwxYD49LD49YC01LDhgJyk7Ij5tYXggWiA9IDZ4MSArIDR4Mjxicj5zdWJqZWN0IHRvPGJyPi14MSAtIHgyID49IC01PGJyPngyID49IDg8YnI+YW5kIHgxLHgyID49IDAgPGhyPjwvbGk+ZAITD2QWAmYPZBYCZg9kFgQCAQ8PFgIeB1N0ZXBzQnkFAVBkZAIDD2QWAmYPZBYCAgEPZBYEZg9kFgICAQ9kFgICAw8WAh8HBZoFPGxpIG9uY2xpY2s9InJldHVybiBzZXRSYW5kb21UcnlUaGlzVmFsdWVHcmFwaCgnLTIwYDIwYC0yMGAyMCcpOyI+WE1pbmA9LTIwYCwgWE1heGA9MjBgLCBZTWluYD0tMjBgLCBZTWF4YD0yMGA8L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gc2V0UmFuZG9tVHJ5VGhpc1ZhbHVlR3JhcGgoJy0xNWAxNWAtMTVgMTUnKTsiPlhNaW5gPS0xNWAsIFhNYXhgPTE1YCwgWU1pbmA9LTE1YCwgWU1heGA9MTVgPC9saT48bGkgb25jbGljaz0icmV0dXJuIHNldFJhbmRvbVRyeVRoaXNWYWx1ZUdyYXBoKCctMTBgMTBgLTEwYDEwJyk7Ij5YTWluYD0tMTBgLCBYTWF4YD0xMGAsIFlNaW5gPS0xMGAsIFlNYXhgPTEwYDwvbGk+PGxpIG9uY2xpY2s9InJldHVybiBzZXRSYW5kb21UcnlUaGlzVmFsdWVHcmFwaCgnLThgOGAtOGA4Jyk7Ij5YTWluYD0tOGAsIFhNYXhgPThgLCBZTWluYD0tOGAsIFlNYXhgPThgPC9saT48bGkgb25jbGljaz0icmV0dXJuIHNldFJhbmRvbVRyeVRoaXNWYWx1ZUdyYXBoKCctNmA2YC02YDYnKTsiPlhNaW5gPS02YCwgWE1heGA9NmAsIFlNaW5gPS02YCwgWU1heGA9NmA8L2xpPjxsaSBvbmNsaWNrPSJyZXR1cm4gc2V0UmFuZG9tVHJ5VGhpc1ZhbHVlR3JhcGgoJy01YDVgLTVgNScpOyI+WE1pbmA9LTVgLCBYTWF4YD01YCwgWU1pbmA9LTVgLCBZTWF4YD01YDwvbGk+ZAIDD2QWAmYPZBYCAgEPD2QWAh8FBRpyZXR1cm4gQnRuUmVHcmFwaF9DbGljaygpO2QYAgUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFggFKWN0bDAwJEhlYWRlckN0bDEkU2VyYXJjaFNvbHZlQ3RsMSRCdG5GaW5kBSVjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGNoa01pblRvTWF4BShjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGNoa011bHRpcGxlU29sBTBjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGNoa0FydGlmaWNpYWxDb2xSZW1vdmUFLWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkY2hrU3VidHJhY3Rpb25TdGVwcwUkY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRjaGtUb29sdGlwBSZjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGNoa0hpZ2hsaWdodAUnY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRUYWJDb250YWluZXIxBSdjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJFRhYkNvbnRhaW5lcjEPD2QCAWSUUuCxEissZYVfEhQpCDYT3GviGw==">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+<script src="/WebResource.axd?d=w6KYf2HuTDxlldK99UMMUP8bqwRg60K_xTNwoetJqQdYS5MvTAqpII3fEalU47x3boCpsuxMAVLclyuSW25wcCB91201&amp;t=637352796975788278" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=qlI2Cww-nL1PAA04DAH-Z3A4PGU7ywIuJhJbywpxrXBeWvuYeZZwELf04W481GfCeUGzBv6Y9BtN6hU3qmFqEX0rvMHB1xmROf6xQvQi4mU4h1aoiJ2EAxizHU8VRzQEWStGlmXTGuUIGSslv8lImX6Qd8DsuXLG2d84Dlir8UjbpZWI0&amp;t=ffffffffdfc97409" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=i3Jdu-CvBfdhreP3inufwjb3cODHyeusEqpRcEU2tscUITh3QJdcQPXUnhK-HtV68_HBtBQHLruM3tm6vaUPglAcEGty4y96Bz7oQ3a3nRRO384zFjyjmXWWlRrL8eu1UHaFa-srOax1qn2T1o4i5ZCsYzftib2eavQH0KPtAg82QAmg0&amp;t=ffffffffdfc97409" type="text/javascript"></script>
+<script src="/CBOM/Simplex.aspx?_TSM_HiddenField_=ContentPlaceHolder1_ToolkitScriptManager1_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d1.0.20229.33058%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a9921a0de-6050-4870-abd9-b41bbc96c02b%3ae2e86ef9%3a1df13a87%3aee0a475d%3ac4c00916%3a9ea3f0e2%3a9e8e87e9%3a4c9865be%3a630bb7c2%3aba594826%3a8c0f2dfd" type="text/javascript"></script>
+
+<table id="Table1" class="table0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+
+
+
+
+
+<tr>
+<td>
+<table id="top" class="table0" width="100%" cellspacing="0" cellpadding="0">
+<tbody><tr valign="top">
+<td class="menubg" width="2%" valign="top">
+<table width="301" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr>
+<td>
+<div id="Xfwhf">
+<div id="OShMD" style="width: 300px;">
+
+<div class="adsbyvli" data-ad-slot="vi_31308698" data-observe="true" data-id="vi_31308698_513" style="display: block !important; position: relative !important; margin: 0px auto !important; z-index: 0 !important;"><div id="vi_31308698_513" data-ad-slot="vi_31308698" content-type="passback" style="width: 300px !important; height: 250px !important; margin: 0px auto !important; position: relative !important; overflow: hidden;"><iframe class="vliIgnore" id="ifr_vi_31308698_513" src="about:blank" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="250" frameborder="0"> </iframe></div><iframe id="debug_vi_31308698_513" scrolling="no" allowtransparency="true" hidefocus="true" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="width: 100%; height: 100%; position: absolute; background-color: rgba(255, 255, 255, 0.8); top: 0px; left: 0px; z-index: 10000; display: none !important; opacity: 0 !important;" frameborder="no"></iframe></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_31308698")})</script>
+
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<div id="ZlYGj">
+<div id="aBFzd" style="background-color: rgb(255, 255, 255); width: 300px;">
+
+<div class="adsbyvli" data-ad-slot="vi_31308701" data-observe="true" data-id="vi_31308701_691" style="display: block !important; position: relative !important; margin: 0px auto !important; z-index: 0 !important;"><div id="vi_31308701_691" data-ad-slot="vi_31308701" content-type="passback" style="width: 300px !important; height: 600px !important; margin: 0px auto !important; position: relative !important; overflow: hidden;"><iframe class="vliIgnore" id="ifr_vi_31308701_691" src="about:blank" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0"> </iframe></div><iframe id="debug_vi_31308701_691" scrolling="no" allowtransparency="true" hidefocus="true" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="width: 100%; height: 100%; position: absolute; background-color: rgba(255, 255, 255, 0.8); top: 0px; left: 0px; z-index: 10000; display: none !important; opacity: 0 !important;" frameborder="no"></iframe></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_31308701")})</script>
+
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<div id="gnvss">
+<div id="ewnvj" style="width: 300px;">
+
+<div><div class="adsbyvli" data-ad-slot="vi_31308697" data-observe="true" data-id="vi_31308697_955" style="display: block !important; position: relative !important; margin: 0px auto !important; z-index: 0 !important;"><div id="vi_31308697_955" data-ad-slot="vi_31308697" isset-ad="1"></div><iframe id="debug_vi_31308697_955" scrolling="no" allowtransparency="true" hidefocus="true" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="width: 100%; height: 100%; position: absolute; background-color: rgba(255, 255, 255, 0.8); top: 0px; left: 0px; z-index: 10000; display: none !important; opacity: 0 !important;" frameborder="no"></iframe></div></div> <script> vitag.videoDiscoverConfig = { random: true, noFixedVideo: true}; (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initInstreamBanner('vi_31308697') });</script>
+
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="ContentBorder">
+<table width="100%" cellspacing="1" cellpadding="0" border="0">
+<tbody>
+
+
+
+
+
+<tr>
+<td id="cph1">
+<table id="Table3" width="100%" cellspacing="0" cellpadding="1" border="0">
+<tbody><tr>
+<td align="left">
+<script language="javascript" type="text/javascript" src="../Scripts/JSTooltip.js"></script>
+<script language="javascript" type="text/javascript" src="../Scripts/GraphPt.js"></script>
+<script language="javascript" type="text/javascript">
+function BodyLoadAndSetScaleOrignFromMinMax(XMin,XMax,YMin,YMax)
+{
+    BodyLoad();
+    setScaleOrignFromMinMax(XMin,XMax,YMin,YMax);
+}
+</script>
+<script language="javascript">
+
+String.prototype.trim = function() {
+    return this.replace(/^\s+|\s+$/g, "");
+};
+
+function LLPToTbl()
+{
+    clearTextarea();
+
+    //replace UnicodeChar eg '-'
+	if(isUnicodeCharInCtl(document.getElementById("txtLPP")))
+		return false;
+    //isUnicodeCharInCtl(document.getElementById("txtLPP"));
+
+	var QStr = document.getElementById("txtLPP").value;
+	//alert(QStr);
+
+	//replace some symbols
+	QStr = QStr.replace(/≤/g,"<");
+	QStr = QStr.replace(/≥/g,">");
+	QStr = QStr.replace(/<=/g,"<");
+	QStr = QStr.replace(/>=/g,">");
+	//QStr = QStr.replace(/ /g,"");
+	QStr = QStr.replace(/\(/g,"");
+	QStr = QStr.replace(/\)/g,"");
+
+    //replace ',' to new line
+	QStr = QStr.replace(/\,/g,"\r\n");
+
+    //remove tab
+	QStr = QStr.replace(/\t/g,"");
+
+    //remove ltrim
+	QStr = QStr.replace(/ [ ]+/g,'');
+
+	//replace double lines to single line
+	QStr = QStr.replace(new RegExp('[\r\n]+','g'), '\r\n');
+
+	//remove starting new line char
+	QStr = QStr.replace(new RegExp('^[\r\n]+'), '');
+
+    //if subject keyword is not in new line then add new line
+    if(QStr.indexOf("\r\nsub")==-1)
+    {
+	    QStr = QStr.replace('sub', '\r\nsub');
+    }
+
+    //if and keyword is not in new line then add new line
+    if(QStr.indexOf("\r\nand")==-1)
+    {
+	    QStr = QStr.replace('and', '\r\nand');
+    }
+
+	disp("11-->"+QStr);
+
+	//convert string to array
+    var QA = QStr.toString().split('\r\n');
+    disp("22-->"+QA);
+    //alert(QA.length);
+
+    var BUnResStr = false;
+    var SUnResStr="";
+    //-->remove subject to the constraints words and blank lines
+    var ISt;
+    for(ISt = QA.length-1;ISt>=0;ISt--)//for(ISt = 1;ISt<QA.length;ISt++)
+    {
+        var SSubjTo = QA[ISt].toLowerCase().trim();
+        //disp("SSubjTo:"+ ISt +" = "+SSubjTo.length);
+        if(SSubjTo.indexOf("sub")!=-1 || SSubjTo.indexOf("to")!=-1 || SSubjTo.indexOf("the")!=-1 || SSubjTo.indexOf("cons")!=-1 || SSubjTo.length==0)
+        {
+            QA.splice(ISt, 1);
+            //break;
+        }
+        else if(SSubjTo.indexOf("and")==-1 && isNumberExistsAtAnyPos(SSubjTo)==false)
+        {
+            //in whole line only chararter exist without any number then remove
+            QA.splice(ISt, 1);
+        }
+        else if(SSubjTo.indexOf("unres")!=-1 || (ISt==QA.length-1 && SSubjTo.indexOf("integer") != -1))
+        {
+            //only unrestricted value and delete current line
+            SUnResStr = QA[ISt];
+            QA.splice(ISt, 1);
+            BUnResStr = true;
+        }
+        else if(SSubjTo.indexOf("and")!=-1)
+        {
+            //remove all element 'and' and its below
+            for(var i=QA.length-1;i>=ISt;i--)
+            {
+                //for all element 'and' and its below in SUnResStr and delete
+                SUnResStr = QA[i] +","+ SUnResStr;
+                QA.splice(i, 1);
+            }
+        }
+    }
+    disp("SUnResStr-->"+SUnResStr);
+    disp("33-->"+QA);
+    //<--remove subject to the constraints words and blank lines
+
+    //-->unrestricted
+    var SVarUnRes="";
+    if(BUnResStr)//if(SUnResStr!="")
+    {
+        //remove space from left and right side of '>' symbol
+        SUnResStr = SUnResStr.replace(/[ ]+>[ ]+/g,"\>");
+
+        //replace all 'and' with ',' sign
+        SUnResStr = SUnResStr.replace(/and/g,",");
+
+        var ind = SUnResStr.indexOf(">0");
+        if(ind!=-1)
+            SUnResStr = SUnResStr.substring(ind+3).trim();
+        disp("2->SUnResStr-->"+SUnResStr);
+
+//        ind = SUnResStr.indexOf("unres");
+//        SUnResStr = SUnResStr.substring(0,ind).trim();
+//        disp("1->SUnResStr-->"+SUnResStr);
+
+
+        //-->now split and join
+        var UnResA = SUnResStr.split(',');
+        for(var i=0;i<UnResA.length;i++)
+        {
+            UnResA[i]=UnResA[i].trim();
+            if(i==UnResA.length - 1)
+                UnResA[i] = UnResA[i].substring(0, UnResA[i].indexOf(' '));
+
+            if(UnResA[i]!="")
+            {
+                if(SVarUnRes!="")
+                    SVarUnRes += ",";
+
+                SVarUnRes += UnResA[i];
+            }
+        }
+        //<--now split and join
+        disp("3->SVarUnRes:"+ SVarUnRes + "");
+    }
+    //<--unrestricted
+
+    //-->objective function
+    //-->1.Find Max or Min function
+    var SMinMax = "";
+    var ObjFunc = QA[0];
+    var SInd = ObjFunc.toLowerCase().indexOf("max"); SMinMax = "Max";
+    if(SInd==-1)
+    {
+        SInd = ObjFunc.toLowerCase().indexOf("min"); SMinMax = "Min";
+        if(SInd==-1)
+        {
+            SMinMax = "";
+            alert("Error: Please enter Max or Min in objective function");
+            return;
+        }
+    }
+    var EInd = ObjFunc.indexOf(" ");
+    ObjFunc = ObjFunc.substring(EInd+1).trim();
+    disp("ObjFunc:" + ObjFunc);
+    //<--1.Find Max or Min function
+
+    //-->2. find Z name
+    SInd = ObjFunc.indexOf("=");
+    if(SInd==-1)
+    {
+        alert("Error: Please enter '=' in objective function");
+        return;
+    }
+    var SZ = ObjFunc.substring(0,SInd).trim();
+    ObjFunc = ObjFunc.substring(SInd+1).trim();
+    disp("SZ:" + SZ);
+    disp("ObjFunc:" + ObjFunc);
+    //<--2. find Z name
+
+    //-->3. find obj func variables and coefficient
+    var SAns = getVariableAndCoefficient(ObjFunc);
+    disp("SAns:" + SAns.join(";"));
+    var SVar = SAns[0];
+    var SCj = SAns[1];
+    var Nv = SAns[0].length;
+//    disp("SAns.length=" + SAns.length);
+//    disp("SAns[0].length=" + SAns[0].length);
+    //<--3. find obj func variables and coefficient
+    //<--objective function
+
+    //-->constraints
+    var Sign = ["<",">","="];
+    var SXSign = [],SXb=[];
+    var k=0;
+    var SXSij = [];
+    for(var i = 1; i<QA.length; i++,k++)
+    {
+        var Constraint = QA[i];
+
+        //-->Find sign and Xb
+        for(var j=0;j<Sign.length;j++)
+        {
+            SInd = Constraint.indexOf(Sign[j]);
+            if(SInd!=-1)
+            {
+                SXSign[k] = Sign[j];
+                SXb[k] = Constraint.substring(SInd+1).trim();
+                Constraint = Constraint.substring(0,SInd).trim();
+                break;
+            }
+        }
+        SAns = getVariableAndCoefficient(Constraint);
+        SXSij[k] = arrangeCoeff(SVar,SAns);
+        disp("SAns=" + SAns.join(";"));
+//    disp("SAns.length=" + SAns.length);
+//    disp("SAns[0].length=" + SAns[0].length);
+    }
+    var Nc = k;
+    SXSij = SXSij.join(";")
+    //<--constraints
+
+
+//		Nv=3;
+//		Nc=3;
+//		SCj = "3,5,4";
+//		SXSij = "2,3,0;0,2,5;3,2,4";
+//		SXb = "8,10,15";
+//		SXSign = "<=,<=,<=";
+//		SMinMax = "max";
+//      SZ = "Z";
+//      SVar = "x1,x2,x3";
+//		SVarUnRes = "x1";
+
+    //final sol display
+    disp("--------------------------------------");
+    disp("Nv:"+ Nv + "; Nc:"+Nc);
+    disp("SMinMax:"+SMinMax + "; SZ:"+ SZ + "; SVar:"+ SVar + "; SCj:"+SCj);
+    disp("SXSij:"+SXSij + "  SXSign:"+ SXSign + "; SXb:"+SXb);
+    disp("SVarUnRes:"+ SVarUnRes + "");
+    disp("--------------------------------------");
+
+	//to disp single lpp problem
+    //setLLP(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes);
+
+//	//to disp in table format
+	setContentS(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes);
+}
+
+function arrangeCoeff(SVar,SAns)
+{
+    var SCoeff = [];
+    for(var k=0;k<SVar.length;k++)
+    {
+        SCoeff[k] = 0;
+    }
+
+    for(var j=0;j<SAns[0].length;j++)
+    {
+        for(var k=0;k<SVar.length;k++)
+        {
+            if(SAns[0][j]==SVar[k])
+            {
+               SCoeff[k] = SAns[1][j];
+               break;
+            }
+        }
+    }
+
+    return SCoeff;
+}
+
+function getVariableAndCoefficient(SPoly)
+{
+    SPoly = SPoly.replace(/ /g,"");
+    //disp(SPoly)
+
+    //1st char is either + or - sign
+    if (SPoly.charAt(0) != "+" && SPoly.charAt(0) != "-")
+        SPoly = "+"+ SPoly;
+
+	SPoly = SPoly.replace(/\+/g,"~+");
+	SPoly = SPoly.replace(/\-/g,"~-");
+    //disp(SPoly)
+
+	//convert string to array
+    var SPolyA = SPoly.toString().split("~");
+    //disp(SPolyA);
+
+    var SVar = [];
+    var SCoeff = [];
+
+    for (var i = 1; i < SPolyA.length; i++)
+    {
+    	SVar[i-1] = /([a-zA-Z].*)/.exec(SPolyA[i])[1];
+    	SCoeff[i-1] = SPolyA[i].replace(/[a-zA-Z].*/, '');
+
+        if(SCoeff[i-1] == "+")
+            SCoeff[i-1] = "1";
+        else if(SCoeff[i-1] == "-")
+            SCoeff[i-1] = "-1";
+
+    	SCoeff[i-1] = SCoeff[i-1].replace(/\+/g,"");
+    }
+    //disp("SVar:"+SVar);
+    //disp("SCoeff:"+SCoeff);
+
+    var SAns = [SVar, SCoeff];
+    return SAns;
+}
+
+function isNumberExistsAtAnyPos(S)
+{
+	var number = "+-0123456789";
+
+	for(var i=0;i<S.length;i++)
+	{
+		if(number.indexOf(S.substring(i,i+1)) != -1)
+			return true;
+	}
+
+	return false;
+}
+
+function disp(x)
+{
+    document.getElementById("txtA").value += x + "\r\n\r\n";
+}
+
+function clearTextarea()
+{
+    document.getElementById("txtA").value="";
+}
+
+</script>
+<script language="javascript" type="text/javascript">
+function setLLP(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes)
+{
+    var NoOfVari=Nv;
+    var NoOfCons=Nc;
+    //-->MAX_Z
+    var SLPP = SMinMax + " " + SZ + " = ";
+
+	var SCjs = SCj.toString().split(",");
+	var SVars = SVar.toString().split(",");
+
+//	for(var j=1;j<=NoOfVari;j++)
+//	{
+//	    var Coeff = SCjs[j-1];
+//	    //if(Coeff!=0)
+//	    {
+//	        //sign disp
+//		    if(Coeff < 0)
+//		    {
+//		        if(j==1)
+//	                SLPP += "-";
+//	            else
+//	                SLPP += " - ";
+//	        }
+//	        else if(j > 1 && Coeff>=0)
+//	        {
+//	            SLPP += " + ";
+//	        }
+//
+//		    Coeff = Math.abs(Coeff);
+//		    SLPP += (Coeff!=1 ? Coeff : "") +""+ SVars[j-1];
+//		}
+//	}
+
+	for(var j=1;j<=NoOfVari;j++)
+	{
+	    var Coeff = SCjs[j-1].trim();
+	    //if(Coeff!=0)
+	    {
+	        //sign disp
+		    if(Coeff.charAt(0) == '-')
+		    {
+		        if(j==1)
+	                SLPP += "-";
+	            else
+	                SLPP += " - ";
+
+	            Coeff = Coeff.substring(1);
+	        }
+	        else if(j > 1 && eval(Coeff)>=0)
+	        {
+	            SLPP += " + ";
+                if(Coeff.charAt(0) == '+')
+                    Coeff = Coeff.substring(1);
+	        }
+
+		    //Coeff = Math.abs(Coeff);
+		    SLPP += (Coeff=="1" ? "" : Coeff) +""+ SVars[j-1];
+		}
+	}
+
+	//<--MAX_Z
+
+    SLPP += "\nsubject to";
+
+    //-->CONTENTS
+	var SXSijs = SXSij.toString().split(";");
+	var SXbs = SXb.toString().split(",");
+	var SXSigns = SXSign.toString().split(",");
+	for(var i=1;i<=NoOfCons;i++)
+	{
+		var SData = SXSijs[i-1].toString().split(",");
+		var SConstraint = "";
+//		for(var j=1;j<=NoOfVari;j++)
+//		{
+//	        var Coeff = SData[j-1];
+//	        if(Coeff!=0)
+//	        {
+//	            //sign disp
+//		        if(Coeff < 0)
+//		        {
+//		            if(SConstraint=="")//if(j==1)
+//	                    SConstraint += "-";
+//	                else
+//	                    SConstraint += " - ";
+//	            }
+//	            else if(SConstraint!="" && Coeff>=0)//else if(j > 1 && Coeff>=0)
+//	                SConstraint += " + ";
+//
+//		        Coeff = Math.abs(Coeff);
+//		        SConstraint += (Coeff!=1 ? Coeff : "") +""+ SVars[j-1];
+//		    }
+//		}
+
+		for(var j=1;j<=NoOfVari;j++)
+		{
+	        var Coeff = SData[j-1].trim();
+	        if(eval(Coeff)!=0)
+	        {
+	            //sign disp
+		        if(Coeff.charAt(0) == '-')
+		        {
+		            if(SConstraint=="")//if(j==1)
+	                    SConstraint += "-";
+	                else
+	                    SConstraint += " - ";
+
+	                Coeff = Coeff.substring(1);
+	            }
+	            else if(SConstraint!="" && eval(Coeff)>=0)//else if(j > 1 && Coeff>=0)
+	            {
+	                SConstraint += " + ";
+	                if(Coeff.charAt(0) == '+')
+	                    Coeff = Coeff.substring(1);
+        	    }
+		        //Coeff = Math.abs(Coeff);
+		        SConstraint += (Coeff=="1" ? "" : Coeff) +""+ SVars[j-1];
+		    }
+		}
+
+        SConstraint += " " + SXSigns[i-1];
+        SConstraint += " " + SXbs[i-1];
+
+        SLPP += "\n"+SConstraint;
+	}
+	//<--CONTENTS
+
+    //-->Variables and Unrestricted variable message
+    var S1="",S2="";
+    var SVarUnRess = SVarUnRes.toString().split(",");
+    for(i=0;i<SVars.length;i++)
+    {
+        var BFlg=false;
+        for(j=0;j<SVarUnRess.length;j++)
+        {
+            if(SVars[i]==SVarUnRess[j])
+            {
+                BFlg=true;
+                break;
+            }
+        }
+        if(BFlg==false)
+        {
+            if(S1!="")
+                S1 += ",";
+            S1 += SVars[i];
+        }
+        else
+        {
+            if(S2!="")
+                S2 += ",";
+            S2 += SVars[i];
+        }
+    }
+    SLPP += "\n";
+
+    var SUnResOrIntMsg = "unrestricted in sign";
+    if(document.getElementById("ContentPlaceHolder1_hMethod").value=="is")
+        SUnResOrIntMsg = "non-negative integers";
+
+    if(S1!="")
+        SLPP += "and "+S1+ " >= 0 "
+
+    if(S2!="")
+        SLPP += "and "+S2+" "+SUnResOrIntMsg;
+   //<--Variables and Unrestricted variable message
+
+    disp(SLPP);
+    document.getElementById("txtLPP").value = SLPP;
+}
+    </script>
+<script language="javascript" type="text/javascript">
+<!--
+function BtnGenerate_onclick()
+{
+	if(isVariConsValid())
+	{
+		GenerateTable();
+	}
+}
+
+function GenerateTable()
+{
+	var NoOfCons = eval(document.getElementById("txtNoOfCons").value);
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+
+    //alert(vMinMax);
+	//-->MAX_Z
+	var S = "<TABLE id=Table2 cellSpacing=1 cellPadding=1 border=0>";
+	S += "<TR>";
+	S += "<TD><select id='ddlMinMax' onchange='ddlMinMax_change();TblToLLP_change();'><OPTION selected>Max</OPTION><OPTION>Min</OPTION></select>";
+	//S += " <span id='divSZ'>"+ getInnerHTML("divSZ") +"</span> = </TD>";
+	S += " <span id='divSZ'>"+ "Z" +"</span> = </TD>";
+
+	for(j=1;j<=NoOfVari;j++)
+	{
+		//S += "<TD><INPUT id='txtCj"+j+"' value='"+ getValue("txtCj"+j) +"' onchange='TblToLLP();' onkeypress=doClick('BtnFind',event) type='text' size='2'></TD>";
+		S += "<TD><INPUT id='txtCj"+j+"' value='"+ getValue("txtCj"+j) +"' onchange='TblToLLP_change();' type='text' size='2'></TD>";
+
+		//S += "<TD>X<SUB>"+ j +"</SUB>";
+		S += "<TD><span id='divCj"+ j +"'>X<SUB>"+ j +"</SUB></span>";
+		if(j<NoOfVari)
+			S += " + ";
+		S += "</TD>";
+
+	}
+	S += "</TR>";
+	S += "</TABLE>";
+	//<--MAX_Z
+
+
+	//-->CONTENTS
+	var SConTbl = "<TABLE id=Table2 cellSpacing=1 cellPadding=1 border=0>";
+	for(i=1;i<=NoOfCons;i++)
+	{
+		SConTbl += "<TR>";
+		for(j=1;j<=NoOfVari;j++)
+		{
+			//SConTbl += "<TD><INPUT id='txtXSij_"+i+"_"+j+"' value='"+ getValue("txtXSij_"+i+"_"+j) +"' onchange='TblToLLP();' onkeypress=doClick('BtnFind',event)  type='text' size='2'></TD>";
+			SConTbl += "<TD><INPUT id='txtXSij_"+i+"_"+j+"' value='"+ getValue("txtXSij_"+i+"_"+j) +"' onchange='TblToLLP_change();' type='text' size='2'></TD>";
+
+		    //SConTbl += "<TD>X<SUB>"+ j +"</SUB>";
+		    SConTbl += "<TD><span id='divXSij_"+i+"_"+j+"'>X<SUB>"+ j +"</SUB></span>";
+		    if(j<NoOfVari)
+			    SConTbl += " + ";
+		    SConTbl += "</TD>";
+		}
+
+
+		//SConTbl += "<TD><SELECT id='ddlXSign"+i+"'><OPTION selected>&lt;=</OPTION><OPTION>&gt;=</OPTION><OPTION>=</OPTION></SELECT></TD>";
+        //-->COMMENT AND NEWCODE ON 27-02-10
+		var abc = 'ddlXSign'+i+'';
+		var control = findObj(abc, document);
+		if(control != null && document.getElementById('ddlXSign'+i+'').selectedIndex!=-1)
+		{
+		    //alert(document.getElementById('ddlXSign'+i+'').selectedIndex);
+            if(document.getElementById('ddlXSign'+i+'').options[document.getElementById('ddlXSign'+i+'').selectedIndex].text == ">=")
+		        SConTbl += "<TD><SELECT id='ddlXSign"+i+"' onchange='TblToLLP_change();'><OPTION>&lt;=</OPTION><OPTION selected>&gt;=</OPTION><OPTION>=</OPTION></SELECT></TD>";
+            else if(document.getElementById('ddlXSign'+i+'').options[document.getElementById('ddlXSign'+i+'').selectedIndex].text == "=")
+		        SConTbl += "<TD><SELECT id='ddlXSign"+i+"' onchange='TblToLLP_change();'><OPTION>&lt;=</OPTION><OPTION>&gt;=</OPTION><OPTION selected>=</OPTION></SELECT></TD>";
+            else //if(document.getElementById('ddlXSign'+i+'').options[document.getElementById('ddlXSign'+i+'').selectedIndex].text == "<=")
+		        SConTbl += "<TD><SELECT id='ddlXSign"+i+"' onchange='TblToLLP_change();'><OPTION selected>&lt;=</OPTION><OPTION>&gt;=</OPTION><OPTION>=</OPTION></SELECT></TD>";
+        }
+        else
+        {
+            SConTbl += "<TD><SELECT id='ddlXSign"+i+"' onchange='TblToLLP_change();'><OPTION selected>&lt;=</OPTION><OPTION>&gt;=</OPTION><OPTION>=</OPTION></SELECT></TD>";
+        }
+        //<--COMMENT AND NEWCODE ON 27-02-10
+
+		//SConTbl += "<TD><INPUT id='txtXb"+i+"' value='"+ getValue("txtXb"+i) +"' onchange='TblToLLP();' onkeypress=doClick('BtnFind',event)  type='text' size='2'></TD>";
+		SConTbl += "<TD><INPUT id='txtXb"+i+"' value='"+ getValue("txtXb"+i) +"' onchange='TblToLLP_change();' type='text' size='2'></TD>";
+		SConTbl += "</TR>";
+	}
+	SConTbl += "</TABLE>";
+	//<--CONTENTS
+
+    //-->all variables and unrestricted variable with temperary values x1,x2,x3 set, that changed to original in setContentS()
+	var SAllVar="";
+	var SVarUnRes="";
+	for(j=1;j<=NoOfVari;j++)
+	{
+			SAllVar += "x"+ j +"";
+            //SVarUnRes += "<INPUT id='chkX"+j+"' value='"+ getValue("chkX"+j) +"' type='checkbox'>";
+            SVarUnRes += "<INPUT id='chkX"+j+"' onclick='chkVarUnResClick()' type='checkbox'>" + "x"+ j +"";;
+			if(j<NoOfVari)
+			{
+				SAllVar += ",";
+				SVarUnRes += ",";
+			}
+	}
+	var divVar = "<span id='divVar'>"+ SAllVar +"</span>";//only for display, not for getting value
+	var divVarUnRes = "<span id='divVarUnRes'>"+ SVarUnRes +"</span>";//only for display, not for getting value
+	//var divAllVar = "<span id='divAllVar'>"+ SAllVar +"</span>";
+	var divAllVar = "<INPUT id='divAllVar' type='hidden' value='"+ SAllVar +"'>";//div to hidden converted, because ',' is conveted to unicode in div
+    //<--all variables and unrestricted variable with temperary values x1,x2,x3 set, that changed to original in setContentS()
+
+
+    var SUnResOrIntMsg = "unrestricted in sign";
+    if(document.getElementById("ContentPlaceHolder1_hMethod").value=="is")
+        SUnResOrIntMsg = "non-negative integers";
+
+	var FinalTable = "<TABLE id=Table2 cellSpacing=1 cellPadding=1 width=100% border=0>";
+	FinalTable += "<TR><td>"+ S +"</td></TR>";
+	FinalTable += "<TR><td> Subject to constraints </td></TR>";
+	FinalTable += "<TR><td>"+ SConTbl +"</td></TR>";
+    //-->old code
+	//FinalTable += "<TR><td> and "+ divVar +" >= 0 and "+ SUnResOrIntMsg +" "+ divVarUnRes +"</td></TR>";
+    //<--old code
+
+    //-->new code for unrestricted variable display or hide for some methods
+	var SMethod = document.getElementById("ContentPlaceHolder1_hMethod").value;
+	var SDisplay = "none";
+	if(SMethod=="sm" || SMethod=="bm" || SMethod=="is" || SMethod=="pd" || SMethod=="bb" || SMethod=="01")
+    	SDisplay = "inline";
+
+	FinalTable += "<TR><td> and "+ divVar +" >= 0 ";
+	FinalTable += "<unres style='display:"+ SDisplay +"'>and "+ SUnResOrIntMsg +" "+ divVarUnRes +"</unres>";
+	FinalTable += "</td></TR>";
+    //<--new code for unrestricted variable display or hide for some methods
+
+	FinalTable += "<TR style='display:none'><td>"+ divAllVar +"</td></TR>";
+	FinalTable += "</TABLE>";
+
+	document.getElementById('lblData').innerHTML = FinalTable;
+}
+
+
+function setTr12()
+{
+    var BTr12 = (document.getElementById("ContentPlaceHolder1_ddlFind").selectedIndex<=3);
+
+    document.getElementById("tr1").style.display = 'none';
+    document.getElementById("tr2").style.display = 'none';
+	//var SMethod = document.getElementById("ContentPlaceHolder1_hMethod").value;
+	//alert(BTr12 + "," + SMethod);
+	if(BTr12)
+    {
+        document.getElementById("tr1").style.display = '';
+        document.getElementById("tr2").style.display = '';
+    }
+}
+
+function ddlMinMax_change()
+{
+    var BMinToMax = (document.getElementById('ddlMinMax').selectedIndex==1);
+    //alert(BMinToMax);
+    //document.getElementById("ContentPlaceHolder1_chkMinToMax").checked = BMinToMax;
+
+	var SMethod = document.getElementById("ContentPlaceHolder1_hMethod").value;
+	if(SMethod=="sm" || SMethod=="bm" || SMethod=="tp" || SMethod=="is")
+    {
+        if(BMinToMax==true)
+            document.getElementById("trMinToMax").style.display = '';
+        else
+            document.getElementById("trMinToMax").style.display = 'none';
+    }
+}
+function chkVarUnResClick()
+{
+	var SAllVars = getAllVar().toString().split(",");
+
+    //alert("chkVarUnResClick");
+	var SVar="";
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+	for(var j=1;j<=NoOfVari;j++)
+	{
+	    if(document.getElementById('chkX'+j).checked==false)
+	    {
+		    if(SVar!="")
+		    {
+			    SVar += ",";
+		    }
+		    //SVar += "x"+ j +"";
+		    SVar += SAllVars[j-1];
+		}
+	}
+	//alert(SVar);
+
+    if(document.getElementById("ContentPlaceHolder1_hMethod").value!="is")//in integer simplex all variable >=0
+    	document.getElementById("divVar").innerHTML = SVar;
+
+    TblToLLP();
+}
+
+function TblToLLP_change()
+{
+    TblToLLP();
+}
+
+function TblToLLP()
+{
+    if(!setHiddenVal())
+        return false;
+
+    var Nv = document.getElementById('ContentPlaceHolder1_hNv').value;
+    var Nc = document.getElementById('ContentPlaceHolder1_hNc').value;
+    var SMinMax = document.getElementById('ContentPlaceHolder1_hMinMax').value;
+    var SZ = document.getElementById('ContentPlaceHolder1_hZ').value;
+    var SVar = document.getElementById('ContentPlaceHolder1_hVar').value;
+    var SCj = document.getElementById('ContentPlaceHolder1_hCj').value;
+    var SXSij = document.getElementById('ContentPlaceHolder1_hXSij').value;
+    var SXSign = document.getElementById('ContentPlaceHolder1_hXSign').value;
+    var SXb = document.getElementById('ContentPlaceHolder1_hXb').value;
+    var SVarUnRes = document.getElementById('ContentPlaceHolder1_hVarUnRes').value;
+    //var SMode = document.getElementById('ContentPlaceHolder1_hMode').value;
+
+    //to disp single lpp problem
+    setLLP(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes);
+}
+
+function ddlFind_change()
+{
+    if(!setHiddenVal())
+        return false;
+
+    var Sq1 = document.getElementById('ContentPlaceHolder1_hq1').value;
+
+    //-->Common code
+    var SQS = "q="+ document.getElementById('ContentPlaceHolder1_ddlFind').value;
+    var m1=document.getElementById('ContentPlaceHolder1_ddlFind').value;
+    var m2=document.getElementById('ContentPlaceHolder1_hMethod').value;
+    if((m1=='sm' && m2=='tp') || (m1=='tp' && m2=='sm'))
+    {
+        SQS += "&q1="+ encodeURIComponent(Sq1);
+
+        SQS += "&do=0";
+    }
+    //<--Common code
+
+    if(PostbackMethodUsed(SQS))
+        return true;
+
+    displayProgress(document.getElementById("ContentPlaceHolder1_UpdateProgress1"));
+    location.href = getURL("Simplex.aspx?"+ SQS);
+    return false;
+}
+
+function BtnFind_Click()
+{
+    if(!setHiddenVal(true))
+        return false;
+
+    var Sq1 = document.getElementById('ContentPlaceHolder1_hq1').value;
+
+    //-->Common code
+    var SQS = "q="+ document.getElementById('ContentPlaceHolder1_hMethod').value;
+    SQS += "&q1="+ encodeURIComponent(Sq1);
+
+    //<--Common code
+
+    document.cookie = 'r2=2';
+    SQS += "&do=1";
+    if(PostbackMethodUsed(SQS))
+        return true;
+
+    displayProgress(document.getElementById("ContentPlaceHolder1_UpdateProgress1"));
+    location.href = getURL("Simplex.aspx?"+ SQS);
+    return false;
+}
+
+function setHiddenVal(BConstraintDelete)
+{
+	if(!isInputValid(BConstraintDelete))
+		return false;
+
+	//var Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes="";
+
+	var Nv = document.getElementById("txtNoOfVari").value;
+	var Nc = document.getElementById("txtNoOfCons").value;
+	var SMinMax = getMinMax();//"Max";
+	var SZ = getSZ();//"Z";
+	var SVar = getAllVar();//"x1,x2,x3";
+	var SCj = getCj();//"-15,-10";
+	var SXSij = getXSij();//"-3,-5;-5,-2";
+	var SXSign = getXSign();//"<=,<=";
+	var SXb = getXb();//"-5,-3";
+	var SVarUnRes = getUnResVar();//"x1";
+	var SMode = getSMode(); //F/D
+	//Dual_Simp(Nv,Nc,SCj, SXSij, SXb, SXSign,SMinMax);
+	//alert(SVarUnRes);
+
+    var BMinToMax = document.getElementById("ContentPlaceHolder1_chkMinToMax").checked;
+    //var BZjMinusCj = document.getElementById("ContentPlaceHolder1_chkZjMinusCj").checked;
+    var BZjMinusCj = document.getElementById("ContentPlaceHolder1_ddlZjMinusCj").value;
+
+    var BMultipleSol = document.getElementById("ContentPlaceHolder1_chkMultipleSol").checked;
+    var BArtificialColRemove = document.getElementById("ContentPlaceHolder1_chkArtificialColRemove").checked;
+    var BTooltip = document.getElementById("ContentPlaceHolder1_chkTooltip").checked;
+    var BHighlight = document.getElementById("ContentPlaceHolder1_chkHighlight").checked;
+    var BSubtractionSteps = document.getElementById("ContentPlaceHolder1_chkSubtractionSteps").checked;
+
+    document.getElementById('ContentPlaceHolder1_hNv').value = Nv;
+    document.getElementById('ContentPlaceHolder1_hNc').value = Nc;
+    document.getElementById('ContentPlaceHolder1_hMinMax').value = SMinMax;
+    document.getElementById('ContentPlaceHolder1_hZ').value = SZ;
+    document.getElementById('ContentPlaceHolder1_hVar').value = SVar;
+    document.getElementById('ContentPlaceHolder1_hCj').value = SCj;
+    document.getElementById('ContentPlaceHolder1_hXSij').value = SXSij;
+    document.getElementById('ContentPlaceHolder1_hXSign').value = SXSign;
+    document.getElementById('ContentPlaceHolder1_hXb').value = SXb;
+    document.getElementById('ContentPlaceHolder1_hVarUnRes').value = SVarUnRes;
+    document.getElementById('ContentPlaceHolder1_hMode').value = SMode;
+
+    document.getElementById('ContentPlaceHolder1_hq1').value = Nv + "`" + Nc + "`" + SMinMax + "`" + SZ + "`" + SVar + "`" + SCj + "`" + SXSij + "`" + SXSign + "`" + SXb + "`" + SVarUnRes + "`" + SMode + "`" + BMinToMax + "`" + BZjMinusCj + "`" + BMultipleSol + "`" + BArtificialColRemove + "`" + BTooltip + "`" + BHighlight + "`" + BSubtractionSteps;
+	//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb`SVarUnRes`SMode`"
+    //BMinToMax`BZjMinusCj`BMultipleSol`BArtificialColRemove`BTooltip`BHighlight`BSubtractionSteps
+
+    return true;
+}
+
+function getMinMax()
+{
+	//return document.getElementById('ddlMinMax').options[document.getElementById('ddlMinMax').selectedIndex].text.toUpperCase();
+	if(document.getElementById('ddlMinMax').selectedIndex==1)
+	    return "MIN";
+
+	return "MAX";
+}
+
+function getSZ()
+{
+//    var S1 = '<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Z</font></font>';
+//    var S2 = S1.replace(/<.*?>/g,"");
+//    //alert(S1+", "+S2)
+//    alert(S2)
+
+    var S1 = document.getElementById("divSZ").innerHTML;
+    var S2 = S1.replace(/<.*?>/g,"");
+	return S2;
+}
+
+function getAllVar()
+{
+//	return document.getElementById("divAllVar").innerHTML;
+
+    var S1 = document.getElementById("divAllVar").value;
+    var S2 = S1.replace(/<.*?>/g,"");//remove <tags>
+    S2 = S2.replace(/ /g,"");//remove space
+	return S2;
+}
+
+function getCj()
+{
+	var S = "";
+	var NoOfCons = eval(document.getElementById("txtNoOfCons").value);
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+
+	for(j=1;j<=NoOfVari;j++)
+	{
+		S += removeComma(document.getElementById('txtCj'+j+'').value);
+		if(j<NoOfVari)
+			S += ",";
+	}
+
+	return S;
+}
+
+function getXSij()
+{
+	var S = "";
+	var NoOfCons = eval(document.getElementById("txtNoOfCons").value);
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+
+	for(i=1;i<=NoOfCons;i++)
+	{
+		for(j=1;j<=NoOfVari;j++)
+		{
+			S += removeComma(document.getElementById("txtXSij_"+i+"_"+j+"").value);
+			if(j<NoOfVari)
+				S += ",";
+		}
+		if(i<NoOfCons)
+			S += ";"
+	}
+
+	return S;
+}
+
+function getXSign()
+{
+	var S = "";
+	var NoOfCons = eval(document.getElementById("txtNoOfCons").value);
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+
+	//Select1.selectedIndex
+	for(i=1;i<=NoOfCons;i++)
+	{
+		//S += document.getElementById('ddlXSign'+i+'').selectedIndex;
+		//S += document.getElementById('ddlXSign'+i+'').options[document.getElementById('ddlXSign'+i+'').selectedIndex).value;
+		S += document.getElementById('ddlXSign'+i+'').options[document.getElementById('ddlXSign'+i+'').selectedIndex].text;
+
+		if(i<NoOfCons)
+			S += ",";
+	}
+	S = S.replace(/ /g,"");
+
+	return S;
+}
+
+function getXb()
+{
+	var S = "";
+	var NoOfCons = eval(document.getElementById("txtNoOfCons").value);
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+
+	for(i=1;i<=NoOfCons;i++)
+	{
+		S += removeComma(document.getElementById('txtXb'+i+'').value);
+		if(i<NoOfCons)
+			S += ",";
+	}
+
+	return S;
+}
+
+function getUnResVar()
+{
+	var SAllVars = getAllVar().toString().split(",");
+
+	var SVarUnRes="";
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+	for(var j=1;j<=NoOfVari;j++)
+	{
+	    if(document.getElementById('chkX'+j).checked==true)
+	    {
+		    if(SVarUnRes!="")
+		    {
+			    SVarUnRes += ",";
+		    }
+		    //SVarUnRes += "x"+ j;
+		    SVarUnRes += SAllVars[j-1];
+		}
+	}
+	//alert(SVarUnRes);
+	return SVarUnRes;
+}
+
+function getSMode()
+{
+	return document.getElementById('ContentPlaceHolder1_ddlMode').value;
+}
+
+function isVariConsValid()
+{
+	if(isBlankOrNotNumberCtl(document.getElementById("txtNoOfVari"))
+	|| isCtlValNotBetween(document.getElementById("txtNoOfVari"),1,50)
+	)
+		return false;
+
+	if(isBlankOrNotNumberCtl(document.getElementById("txtNoOfCons"))
+	|| isCtlValNotBetween(document.getElementById("txtNoOfCons"),1,50)
+	)
+		return false;
+
+	return true;
+}
+
+function isInputValid(BConstraintDelete)
+{
+	if(typeof(BConstraintDelete) == "undefined") //because Extras passed in isNumber() and passed undefined if not passed by user
+	    BConstraintDelete = false;
+
+	if(!isVariConsValid())
+		return false;
+
+	var NoOfCons = eval(document.getElementById("txtNoOfCons").value);
+	var NoOfVari = eval(document.getElementById("txtNoOfVari").value);
+	var i,j;
+
+    if(NoOfVari == 0)
+    {
+	    alert("Please enter variables");
+	    document.getElementById("txtNoOfVari").focus();
+		return false;
+    }
+    if(NoOfCons == 0)
+    {
+	    alert("Please enter constraints value");
+	    document.getElementById("txtNoOfCons").focus();
+		return false;
+    }
+
+	if(document.getElementById('ddlMinMax').selectedIndex==-1)
+	{
+	    LLPToTbl();
+    }
+
+	if(document.getElementById('ddlMinMax').selectedIndex==-1)
+	{
+	    alert("Please select either min or max")
+	    document.getElementById('ddlMinMax').focus();
+		return false;
+    }
+
+	var SMethod = document.getElementById("ContentPlaceHolder1_ddlFind").value;
+	if(SMethod=="gm" && NoOfVari != 2)
+	{
+        alert("Please enter only 2 variables, for graphical method");
+        document.getElementById("txtNoOfVari").focus();
+	    return false;
+	}
+
+	//-->Cj VALIDATION
+	//var SCj = getCj();//"-15,-10";
+	for(j=1;j<=NoOfVari;j++)
+	{
+		if(isBlank(document.getElementById('txtCj'+j).value))
+		    document.getElementById('txtCj'+j).value="0";
+		else if(document.getElementById('txtCj'+j).value=='-')
+		    document.getElementById('txtCj'+j).value="-1";
+
+		//S += document.getElementById('txtCj'+j+'').value;
+		if(isBlankOrNotNumberCtl(document.getElementById('txtCj'+j)))
+			return false;
+
+	}
+	//<--Cj VALIDATION
+
+
+	//-->XSij VALIDATION
+	//var SXSij = getXSij();//"-3,-5;-5,-2";
+	for(i=1;i<=NoOfCons;i++)
+	{
+	    var ZeroCnt=0;
+		for(j=1;j<=NoOfVari;j++)
+		{
+			if(isBlank(document.getElementById("txtXSij_"+i+"_"+j+"").value))
+			    document.getElementById("txtXSij_"+i+"_"+j+"").value="0";
+			else if(document.getElementById("txtXSij_"+i+"_"+j+"").value=='-')
+			    document.getElementById("txtXSij_"+i+"_"+j+"").value="-1";
+
+			//S += document.getElementById('txtXSij'+i+''+j+'').value;
+			if(isBlankOrNotNumberCtl(document.getElementById("txtXSij_"+i+"_"+j+"")))
+				return false;
+
+			if(eval(document.getElementById("txtXSij_"+i+"_"+j+"").value)==0)
+			    ZeroCnt++;
+		}
+
+		//constraint with all coeff zeros
+		if(BConstraintDelete && ZeroCnt==NoOfVari)
+		{
+		    //alert("Constraint: "+ i +", is blank, so either enter value or remove this");
+		    var SMsg = "Constraint: "+ i +", is blank, So are you sure to remove constraint: "+ i +"";
+		    if(i<NoOfCons)
+		        SMsg = "Constraint: "+ i +", is blank, So are you sure to remove constraint: "+ i +" to constraint: "+ NoOfCons +"";
+
+		    if(confirm(SMsg))
+		    {
+		        document.getElementById("txtNoOfCons").value = i-1;
+		        BtnGenerate_onclick();
+		        TblToLLP();
+		    }
+		    else
+		    {
+		        document.getElementById("txtXSij_"+i+"_"+1+"").focus();
+		        document.getElementById("txtXSij_"+i+"_"+1+"").select();
+		    }
+		    return false;
+		}
+		//1
+
+		if(document.getElementById("ddlXSign"+i).selectedIndex==-1)
+	    {
+	        alert("Please select sign")
+	        document.getElementById("ddlXSign"+i).focus();
+		    return false;
+        }
+
+	}
+	//<--XSij VALIDATION
+
+	//-->Xb VALIDATION
+	//var SXb = getXb();//"-5,-3";
+	for(i=1;i<=NoOfCons;i++)
+	{
+		if(isBlank(document.getElementById('txtXb'+i).value))
+		    document.getElementById('txtXb'+i).value="0";
+		else if(document.getElementById('txtXb'+i).value=='-')
+		    document.getElementById('txtXb'+i).value="-1";
+
+		//S += document.getElementById('txtXb'+i+'').value;
+		if(isBlankOrNotNumberCtl(document.getElementById('txtXb'+i)))
+			return false;
+	}
+	//<--Xb VALIDATION
+
+	//-->XSign VALIDATION
+	//var SXSign = getXSign();//"<=,<=";
+	//<--XSign VALIDATION
+
+	//-->MinMax VALIDATION
+	//var SMinMax = getMinMax();//"Max";
+	//<--MinMax VALIDATION
+
+	if(document.getElementById('ContentPlaceHolder1_ddlMode').value=="")
+	{
+	    document.getElementById('ContentPlaceHolder1_ddlMode').value="D";
+    }
+
+    if(NoOfCons < 1)
+    {
+	    alert("Please enter more than 1 constraints");
+	    document.getElementById("txtNoOfCons").focus();
+		return false;
+    }
+
+	return true;
+}
+
+//-->
+    </script>
+<script language="javascript" type="text/javascript">
+	<!--
+function setRandomTryThisValue(SDef)
+{
+    var SValA = SDef.split("`");
+    if(SValA.length < 2) //to stop google error
+    {
+        RndClick();
+        return;
+    }
+
+	var Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes="";
+
+    Nv=SValA[0];
+    Nc=SValA[1];
+    SMinMax=SValA[2];
+    SZ=SValA[3];
+    SVar=SValA[4];
+    SCj=SValA[5];
+    SXSij=SValA[6];
+    SXSign=SValA[7];
+    SXb=SValA[8];
+
+    if(SValA.length>=10)
+        SVarUnRes=SValA[9];
+
+	//to disp in table format
+	setContentS(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes);
+	//to disp single lpp problem
+	setLLP(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes);
+
+    if(SValA.length>=11)
+    {
+        document.getElementById('ContentPlaceHolder1_ddlMode').value=SValA[10];
+    }
+
+    if(SValA.length>=12)
+    {
+        if(SValA.length>=12)
+        document.getElementById("ContentPlaceHolder1_chkMinToMax").checked = eval(SValA[11]);
+
+//        if(SValA.length>=13)
+//        document.getElementById("ContentPlaceHolder1_chkZjMinusCj").checked = eval(SValA[12]);
+        if(SValA.length>=13)
+        document.getElementById("ContentPlaceHolder1_ddlZjMinusCj").value = eval(SValA[12]);
+
+        if(SValA.length>=14)
+        document.getElementById("ContentPlaceHolder1_chkMultipleSol").checked = eval(SValA[13]);
+        if(SValA.length>=15)
+        document.getElementById("ContentPlaceHolder1_chkArtificialColRemove").checked = eval(SValA[14]);
+        if(SValA.length>=16)
+        document.getElementById("ContentPlaceHolder1_chkTooltip").checked = eval(SValA[15]);
+        if(SValA.length>=17)
+        document.getElementById("ContentPlaceHolder1_chkHighlight").checked = eval(SValA[16]);
+        if(SValA.length>=18)
+        document.getElementById("ContentPlaceHolder1_chkSubtractionSteps").checked = eval(SValA[17]);
+    }
+}
+
+function RndClick()
+{
+	//var Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes;
+	//var SMethod = document.getElementById("ContentPlaceHolder1_hMethod").value;
+	var SMethod = document.getElementById("ContentPlaceHolder1_ddlFind").value;
+	//alert(SMethod)
+    var SDefVal = "";
+	if(SMethod=="sm" || SMethod=="bm")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb"
+        SDefVal += "" + "3`3`max`Z`x1,x2,x3`3,5,4`2,3,0;0,2,5;3,2,4`<=,<=,<=`8,10,15`";
+        SDefVal += "~" + "3`3`max`Z`x1,x2,x3`5,10,8`3,5,2;4,4,4;2,4,5`<=,<=,<=`60,72,100`";
+        SDefVal += "~" + "2`4`max`Z`x1,x2`4,3`2,1;1,1;1,0;0,1`<=,<=,<=,<=`1000,800,400,700`";
+        SDefVal += "~" + "2`2`min`Z`x1,x2`1,1`2,4;1,7`>=,>=`4,7`";
+        SDefVal += "~" + "2`2`min`Z`x1,x2`600,500`2,1;1,2`>=,>=`80,60`";
+        SDefVal += "~" + "2`3`min`Z`x1,x2`5,3`2,4;2,2;5,2`<=,=,>=`12,10,10`";
+        SDefVal += "~" + "4`3`max`Z`x1,x2,x3,x4`1,2,3,-1`1,2,3,0;2,1,5,0;1,2,1,1`=,=,=`15,20,10`";
+        SDefVal += "~" + "2`2`max`Z`x1,x2`3,9`1,4;1,2`<=,<=`8,4`"; //Degeneracy
+        SDefVal += "~" + "3`2`max`Z`x1,x2,x3`3,2,1`2,5,1;3,4,0`=,=`12,11`x1"; //Unrestricted variable Sol (Sol: MaxZ = 48) //Done
+        SDefVal += "~" + "4`2`max`Z`x1,x2,x3,x4`3,3,2,1`2,2,5,1;3,3,4,0`=,=`12,11`";
+        SDefVal += "~" + "2`3`max`Z`x1,x2`6,4`2,3;3,2;1,1`<=,<=,>=`30,24,3`";//Multiple
+        SDefVal += "~" + "2`3`max`Z`x1,x2`3,5`1,-2;1,0;0,1`<=,<=,>=`6,10,1`";//Unbounded
+        SDefVal += "~" + "2`2`max`Z`x1,x2`6,4`1,1;0,1`<=,>=`5,8`";//Infeasible
+        SDefVal += "~" + "2`2`max`Z`x1,x2`6,4`-1,-1;0,1`>=,>=`-5,8`";//Infeasible Sol
+
+	}
+	else if(SMethod=="tp")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb"
+        SDefVal += "" + "2`2`min`z`x1,x2`1,1`2,1;1,7`>=,>=`4,7`";
+	    SDefVal += "~" + "3`2`min`z`x1,x2,x3`5,2,10`1,0,-1;0,1,1`<=,>=`10,10`";
+	    SDefVal += "~" + "2`3`max`z`x1,x2`5,8`3,2;1,4;1,1`>=,>=,<=`3,4,5`";
+	    SDefVal += "~" + "2`2`min`z`x1,x2`3,5`2,8;3,4`>=,>=`40,50`";
+	    SDefVal += "~" + "3`3`max`z`x1,x2,x3`3,2,2`5,7,4;-4,7,5;3,4,-6`<=,>=,>=`7,-2,29/7`";
+        SDefVal += "~" + "3`2`min`z`x1,x2,x3`1,-2,-3`-2,1,3;2,3,4`=,=`2,1`";
+    }
+	else if(SMethod=="ds")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb"
+        SDefVal += "" + "3`2`min`z`x1,x2,x3`2,3,0`2,-1,-1;1,-1,1`>=,>=`3,2`";
+        SDefVal += "~" + "2`2`max`Z`x1,x2`-15,-10`-3,-5;-5,-2`<=,<=`-5,-3`";
+        SDefVal += "~" + "2`3`max`Z`x1,x2`-2,-1`-3,-1;-4,-3;-1,-2`<=,<=,<=`-3,-6,-3`";
+
+    }
+	else if(SMethod=="is")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb"
+        SDefVal += "" + "2`2`max`Z`x1,x2`1,1`3,2;0,1`<=,<=`5,2`x1,x2";
+        SDefVal += "~" + "3`2`max`Z`x1,x2,x3`2,20,-10`2,20,4;6,20,4`<=,=`15,20`x1,x2,x3";
+
+        SDefVal += "~" + "2`2`max`Z`x1,x2`3,12`2,4;5,3`<=,<=`7,15`x1,x2";
+        SDefVal += "~" + "3`3`max`Z`x1,x2,x3`-3,1,3`-1,2,1;0,2,-3/2;1,-3,2`<=,<=,<=`4,1,3`x3";
+        SDefVal += "~" + "2`2`max`Z`x1,x2`1,1`3,2;0,1`<=,<=`5,2`x1";
+    }
+	else if(SMethod=="gm")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb"
+        SDefVal += "" + "2`3`max`z`x1,x2`-2,-1`-3,-1;-4,-3;-1,-2`<=,<=,<=`-3,-6,-3`";
+        SDefVal += "~" + "2`3`max`z`x1,x2`15,10`4,6;3,0;0,5`<=,<=,<=`360,180,200`";
+        SDefVal += "~" + "2`4`max`z`x1,x2`2,1`1,2;1,1;1,-1;1,-2`<=,<=,<=,<=`10,6,2,1`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`-1,2`1,-1;-0.5,1`<=,<=`-1,2`";
+        SDefVal += "~" + "2`3`max`z`x1,x2`40,80`2,3;1,0;0,1`<=,<=,<=`48,15,10`";
+        SDefVal += "~" + "2`3`max`z`x1,x2`60,40`1,0;0,1;2,1`<=,<=,<=`25,35,60`";
+        SDefVal += "~" + "2`3`min`z`x1,x2`3,2`5,1;1,1;1,4`>=,>=,>=`10,6,12`";
+        SDefVal += "~" + "2`3`min`z`x1,x2`600,400`3,3;3,1;2,5`>=,>=,>=`40,40,44`";
+        SDefVal += "~" + "2`3`min`z`x1,x2`4,3`200,100;1,2;40,40`>=,>=,>=`4000,50,1400`";
+        SDefVal += "~" + "2`3`min`z`x1,x2`-1,2`-1,3;1,1;1,-1`<=,<=,<=`10,6,2`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`-15,-10`-3,-5;-5,-2`<=,<=`-5,-3`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`600,500`2,1;1,2`>=,>=`80,60`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`3,2`1,-1;1,1`>=,>=`1,3`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`5,4`1,-2;1,2`<=,>=`1,3`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`-4,3`1,-1;1,0`<=,<=`0,4`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`3,4`1,-1;-1,1`=,<=`-1,0`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`6,-4`2,4;4,8`<=,>=`4,16`";
+        SDefVal += "~" + "2`4`max`z`x1,x2`1,1/2`3,2;5,0;1,1;-1,1`<=,=,>=,>=`12,10,8,4`";
+        SDefVal += "~" + "2`2`max`z`x1,x2`3,2`-2,3;3,-2`<=,<=`9,-20`";
+
+    }
+	else if(SMethod=="pd")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb`SVarUnRes"
+
+        SDefVal += "" + "3`3`max`z`x1,x2,x3`1,-1,3`1,1,1;2,-1,-1;2,-2,-3`<=,<=,<=`10,2,6`";
+        SDefVal += "~" + "3`5`min`z`x1,x2,x3`3,-2,4`3,5,4;6,1,3;7,-2,-1;1,-2,5;4,7,-2`>=,>=,<=,>=,>=`7,4,10,3,2`";
+        SDefVal += "~" + "2`3`min`z`x1,x2`1,2`2,4;1,-1;1,0`<=,=,>=`160,30,10`";
+        SDefVal += "~" + "3`3`min`z`x1,x2,x3`1,-3,-2`3,-1,2;2,-4,0;-4,3,8`<=,>=,=`7,12,10`x3";
+        SDefVal += "~" + "3`2`max`z`x1,x2,x3`1,-2,3`-2,1,3;2,3,4`=,=`2,1`";
+        SDefVal += "~" + "4`2`max`z`x1,x2,x3,x4`3,1,2,-1`2,-1,3,1;1,1,-1,1`=,=`1,3`x3,x4";
+    }
+	else if(SMethod=="bb")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb`SVarUnRes"
+
+        SDefVal += "" + "2`2`MAX`Z`x1,x2`100,150`8000,4000;15,30`<=,<=`40000,200`";
+        SDefVal += "~" + "2`3`MAX`Z`x1,x2`7,9`-1,3;7,1;0,1`<=,<=,<=`6,35,7`";
+        SDefVal += "~" + "2`3`MAX`Z`x1,x2`3,5`2,4;1,0;0,2`<=,<=,<=`25,8,10`";
+        SDefVal += "~" + "2`2`MIN`Z`x1,x2`3,2.5`1,2;3,2`>=,>=`20,50`";
+        SDefVal += "~" + "2`2`MAX`Z`x1,x2`2,3`4,12;10,4`<=,<=`33,35`";
+    }
+	else if(SMethod=="01")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb`SVarUnRes"
+        SDefVal += "" + "4`3`MAX`Z`x1,x2,x3,x4`300,90,400,150`35000,10000,25000,90000;4,2,7,3;1,1,0,0`<=,<=,<=`120000,12,1`";
+        SDefVal += "~" + "4`5`MAX`Z`x1,x2,x3,x4`650,700,225,250`700,850,300,350;550,550,150,200;400,350,100,0;1,1,0,0;0,0,-1,1`<=,<=,<=,>=,<=`1200,700,400,1,1`";
+    }
+	else if(SMethod=="rsm")
+	{
+		//"Nv`Nc`SMinMax`SZ`SVar`SCj`SXSij`SXSign`SXb"
+
+        SDefVal += "" + "2`2`MAX`Z`x1,x2`2,1`3,4;6,1`<=,<=`6,3";
+        SDefVal += "~" + "2`3`MAX`Z`x1,x2`3,5`1,0;0,1;3,2`<=,<=,<=`4,6,18";
+        SDefVal += "~" + "3`2`MAX`Z`x1,x2,x3`1,1,3`3,2,1;2,1,2`<=,<=`3,2";
+    }
+
+
+    var SDefs = SDefVal.split("~");
+    var Ind = NextRandom(document.getElementById('ContentPlaceHolder1_hPrevInd').value,SDefs.length,"Next");
+    document.getElementById('ContentPlaceHolder1_hPrevInd').value = Ind;
+
+    setRandomTryThisValue(SDefs[Ind]);
+}
+
+function BodyLoad()
+{
+	if(document.getElementById('ContentPlaceHolder1_hBody').value==0)
+	{
+		document.getElementById('ContentPlaceHolder1_hBody').value=1;
+		if(document.getElementById("ContentPlaceHolder1_hq1").value!="")
+	    {
+	        setRandomTryThisValue(document.getElementById("ContentPlaceHolder1_hq1").value);
+	    }
+	    else
+	    {
+		    RndClick();
+	    	var SMethod = document.getElementById("ContentPlaceHolder1_ddlFind").value;
+	        if(SMethod=="bb" || SMethod=="01" || SMethod=="gm")
+	        {
+	            document.getElementById('ContentPlaceHolder1_ddlMode').value="D";
+            }
+		}
+	}
+	else
+	{
+	    setRandomTryThisValue(document.getElementById("ContentPlaceHolder1_hq1").value);
+	    location.href = "#tblSolution";
+	}
+	setTr12();
+}
+
+function setContentS(Nv, Nc, SMinMax, SZ, SVar, SCj, SXSij, SXSign, SXb, SVarUnRes)
+{
+	var S = "";
+	//var SCVals = SCVal.split(";");
+
+	var NoOfCons = eval(Nc);
+	var NoOfVari = eval(Nv);
+	document.getElementById("txtNoOfCons").value = NoOfCons;
+	document.getElementById("txtNoOfVari").value = NoOfVari;
+
+	//-->GENERATE HTML INPUT TABLE
+    BtnGenerate_onclick();
+	//<--GENERATE HTML INPUT TABLE
+
+	if(SMinMax.toLowerCase() == "max")
+	{
+		document.getElementById("ddlMinMax").selectedIndex = 0;
+	}
+    else
+    {
+		document.getElementById("ddlMinMax").selectedIndex = 1;
+	}
+    ddlMinMax_change();
+
+	//-->MAX_Z
+	//SZ
+	document.getElementById("divSZ").innerHTML = SZ;
+
+	var SCjs = SCj.toString().split(",");
+	var SVars = SVar.toString().split(",");
+	var SAllVars = SVars; //to use globally
+
+	for(j=1;j<=NoOfVari;j++)
+	{
+		document.getElementById("divCj"+j).innerHTML = SVars[j-1];
+		document.getElementById("txtCj"+j).value = SCjs[j-1];
+	}
+	//<--MAX_Z
+
+
+	//-->CONTENTS
+	var SXSijs = SXSij.toString().split(";");
+	var SXbs = SXb.toString().split(",");
+	var SXSigns = SXSign.toString().split(",");
+	for(i=1;i<=NoOfCons;i++)
+	{
+		var SData = SXSijs[i-1].toString().split(",");
+		for(j=1;j<=NoOfVari;j++)
+		{
+    		document.getElementById("divXSij_"+i+"_"+j).innerHTML = SVars[j-1];
+    		document.getElementById("txtXSij_"+i+"_"+j).value = SData[j-1];
+		}
+
+		if(SXSigns[i-1]==">=" || SXSigns[i-1]==">")
+		    document.getElementById("ddlXSign"+i).selectedIndex = 1;
+		else if(SXSigns[i-1]=="=")
+		    document.getElementById("ddlXSign"+i).selectedIndex = 2;
+		else
+		    document.getElementById("ddlXSign"+i).selectedIndex = 0;
+
+		document.getElementById("txtXb"+i).value = SXbs[i-1];
+	}
+	//<--CONTENTS
+
+    //-->all variable set again with corresponding variable names, from x1,x2,x3 (default) to x,y,z
+	document.getElementById("divAllVar").value = SVar;
+	document.getElementById("divVar").innerHTML = SVar;
+	var divVarUnRes="";
+    for(j=1;j<=SAllVars.length;j++)
+    {
+        divVarUnRes += "<INPUT id='chkX"+j+"' onclick='chkVarUnResClick()' type='checkbox'>" + SAllVars[j-1] +"";;
+		if(j<SAllVars.length)
+		{
+			divVarUnRes += ",";
+		}
+    }
+	document.getElementById("divVarUnRes").innerHTML = divVarUnRes;
+    //<--all variable set again with corresponding variable names, from x1,x2,x3 (default) to x,y,z
+
+	//-->unrestricted variable set if exists
+	if(SVarUnRes!="")
+	{
+	    var SVarUnRess = SVarUnRes.toString().split(",");
+        for(i=0;i<SAllVars.length;i++)
+        {
+            for(j=0;j<SVarUnRess.length;j++)
+            {
+                if(SAllVars[i]==SVarUnRess[j])
+                {
+                    document.getElementById('chkX'+(i+1)).checked=true;
+                    break;
+                }
+            }
+        }
+        chkVarUnResClick();
+    }
+	//<--unrestricted variable set if exists
+}
+
+
+function clearContentS()
+{
+	var Nv=(document.getElementById("txtNoOfVari").value);
+	var Nc=(document.getElementById("txtNoOfCons").value);
+
+	var S = "";
+	//var SCVals = SCVal.toString().split(";");
+
+	var NoOfCons = eval(Nc);
+	var NoOfVari = eval(Nv);
+
+	//-->MAX_Z
+	for(j=1;j<=NoOfVari;j++)
+	{
+		document.getElementById("txtCj"+j).value = "";
+	}
+	//<--MAX_Z
+
+
+	//-->CONTENTS
+	for(i=1;i<=NoOfCons;i++)
+	{
+		for(j=1;j<=NoOfVari;j++)
+		{
+    		document.getElementById("txtXSij_"+i+"_"+j).value = "";
+		}
+
+	    document.getElementById("ddlXSign"+i).selectedIndex = 0;
+		document.getElementById("txtXb"+i).value = "";
+	}
+	//<--CONTENTS
+}
+
+	-->
+
+    </script>
+<table id="Table1" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+
+
+<tr>
+<td valign="top" align="left">
+<table id="Table4" style="border-collapse:collapse;" cellspacing="0" cellpadding="1" border="1">
+<tbody>
+
+
+<tr>
+<td align="center">
+</td>
+</tr><tr>
+<td class="labelTitle" align="center">
+Solve the Linear programming problem using<br>
+Simplex method calculator
+</td>
+</tr>
+<tr>
+<td align="center">
+Type your linear programming problem
+</td>
+</tr>
+<tr>
+<td align="center">
+<textarea id="txtLPP" cols="60" rows="6" onblur="LLPToTbl()"></textarea>
+<br><br>
+<textarea id="txtA" style="width: 592px; height: 300px;display:none;"></textarea>
+</td>
+</tr>
+<tr>
+<td align="center">
+<b>OR</b>
+</td>
+</tr>
+<tr>
+<td align="center">
+Total Variables&nbsp;:
+<input id="txtNoOfVari" type="text" size="2" value="3" onkeypress="doClick('BtnGenerate',event);">&nbsp;&nbsp;Total Constraints&nbsp;:&nbsp;<input id="txtNoOfCons" type="text" size="2" value="4" onkeypress="doClick('BtnGenerate',event);">&nbsp;<input id="BtnGenerate" onclick="return BtnGenerate_onclick()" type="button" value="Generate" class="button1" title="Generate">
+&nbsp;</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+<tr>
+<td align="center">
+</td>
+</tr>
+<tr>
+<td align="left">
+<div id="lblData"><table id="Table2" width="100%" cellspacing="1" cellpadding="1" border="0"><tbody><tr><td><table id="Table2" cellspacing="1" cellpadding="1" border="0"><tbody><tr><td><select id="ddlMinMax" onchange="ddlMinMax_change();TblToLLP_change();"><option selected="">Max</option><option>Min</option></select> <span id="divSZ">Z</span> = </td><td><input id="txtCj1" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divCj1">x1</span> + </td><td><input id="txtCj2" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divCj2">x2</span> + </td><td><input id="txtCj3" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divCj3">x3</span></td></tr></tbody></table></td></tr><tr><td> Subject to constraints </td></tr><tr><td><table id="Table2" cellspacing="1" cellpadding="1" border="0"><tbody><tr><td><input id="txtXSij_1_1" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_1_1">x1</span> + </td><td><input id="txtXSij_1_2" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_1_2">x2</span> + </td><td><input id="txtXSij_1_3" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_1_3">x3</span></td><td><select id="ddlXSign1" onchange="TblToLLP_change();"><option selected="">&lt;=</option><option>&gt;=</option><option>=</option></select></td><td><input id="txtXb1" value="" onchange="TblToLLP_change();" type="text" size="2"></td></tr><tr><td><input id="txtXSij_2_1" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_2_1">x1</span> + </td><td><input id="txtXSij_2_2" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_2_2">x2</span> + </td><td><input id="txtXSij_2_3" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_2_3">x3</span></td><td><select id="ddlXSign2" onchange="TblToLLP_change();"><option selected="">&lt;=</option><option>&gt;=</option><option>=</option></select></td><td><input id="txtXb2" value="" onchange="TblToLLP_change();" type="text" size="2"></td></tr><tr><td><input id="txtXSij_3_1" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_3_1">x1</span> + </td><td><input id="txtXSij_3_2" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_3_2">x2</span> + </td><td><input id="txtXSij_3_3" value="" onchange="TblToLLP_change();" type="text" size="2"></td><td><span id="divXSij_3_3">x3</span></td><td><select id="ddlXSign3" onchange="TblToLLP_change();"><option selected="">&lt;=</option><option>&gt;=</option><option>=</option></select></td><td><input id="txtXb3" value="" onchange="TblToLLP_change();" type="text" size="2"></td></tr></tbody></table></td></tr><tr><td> and <span id="divVar">x1,x2,x3</span> &gt;= 0 <unres style="display:inline">and unrestricted in sign <span id="divVarUnRes"><input id="chkX1" onclick="chkVarUnResClick()" type="checkbox">x1,<input id="chkX2" onclick="chkVarUnResClick()" type="checkbox">x2,<input id="chkX3" onclick="chkVarUnResClick()" type="checkbox">x3</span></unres></td></tr><tr style="display:none"><td><input id="divAllVar" type="hidden" value="x1,x2,x3"></td></tr></tbody></table></div>
+</td>
+</tr>
+<tr>
+<td align="center">
+</td>
+</tr>
+<tr>
+<td align="center">
+Mode :
+<select name="ctl00$ContentPlaceHolder1$ddlMode" id="ContentPlaceHolder1_ddlMode">
+<option selected="selected" value="D">Decimal</option>
+<option value="F">Fraction</option>
+</select>
+</td>
+</tr>
+<tr id="trMinToMax" style="display:none">
+<td align="center">
+<input id="ContentPlaceHolder1_chkMinToMax" type="checkbox" name="ctl00$ContentPlaceHolder1$chkMinToMax"><label for="ContentPlaceHolder1_chkMinToMax">Solve after converting Min function to Max function</label>
+</td>
+</tr>
+<tr id="tr1" style="">
+<td align="center">
+Calculate : <select name="ctl00$ContentPlaceHolder1$ddlZjMinusCj" id="ContentPlaceHolder1_ddlZjMinusCj">
+<option value="true">Zj-Cj</option>
+<option value="false">Cj-Zj</option>
+</select>
+</td>
+</tr>
+<tr id="tr2" style="">
+<td align="center">
+<input id="ContentPlaceHolder1_chkMultipleSol" type="checkbox" name="ctl00$ContentPlaceHolder1$chkMultipleSol"><label for="ContentPlaceHolder1_chkMultipleSol">Alternate Solution (if exists)</label>
+<input id="ContentPlaceHolder1_chkArtificialColRemove" type="checkbox" name="ctl00$ContentPlaceHolder1$chkArtificialColRemove" checked="checked"><label for="ContentPlaceHolder1_chkArtificialColRemove">Artificial Column Remove</label>
+<input id="ContentPlaceHolder1_chkSubtractionSteps" type="checkbox" name="ctl00$ContentPlaceHolder1$chkSubtractionSteps" checked="checked"><label for="ContentPlaceHolder1_chkSubtractionSteps">Subtraction Steps</label>
+</td>
+</tr>
+<tr style="display:none">
+<td align="center">
+<input id="ContentPlaceHolder1_chkTooltip" type="checkbox" name="ctl00$ContentPlaceHolder1$chkTooltip"><label for="ContentPlaceHolder1_chkTooltip">Tooltip for calculation steps</label>
+<input id="ContentPlaceHolder1_chkHighlight" type="checkbox" name="ctl00$ContentPlaceHolder1$chkHighlight"><label for="ContentPlaceHolder1_chkHighlight">Highlight dependent cells</label>
+</td>
+</tr>
+<tr>
+<td align="center">
+</td>
+</tr>
+<tr>
+<td align="center">
+<input type="submit" name="ctl00$ContentPlaceHolder1$BtnFind" value="Find" onclick="return BtnFind_Click();" id="ContentPlaceHolder1_BtnFind" title="Find" class="button1">
+<span id="ContentPlaceHolder1_BtnRandom_dropWrapper" style="cursor: default;"><input name="ctl00$ContentPlaceHolder1$BtnRandom" type="button" id="ContentPlaceHolder1_BtnRandom" class="button1" title="Random" onclick="RndClick();" value="Random"></span>
+<input class="button1" id="BtnNew" title="Clear Contents" onclick="clearContentS();" type="button" value="New">
+<div align="left"><ol id="ContentPlaceHolder1_OlLb1" class="OLTable" style="display: none; visibility: hidden; position: absolute;"><li onclick="return lb_click('3`3`max`Z`x1,x2,x3`3,5,4`2,3,0;0,2,5;3,2,4`<=,<=,<=`8,10,15`');">max Z = 3x1 + 5x2 + 4x3<br>subject to<br>2x1 + 3x2 &lt;= 8<br>2x2 + 5x3 &lt;= 10<br>3x1 + 2x2 + 4x3 &lt;= 15<br>and x1,x2,x3 &gt;= 0 <hr></li><li onclick="return lb_click('3`3`max`Z`x1,x2,x3`5,10,8`3,5,2;4,4,4;2,4,5`<=,<=,<=`60,72,100`');">max Z = 5x1 + 10x2 + 8x3<br>subject to<br>3x1 + 5x2 + 2x3 &lt;= 60<br>4x1 + 4x2 + 4x3 &lt;= 72<br>2x1 + 4x2 + 5x3 &lt;= 100<br>and x1,x2,x3 &gt;= 0 <hr></li><li onclick="return lb_click('2`4`max`Z`x1,x2`4,3`2,1;1,1;1,0;0,1`<=,<=,<=,<=`1000,800,400,700`');">max Z = 4x1 + 3x2<br>subject to<br>2x1 + x2 &lt;= 1000<br>x1 + x2 &lt;= 800<br>x1 &lt;= 400<br>x2 &lt;= 700<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('2`2`min`Z`x1,x2`1,1`2,4;1,7`>=,>=`4,7`');">min Z = x1 + x2<br>subject to<br>2x1 + 4x2 &gt;= 4<br>x1 + 7x2 &gt;= 7<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('2`2`min`Z`x1,x2`600,500`2,1;1,2`>=,>=`80,60`');">min Z = 600x1 + 500x2<br>subject to<br>2x1 + x2 &gt;= 80<br>x1 + 2x2 &gt;= 60<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('2`3`min`Z`x1,x2`5,3`2,4;2,2;5,2`<=,=,>=`12,10,10`');">min Z = 5x1 + 3x2<br>subject to<br>2x1 + 4x2 &lt;= 12<br>2x1 + 2x2 = 10<br>5x1 + 2x2 &gt;= 10<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('4`3`max`Z`x1,x2,x3,x4`1,2,3,-1`1,2,3,0;2,1,5,0;1,2,1,1`=,=,=`15,20,10`');">max Z = x1 + 2x2 + 3x3 - x4<br>subject to<br>x1 + 2x2 + 3x3 = 15<br>2x1 + x2 + 5x3 = 20<br>x1 + 2x2 + x3 + x4 = 10<br>and x1,x2,x3,x4 &gt;= 0 <hr></li><li onclick="return lb_click('2`2`max`Z`x1,x2`3,9`1,4;1,2`<=,<=`8,4`');">max Z = 3x1 + 9x2<br>subject to<br>x1 + 4x2 &lt;= 8<br>x1 + 2x2 &lt;= 4<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('3`2`max`Z`x1,x2,x3`3,2,1`2,5,1;3,4,0`=,=`12,11`x1');">max Z = 3x1 + 2x2 + x3<br>subject to<br>2x1 + 5x2 + x3 = 12<br>3x1 + 4x2 = 11<br>and x2,x3 &gt;= 0 and x1 unrestricted in sign<hr></li><li onclick="return lb_click('4`2`max`Z`x1,x2,x3,x4`3,3,2,1`2,2,5,1;3,3,4,0`=,=`12,11`');">max Z = 3x1 + 3x2 + 2x3 + x4<br>subject to<br>2x1 + 2x2 + 5x3 + x4 = 12<br>3x1 + 3x2 + 4x3 = 11<br>and x1,x2,x3,x4 &gt;= 0 <hr></li><li onclick="return lb_click('2`3`max`Z`x1,x2`6,4`2,3;3,2;1,1`<=,<=,>=`30,24,3`');">max Z = 6x1 + 4x2<br>subject to<br>2x1 + 3x2 &lt;= 30<br>3x1 + 2x2 &lt;= 24<br>x1 + x2 &gt;= 3<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('2`3`max`Z`x1,x2`3,5`1,-2;1,0;0,1`<=,<=,>=`6,10,1`');">max Z = 3x1 + 5x2<br>subject to<br>x1 - 2x2 &lt;= 6<br>x1 &lt;= 10<br>x2 &gt;= 1<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('2`2`max`Z`x1,x2`6,4`1,1;0,1`<=,>=`5,8`');">max Z = 6x1 + 4x2<br>subject to<br>x1 + x2 &lt;= 5<br>x2 &gt;= 8<br>and x1,x2 &gt;= 0 <hr></li><li onclick="return lb_click('2`2`max`Z`x1,x2`6,4`-1,-1;0,1`>=,>=`-5,8`');">max Z = 6x1 + 4x2<br>subject to<br>-x1 - x2 &gt;= -5<br>x2 &gt;= 8<br>and x1,x2 &gt;= 0 <hr></li></ol></div>
+<span style="display: none; visibility: hidden;"><div class="ajax__dropdown_frame_line"></div><div class="ajax__dropdown_frame_line"></div><div class="ajax__dropdown_frame_line"></div><div class="ajax__dropdown_frame_line"></div><div style="width: 16px; background-color: rgb(198, 225, 255);" class="ajax__dropdown_arrow ajax__dropdown_arrow_image"><div class="ajax__dropdown_arrow_wrapper" style="display: none; visibility: hidden;"><img></div></div></span></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+
+
+
+
+</tbody></table>
+<script language="javascript" type="text/javascript">
+var UpdateProgress1_JsId = 'ContentPlaceHolder1_UpdateProgress1';
+var Btns = new Array('ContentPlaceHolder1_BtnFind');
+</script>
+<script language="javascript" type="text/javascript" src="../scripts/UpdateProgress.js"></script>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+</td>
+
+</tr>
+</tbody></table>
+<div class="adsbyvli" style="width: 160px; height: 71px; display: none;"></div>
+</td>
+</tr></tbody></table>
+<br>
+<input name="ctl00$hCode" type="hidden" id="hCode" value="">
+<script type="text/javascript">
+$(document).ready(function()
+{
+  var Cnt = 0;
+  var x = window.setInterval( function()
+  {
+    var y = 0;
+    var Sy = "";
+    var Svi1 = "",Svi2 = "";//Svi3 = "";
+    $(".adsbyvli").each(function( index )
+    {
+        var h = $(this).height();
+        if(y < h)
+            y = h;
+        Sy +=  Math.round(h)+"~";
+        Svi1 += $(this).attr("data-ad-slot")+"~";
+        Svi2 += $(this).text().length+"~";
+//        Svi3 += $(this).attr("data-id")+"~";
+    });
+
+
+//    if(Cnt%5==0)
+//    {
+//        console.log("Sy="+Sy+";");
+//        console.log("Svi1="+Svi1+";");
+//        console.log("Svi3="+Svi3+";");
+//        console.log("Svi2="+Svi2+";");
+//    }
+
+    document.cookie = "BAdBlock3="+ Math.round(y);
+    document.cookie = "BAdBlock4="+Sy;
+    document.cookie = "BAdSvi1="+Svi1;
+    document.cookie = "BAdSvi2="+Svi2;
+
+    if(Cnt==0)
+    {
+        var hCode = "";
+        document.getElementById("hCode").value = hCode;
+    }
+
+    if (Cnt>=180)//if (Cnt>=50)
+    {
+        clearInterval(x);
+        return;
+    }
+
+    Cnt++;
+  }, 1000);
+});
+
+</script>
+<script type="text/javascript">
+//<![CDATA[
+BodyLoad();Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.DropDownBehavior, {"dropDownControl":$get("ContentPlaceHolder1_OlLb1"),"dynamicServicePath":"/CBOM/Simplex.aspx","id":"ContentPlaceHolder1_DropDownExtender1"}, null, null, $get("ContentPlaceHolder1_BtnRandom"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"ContentPlaceHolder1_UpdatePanel1","displayAfter":0,"dynamicLayout":true}, null, null, $get("ContentPlaceHolder1_UpdateProgress1"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TabPanel, {"headerTab":$get("__tab_ContentPlaceHolder1_TabContainer1_TabPanel1")}, null, {"owner":"ContentPlaceHolder1_TabContainer1"}, $get("ContentPlaceHolder1_TabContainer1_TabPanel1"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TabPanel, {"headerTab":$get("__tab_ContentPlaceHolder1_TabContainer1_TabPanel2")}, null, {"owner":"ContentPlaceHolder1_TabContainer1"}, $get("ContentPlaceHolder1_TabContainer1_TabPanel2"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TabContainer, {"activeTabIndex":1,"clientStateField":$get("ContentPlaceHolder1_TabContainer1_ClientState")}, null, null, $get("ContentPlaceHolder1_TabContainer1"));
+});
+//]]>
+</script>
+</form>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22829835-1']);
+  _gaq.push(['_setDomainName', '.atozmath.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+
+
+<script>
+$(document).ready(function(){
+
+	// hide #back-top first
+	$("#back-top").hide();
+
+	// fade in #back-top
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 250) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+
+		// scroll body to 0px on click
+		$('#back-top a').click(function () {
+			$('body,html').animate({
+				scrollTop: $("#top").offset().top
+			}, 800);
+			return false;
+		});
+	});
+
+});
+</script>
+
+<script>
+$(document).ready(function(){
+
+$(window).scroll( FStickyElements );
+$(window).resize( FStickyElements );
+
+    FStickyElements();
+
+    //$(window).scroll(function(){
+    function FStickyElements(){
+  //this code executes when the scroll event occurs.
+
+    //vi_160x600_sticky-right-ad
+    if($("#wyhUf").length)
+    {
+        var x2 = $("#wyhUf").offset();
+        if(x2.top < $(window).scrollTop())
+        {
+            $("#RksOp").css({top: '0', position:'fixed', zIndex:'2147483647'});
+        }
+        else
+        {
+            $("#RksOp").css({top: '', position:'', zIndex:''});
+        }
+    }
+
+    if($("#gnvss").length)
+    {
+        //var top1=170,top2=top1+250;
+        //var top0=1,top1=250,top2=top1+250;
+        var top0=0,top1=251,top2=top1+251;
+        var x2 = $("#gnvss").offset();
+        if(x2.top < $(window).scrollTop()+10)//if(x2.top > $(window).scrollTop() + $( window ).height())
+        {
+            $("#ewnvj").css({top: ''+top0+'px', left: '-'+($(window).scrollLeft()-0)+'px', position:'fixed', zIndex:'2147483642', width:'300px'});//border-radius: 1px;
+            $("#OShMD").css({top: ''+top1+'px', left: '-'+($(window).scrollLeft()-0)+'px', position:'fixed', zIndex:'2147483641', width:'300px'});//border-radius: 1px;
+            $("#aBFzd").css({top: ''+top2+'px', left: '-'+($(window).scrollLeft()-0)+'px', position:'fixed', zIndex:'2147483640', width:'300px'});
+        }
+        else
+        {
+            $("#ewnvj").css({top: '', left: '', position:'', zIndex:'', width:'300px'});
+            $("#OShMD").css({top: '', left: '', position:'', zIndex:'', width:'300px'});
+            $("#aBFzd").css({top: '', left: '', position:'', zIndex:'', width:'300px'});
+        }
+    }
+
+    }
+});
+
+</script>
+
+
+<style> #__vliadb83{ display: none; position: fixed; background: rgb(221, 221, 221); z-index: 9999999; opacity: 1; visibility: visible; top: 100px; right: 0px; left: 0px; max-width: 640px; margin-right: auto; margin-left: auto; box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 5px 2px; font-family: Arial, Helvetica, sans-serif; } #__vliadb83 .__vliadb83-content{ padding: 30px 30px 15px; } #__vliadb83 #__vliadb83-cls{ display: inline-block; position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; color: #bbb; font-size: 32px; font-weight: 700; line-height: 30px; text-align: center; cursor: pointer; -webkit-transition: 0.3s; transition: 0.3s; } #__vliadb83 #__vliadb83-cls:hover{color: #5f5e5e;} #__vliadb83-bg{ display: none; position: fixed; z-index: 999999; background: rgba(0, 0, 0, 0.8); top: 0px; left: 0px; width: 100%; height: 100%;} </style>    <script> (function () { (window.adblockDetector = window.adblockDetector || []).push(function () { window.adbDetector.init({ id: '962dec78ea18169a87ea88122cd055e6', debug: true, cookieExpire: 0, found: function () { window.adbDetector.alert({ hiddenCloseButton: false, clickBackgroundToClose: true }); } }); }) }()); </script>
+
+<script type="text/javascript">
+$.ajax({
+    url: getApplicationPath()+'/Scripts/advertisement.js', // this is just an empty js file
+    dataType: "script"
+    ,success: function(data) {
+        //alert('No Blocking advertisement.js');
+        document.cookie = "BAdBlock1=0";
+    }
+})
+.fail(function () {
+    //alert('Blocking advertisement.js');
+    document.cookie = "BAdBlock1=1";
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  window.setTimeout( function()
+  {
+   if($("#O2l1").is(":visible"))
+   {
+        //alert("Not Blocking")
+        document.cookie = "BAdBlock2=0";
+   }
+   else
+   {
+        //alert("Blocking")
+        document.cookie = "BAdBlock2=1";
+   }
+  }, 400);
+});
+</script>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px none; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px none; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-size-adjust: none; font-family: MathJax_Size1, monospace;"></div></div><iframe style="display: none;" name="__tcfapiLocator"></iframe><ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://googleads.g.doubleclick.net/pagead/ads?gdpr=1&amp;us_privacy=1---&amp;gdpr_consent=CPFgt-pPFgt-pAKAXAENBYCsAP_AAH_AAAwIHwtf_X__b39j-_59__t0eY1f9_7_v-0zjhfdt-8N2f_X_L8X42M7vF36pq4KuR4Eu3LBIQNlHOHUTUmw6okVrTPsak2Mr7NKJ7LEinMbe2dYGHtfn91TuZKYr_78_9fz__-__v___9f3r-3_3__59X---_e_V399zLv9__3-B7oBJhqXwAWYljgyTRpVCiBCFYSHQCgAooBhaJrCBlcFOyuAj1BAwAQmoCMCIEGIKMWAQACAQBIREBIAeCARAEQCAAEAKkBCAAiYBBYAWBgEAAoBoWIEUAQgSEGRwVHKYEBEi0UE9lYAlF3saYQhlFgBQKP6KjARKEECwMhIAAAA.YAAAAAAAAAAA&amp;client=ca-pub-6839535264630930&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1620047728&amp;plat=1%3A1081352%2C2%3A1081352%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fcbom.atozmath.com%2FCBOM%2FSimplex.aspx%3Fq%3Dsm&amp;ea=0&amp;flash=0&amp;pra=5&amp;wgl=1&amp;dt=1620047727824&amp;bpp=10&amp;bdt=1109&amp;idt=366&amp;shv=r20210428&amp;cbv=%2Fr20190131&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D12686d3ee509bc99-22812c73c0a70051%3AT%3D1619859032%3ART%3D1619859032%3AS%3DALNI_MY5xYaVnrCUBOnK7cVDbcPwkYIdQw&amp;nras=1&amp;correlator=1002729387581&amp;frm=20&amp;pv=2&amp;ga_vid=1262484720.1619100703&amp;ga_sid=1620047728&amp;ga_hid=937722433&amp;ga_fc=1&amp;u_tz=60&amp;u_his=3&amp;u_java=0&amp;u_h=864&amp;u_w=1536&amp;u_ah=824&amp;u_aw=1536&amp;u_cd=24&amp;u_nplug=0&amp;u_nmime=0&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1519&amp;bih=750&amp;scr_x=0&amp;scr_y=0&amp;eid=31060710&amp;oid=2&amp;pvsid=2571165610582209&amp;pem=646&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;eae=2&amp;fc=1920&amp;brdim=-7%2C-7%2C-7%2C-7%2C1536%2C0%2C1550%2C838%2C1536%2C750&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=0&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=474" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-load-complete="true" frameborder="0"></iframe></ins></ins></ins><div id="vi_pixel_8383" style="width: 0px; height: 0px; display: none;"><img style="display: none;" src="//logs.bilsyndication.com/sub/?d=atozmath.com&amp;h=cbom.atozmath.com" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNYPyrKTYP-YUwq-PZUM-MUPY-rMrYwwweMAeaRzNhqllwqe0RrNBTBARmNMKATRrcorNco_BTBAMKAT_UaTRrtNRcsokty_orN" width="0" height="0"><iframe id="vi_track_8383" style="display: none;" width="0" height="0"></iframe><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNAteawKTr-yarY-PZAU-MPqM-raBKMMYeZryBRzNhqllwqe0RrNBTBARmNMKAYRrcorNco_BTBAMKAY_MMYRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNMZMrtwww-ZtMU-PBaY-wYaU-KwZTrAUPPKwrRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNAqqZetqZ-MPtZ-PtyB-awKe-qrqMUPqPqPaARzNhqllwqe0RrNBTBARmNMUaaRrcorNco_BTBAMUaa_PaPRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNtMZPZKPP-Ptae-PYqZ-qqZa-wTUtwweBrTYtRzNhqllwqe0RrNBTBARmNMKAARrcorNco_BTBAMKAA_KBTRrtNRcsokty_orN" width="0" height="0"><iframe id="VIEventStats" style="display: none;" width="0" height="0"></iframe><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNPZtYrqZw-TYrP-Peea-MZTK-ZAPUMUtYAZaYRzNhqllwqe0RrNBTBARmNMUaaRrcorNco_BTBAMUaa_PaPRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNeKKyKKyU-ATUA-Ptre-wPMa-BMrYBKtKttqwRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNyqyZPyBa-yyKM-PqKr-aTMY-TqTKYqTqqqZBRzNhqllwqe0RrNBTBARmNMKAARrcorNco_BTBAMKAA_KBTRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNraUYMPKK-yyPY-PyAZ-qqqK-UetMqaTwqPKZRzNhqllwqe0RrNBTBARmNMUaaRrcorNco_BTBAMUaa_PaPRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNKPYePPTq-TAPq-PKtT-aBaB-eBteYyBtAqYURzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNUAwqAaTA-ZZte-Pyrq-wrBU-qPtatqqAPArrRzNhqllwqe0RrNBTBARmNMKAARrcorNco_BTBAMKAA_KBTRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNAtYereYy-qqPU-PyZA-wBeT-AyqAywUqyTAKRzNhqllwqe0RrNBTBARmNMUaaRrcorNco_BTBAMUaa_PaPRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNeByKaKAa-twYT-PYwr-MyaB-aMtYBZtAyTUPRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNreKAaBtw-qAPB-PUtU-wttY-KwAMwKtwUrKPRzNhqllwqe0RrNBTBARmNMKAARrcorNco_BTBAMKAA_KBTRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNPAyZarUZ-qYqK-PZtA-MeMe-eZyaBrAKtqaeRzNhqllwqe0RrNBTBARmNMUaaRrcorNco_BTBAMUaa_PaPRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNarKtZqAK-AqtU-PKZa-aYYB-UBwrwyqwUqYBRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNPUPMPqPr-ewta-PPTU-wPyP-trPUBtKeKZtwRzNhqllwqe0RrNBTBARmNMKAARrcorNco_BTBAMKAA_KBTRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNTUTytMZB-YYre-PKKe-weZM-TtyaZetYwZwZRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNtUAMKZBU-YBwM-PKMt-wUre-YwqTtaKPATwZRzNhqllwqe0RrNBTBARmNMKATRrcorNco_BTBAMKAT_UaTRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNtrTUBAey-TeZq-PMBa-MZTM-eUTYyAUaarAqRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNUwTayaPT-ZZKM-PMBA-MBrw-qtPeKwwKTyUMRzNhqllwqe0RrNBTBARmNMKATRrcorNco_BTBAMKAT_UaTRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNeKyAZYUB-TTeZ-PMBq-MUwB-MayPAZKAUUMZRzNhqllwqe0RrNBTBARmNMUaMRrcorNco_BTBAMUaM_ZTBRrtNRcsokty_orN" width="0" height="0"><img style="display: none;" src="//stats.bilsyndication.com/pi/?e=zdNUPYUZwqr-YYtK-Pyyt-qAYZ-etwKTqYwAyqBRzNhqllwqe0RrNBTBARmNMKATRrcorNco_BTBAMKAT_UaTRrtNRcsokty_orN" width="0" height="0"></div><iframe style="display: none;" src="https://aax-eu.amazon-adsystem.com/s/iu3?cm3ppd=1&amp;d=dtb-pub&amp;csif=t&amp;gdpr=1&amp;gdpr_consent=CPFgt-pPFgt-pAKAXAENBYCsAP_AAH_AAAwIHwtf_X__b39j-_59__t0eY1f9_7_v-0zjhfdt-8N2f_X_L8X42M7vF36pq4KuR4Eu3LBIQNlHOHUTUmw6okVrTPsak2Mr7NKJ7LEinMbe2dYGHtfn91TuZKYr_78_9fz__-__v___9f3r-3_3__59X---_e_V399zLv9__3-B7oBJhqXwAWYljgyTRpVCiBCFYSHQCgAooBhaJrCBlcFOyuAj1BAwAQmoCMCIEGIKMWAQACAQBIREBIAeCARAEQCAAEAKkBCAAiYBBYAWBgEAAoBoWIEUAQgSEGRwVHKYEBEi0UE9lYAlF3saYQhlFgBQKP6KjARKEECwMhIAAAA.YAAAAAAAAAAA&amp;dl=n-smaato_rbd_cnv"></iframe><iframe id="google_osd_static_frame_4770887452949" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe><iframe src="https://gum.criteo.com/syncframe?topUrl=cbom.atozmath.com&amp;gdpr=1&amp;gdpr_consent=CPFgt-pPFgt-pAKAXAENBYCsAP_AAH_AAAwIHwtf_X__b39j-_59__t0eY1f9_7_v-0zjhfdt-8N2f_X_L8X42M7vF36pq4KuR4Eu3LBIQNlHOHUTUmw6okVrTPsak2Mr7NKJ7LEinMbe2dYGHtfn91TuZKYr_78_9fz__-__v___9f3r-3_3__59X---_e_V399zLv9__3-B7oBJhqXwAWYljgyTRpVCiBCFYSHQCgAooBhaJrCBlcFOyuAj1BAwAQmoCMCIEGIKMWAQACAQBIREBIAeCARAEQCAAEAKkBCAAiYBBYAWBgEAAoBoWIEUAQgSEGRwVHKYEBEi0UE9lYAlF3saYQhlFgBQKP6KjARKEECwMhIAAAA.YAAAAAAAAAAA#{&quot;optout&quot;:{&quot;value&quot;:false,&quot;origin&quot;:0},&quot;uid&quot;:{&quot;origin&quot;:0},&quot;sid&quot;:{&quot;origin&quot;:0},&quot;origin&quot;:&quot;publishertag&quot;,&quot;version&quot;:106,&quot;lwid&quot;:{&quot;origin&quot;:0},&quot;tld&quot;:&quot;atozmath.com&quot;,&quot;bundle&quot;:{&quot;value&quot;:&quot;1fk04l9laFA4OUt4dVd4bGJWa09SciUyRjFDdzROZGUxZWdNTGN5RUxqQ1JUeDNiZkFKWW9hdEtaT0poeW9tNXlubTdvSklucmNSZjh4eXRQZ0hCU1hOUkp2OVhNNU1KQmpWcWd0NU1oVFFCNUh0SmtmeDVEZjZFR2Z1NWxtJTJGaWQ4SVhIdk95cDJUYUdUNzZFODhadFZpN0xXNTZRJTNEJTNE&quot;,&quot;origin&quot;:3},&quot;topUrl&quot;:&quot;cbom.atozmath.com&quot;,&quot;cw&quot;:true,&quot;ifa&quot;:{&quot;origin&quot;:0},&quot;lsw&quot;:true}" id="criteo-syncframe" style="display: none;"></iframe>
+
+
+<img src="//stats.vliplatform.com/abd/?id=962dec78ea18169a87ea88122cd055e6&amp;detect=notfound" style="display: none;" width="0" height="0">
+<img src="//stats.vliplatform.com/abd/?id=962dec78ea18169a87ea88122cd055e6&amp;detect=found" style="display: none;" width="0" height="0"></body>
