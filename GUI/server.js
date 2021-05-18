@@ -23,6 +23,10 @@ app.get('/simplex', function(req, res) {
   res.render('simplex', {})
 })
 
+app.get('/matrix', function(req, res) {
+  res.render('matrix', {})
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
