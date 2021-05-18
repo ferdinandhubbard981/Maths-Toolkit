@@ -1,7 +1,11 @@
 const express = require('express'),
 path = require('path')
+const bodyParser = require('body-parser');
 const app = express()
+
 const port = 3000
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve( __dirname, 'views'));
@@ -10,6 +14,10 @@ app.set('views', path.resolve( __dirname, 'views'));
 app.get('/tutorial', function (req, res) {
   res.render('tutorial', {})
 })
+
+app.post('/tutorial', function(req, res){
+    console.log(req.body);
+});
 
 app.get('/simplex', function(req, res) {
   res.render('simplex', {})

@@ -30,17 +30,26 @@ table, td {
 <button onclick="myDeleteFunction()">Delete row</button>
 
 <script>
+function CreateCell(rowindex, cellindex, table) {
+
+  var cell = table.rows[rowindex].insertCell(cellindex);
+  cell.innerHTML = '';
+  var input = document.createElement('input');
+  var text = "NEW CELL" + String(cellindex);
+  input.type = "text";
+  input.value = text;
+  cell.appendChild(input);
+}
 function myCreateFunction() {
   var table = document.getElementById("myTable");
   var row = table.insertRow(table.rows.length);
 
-  for (var i = 0; i < table.rows.length; i++) {
+  for (var i = 0; i < table.rows.length; i++) { //to add cells to the previous rows for square matrix
     if (i < table.rows.length - 1) {
-    var cell = table.rows[i].insertCell(table.rows.length - 1);
-    cell.innerHTML = "NEW CELL" + String(table.rows.length - 1);
+    CreateCell(i, table.rows.length - 1, table);
   }
-    var cell = row.insertCell(i);
-    cell.innerHTML = "NEW CELL" + String(i);
+  CreateCell(table.rows.length - 1, i, table);
+
   }
 }
 
