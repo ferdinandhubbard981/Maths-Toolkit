@@ -22,14 +22,16 @@
 <P><INPUT TYPE="SUBMIT" VALUE="Submit"></P>
 </FORM>
 
-<button onclick="CreateRow(Matrix1)">Create row</button>
-<button onclick="DeleteRow()">Delete row</button>
+<button onclick="CreateRow('Matrix1')">Create row</button>
+<button onclick="CreateColumn('Matrix1')">Create column</button>
+<button onclick="DeleteRow('Matrix1')">Delete row</button>
 <script type="text/javascript">
        function startup() {
          var nrows = 2
            for (var i = 0; i < nrows; i++)
            {
-             CreateRow()
+             CreateRow('Matrix1');
+             CreateColumn('Matrix1');
            }
        }
        window.onload = startup;
@@ -51,22 +53,34 @@ function CreateRow(tablename) {
   var table = document.getElementById(tablename);
   var row = table.insertRow(table.rows.length);
 
-  for (var i = 0; i < table.rows.length; i++) { //to add cells to the previous rows for square matrix
-    if (i < table.rows.length - 1) {
+  console.log(table.rows[0].length);
+
+  for (var i = 0; i < table.rows[0].length; i++) { //to add cells to the previous rows for square matrix
+    /*if (i < table.rows.length - 1) {
     CreateCell(i, table.rows.length - 1, table);
-  }
-  CreateCell(table.rows.length - 1, i, table);
+  }*/
+    CreateCell(table.rows.length - 1, i, table);
 
   }
 }
 
-CreateColumn()
+function CreateColumn(tablename)
 {
+    var table = document.getElementById(tablename);
+    var len = table.rows[0].length
+    console.log(len)
+    for (var i = 0; i < table.rows.length; i++)
+    {
+
+      console.log(table.rows[i].length)
+      for (var j = table.rows[i].length; j < len+1; j++)
+        CreateCell(i, j, table);
+    }
 
 }
 
-function DeleteRow() {
-  table = document.getElementById("Matrix1");
+function DeleteRow(tablename) {
+  table = document.getElementById(tablename);
   table.deleteRow(table.rows.length - 1);
   for (var i = 0; i < table.rows.length; i++) {
     table.rows[i].deleteCell(table.rows.length);
