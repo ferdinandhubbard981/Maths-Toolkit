@@ -27,6 +27,11 @@ app.get('/matrix', function(req, res) {
   res.render('matrix', {})
 })
 
+app.post('/matrix', function(req, res){
+  test = req.body;
+  console.log(test);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
