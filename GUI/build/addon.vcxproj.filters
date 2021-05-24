@@ -13,22 +13,22 @@
     <Filter Include="C:\Users\Ferdinand Hubbard">
       <UniqueIdentifier>{A9D9882F-5F75-4A92-706F-172EE2A38D8A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\Ferdinand Hubbard\Desktop">
-      <UniqueIdentifier>{B23D6E4D-7634-EF57-62FC-46A6189C0B6E}</UniqueIdentifier>
+    <Filter Include="C:\Users\Ferdinand Hubbard\Documents">
+      <UniqueIdentifier>{87566BA0-CA33-1144-65F5-087C5F9D6C20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit">
+    <Filter Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit">
       <UniqueIdentifier>{A1FE1D6B-ECA0-49A1-6B13-E6E2B08ED252}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI">
+    <Filter Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI">
       <UniqueIdentifier>{BFE7FA81-9C8F-03BB-79C4-C0B0B362D626}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\node_modules">
+    <Filter Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\node_modules">
       <UniqueIdentifier>{56DF7A98-063D-FB9D-485C-089023B4C16A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\node_modules\node-gyp">
+    <Filter Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\node_modules\node-gyp">
       <UniqueIdentifier>{77348C0E-2034-7791-74D5-63C077DF5A3B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\node_modules\node-gyp\src">
+    <Filter Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\node_modules\node-gyp\src">
       <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="..">
@@ -39,8 +39,8 @@
     <ClCompile Include="..\addon.cpp">
       <Filter>..</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\node_modules\node-gyp\src\win_delay_load_hook.cc">
-      <Filter>C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\node_modules\node-gyp\src</Filter>
+    <ClCompile Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\node_modules\node-gyp\src\win_delay_load_hook.cc">
+      <Filter>C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\node_modules\node-gyp\src</Filter>
     </ClCompile>
     <None Include="..\binding.gyp">
       <Filter>..</Filter>

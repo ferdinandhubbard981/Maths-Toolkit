@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Win32">
+    <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
+    <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{18AA0086-16F8-6984-95CC-5A2858C7AB53}</ProjectGuid>
+    <ProjectGuid>{B49635BC-BC27-1E57-9972-2213838E317B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>addon</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
@@ -36,19 +36,19 @@
     <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.node</TargetExt>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.node</TargetExt>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.node</TargetExt>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.node</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.node</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.node</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.node</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.node</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
     <TargetPath>$(OutDir)\$(ProjectName).node</TargetPath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
@@ -71,7 +71,7 @@
       <AdditionalOptions>/LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\Ferdinand Hubbard\\AppData\\Local\\node-gyp\\Cache\\14.17.0\\ia32\\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\Ferdinand Hubbard\\AppData\\Local\\node-gyp\\Cache\\15.7.0\\x64\\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/LTCG:INCREMENTAL /ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <DelayLoadDLLs>node.exe;%(DelayLoadDLLs)</DelayLoadDLLs>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -80,16 +80,16 @@
       <OutputFile>$(OutDir)$(ProjectName).node</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetExt>.node</TargetExt>
-      <TargetMachine>MachineX86</TargetMachine>
+      <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=addon;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;V8_DEPRECATION_WARNINGS;V8_IMMINENT_DEPRECATION_WARNINGS;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;DEBUG;_DEBUG;V8_ENABLE_CHECKS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4351;4355;4800;4251;4275;4244;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -115,7 +115,7 @@
       <AdditionalOptions>/LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\Ferdinand Hubbard\\AppData\\Local\\node-gyp\\Cache\\14.17.0\\ia32\\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\Ferdinand Hubbard\\AppData\\Local\\node-gyp\\Cache\\15.7.0\\x64\\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/LTCG:INCREMENTAL /ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <DelayLoadDLLs>node.exe;%(DelayLoadDLLs)</DelayLoadDLLs>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -124,10 +124,10 @@
       <OutputFile>$(OutDir)$(ProjectName).node</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetExt>.node</TargetExt>
-      <TargetMachine>MachineX86</TargetMachine>
+      <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\14.17.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\include\node;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\src;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\config;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\openssl\openssl\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\uv\include;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\zlib;C:\Users\Ferdinand Hubbard\AppData\Local\node-gyp\Cache\15.7.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=addon;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;V8_DEPRECATION_WARNINGS;V8_IMMINENT_DEPRECATION_WARNINGS;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
@@ -138,7 +138,7 @@
     <ClCompile Include="..\addon.cpp">
       <ObjectFileName>$(IntDir)\addon.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
