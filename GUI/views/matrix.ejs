@@ -5,7 +5,7 @@
 	<form name="MatrixInputs" method="POST" action="/matrix">
 	<div style="display: inline-block; min-height:200px; min-width:300px; vertical-align: top; position: relative; background-color: hsla(240,100%,94%,1); border-radius: 10px; margin:2px; ">
 		<div id="MatrixATitle" style="margin-left:20px; font: bold 22px Arial; text-align: left; color: darkblue; ">1x0</div>
-		<input type="hidden" id="MatrixATitleInput" name="MatrixATitleinput" value="1x0">
+		<input type="hidden" id="MatrixASize" name="MatrixASize" value="1x0">
 		<button id="upBtn" type="button" style="position:absolute; left:172px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteRow('MatrixA')">▲</button>
 		<button id="dnBtn" type="button" style="position:absolute; left:202px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateRow('MatrixA')">▼</button>
 		<button id="ltBtn" type="button" style="position:absolute; left:232px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteColumn('MatrixA')">◀</button>
@@ -15,7 +15,7 @@
 		</table></div>
 		<div style="display: inline-block; min-height:200px; min-width:300px; vertical-align: top; position: relative; background-color: hsla(240,100%,94%,1); border-radius: 10px; margin:2px; ">
 			<div type="SUBMIT" id="MatrixBTitle" name="MatrixSize" style="margin-left:20px; font: bold 22px Arial; text-align: left; color: darkblue;">1x0</div>
-			<input type="hidden" id="MatrixBTitleInput" name="MatrixBTitleinput" value="1x0">
+			<input type="hidden" id="MatrixBSize" name="MatrixBSize" value="1x0">
 			<button id="upBtn" type="button" style="position:absolute; left:172px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteRow('MatrixB')">▲</button>
 			<button id="dnBtn" type="button" style="position:absolute; left:202px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateRow('MatrixB')">▼</button>
 			<button id="ltBtn" type="button" style="position:absolute; left:232px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteColumn('MatrixB')">◀</button>
@@ -53,7 +53,7 @@
 						<div style="overflow: hidden; display: block;">
 							<div style="display: inline-block; min-height:200px; min-width:300px; vertical-align: top; position: relative; background-color: hsla(240,100%,94%,1); border-radius: 10px; margin:2px; ">
 								<div id="MatrixCTitle" style="margin-left:20px; font: bold 22px Arial; text-align: left; color: darkblue; ">1x0</div>
-								<input type="hidden" id="MatrixCTitleInput" name="MatrixCTitleinput" value="1x0">
+								<input type="hidden" id="MatrixCSize" name="MatrixCSize" value="1x0">
 								<button id="upBtn" type="button" style="position:absolute; left:172px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteRow('MatrixC')">▲</button>
 								<button id="dnBtn" type="button" style="position:absolute; left:202px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateRow('MatrixC')">▼</button>
 								<button id="ltBtn" type="button" style="position:absolute; left:232px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteColumn('MatrixC')">◀</button>
@@ -89,7 +89,7 @@ function UpdateSizeValues(tablename)
 {
 	var table = document.getElementById(tablename);
 	var title = document.getElementById(tablename + "Title");
-	var titleinput = document.getElementById(tablename + "TitleInput");
+	var titleinput = document.getElementById(tablename + "Size");
 	title.innerHTML = table.id.slice(-1) + ": " +  String(table.rows.length) + "x" + String(table.rows[0].cells.length)
 	titleinput.value = String(table.rows.length) + "x" + String(table.rows[0].cells.length)
 }
