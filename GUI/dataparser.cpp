@@ -3,20 +3,22 @@
 #include <vector>
 using namespace std;
 
-string* split(const string& s, char seperator)
+
+string* split(const string &s, char seperator)
 {
-   string* output;
 
-    string::size_type prev_pos = 0, pos = 0;
-    int x = 0;
-    while((pos = s.find(seperator, pos)) != string::npos)
+  string* output;
+   cout << "a" << endl;
+  string::size_type prev_pos = 0, pos = 0;
+  int x = 0;
+  while((pos = s.find(seperator, pos)) != string::npos)
     {
-        string substring( s.substr(prev_pos, pos-prev_pos) );
+      string substring( s.substr(prev_pos, pos-prev_pos) );
 
-        output[x] = substring;
+      output[x] = substring;
 
-        prev_pos = ++pos;
-        x++;
+      prev_pos = ++pos;
+      x++;
     }
 
     output[x] = s.substr(prev_pos, pos-prev_pos); // Last word
