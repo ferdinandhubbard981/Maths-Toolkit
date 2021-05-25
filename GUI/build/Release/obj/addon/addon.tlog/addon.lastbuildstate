@@ -1,2 +1,2 @@
-PlatformToolSet=v142:VCToolArchitecture=Native64Bit:VCToolsVersion=14.28.29333:TargetPlatformVersion=10.0.18362.0:
-Release|x64|C:\Users\Ferdinand Hubbard\Documents\Maths-Toolkit\GUI\build\|
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v142:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native64Bit:WindowsTargetPlatformVersion=10.0.18362.0
+Release|Win32|C:\Users\Ferdinand Hubbard\Desktop\Maths-Toolkit\GUI\build\|

@@ -4,7 +4,19 @@
 #include "../arrays.cpp"
 using namespace std;
 
-
+string ConvertMatToString(double** mat, int* order)
+{
+  string outputstring = "";
+  outputstring += to_string(order[0]) + " " + to_string(order[1]) + " ";
+  for (int i = 0; i < order[1]; i++)
+  {
+    for (int j = 0; j < order[0]; j++)
+    {
+      outputstring += to_string(mat[i][j]) + " ";
+    }
+  }
+  return outputstring;
+}
 string* split(const string &s, char seperator)
 {
 

@@ -1,24 +1,8 @@
-#include "dataparser.cpp"
-
+#include "operation-handler.cpp"
+#include <iostream>
 int main()
 {
-
-  string inputstring = "2 2 1 3 2 4 2 2 5 7 6 8";
-  try
-  {
-    string optype;
-    int mat1rows, mat1cols, mat2rows, mat2cols;
-    double** mat1;
-    double** mat2;
-    ParseStringTo2dArray(optype, mat1rows, mat1cols, mat2rows, mat2cols, mat1, mat2, inputstring);
-    cout << mat2[1][1];
-  }
-/*  catch(const exception &exc)
-  {
-    cerr << exc.what();
-  }*/
-  catch(...)
-  {
-    cout << "uknown error" << endl;
-  }
+  std::string inputstring = "Mult 2 2 0 0 0 0 2 2 0 0 0 0";
+  std::cout << DoOperation(inputstring);
+  return 0;
 }

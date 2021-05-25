@@ -19,8 +19,10 @@ void Main(const FunctionCallbackInfo<Value>& args) {
   string cppStr(*str);
 
   string returnstring = DoOperation(cppStr);
-
-
+  //cout << returnstring;
+  const char * returnchararray = returnstring.c_str();
+  args.GetReturnValue().Set(String::NewFromUtf8(
+      isolate, returnchararray).ToLocalChecked());
 
   // Perform the operation
   //double value = args[0].As<Number>()->Value() + args[1].As<Number>()->Value();

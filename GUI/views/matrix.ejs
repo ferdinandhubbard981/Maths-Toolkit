@@ -68,22 +68,31 @@
 </div>
 
 
-<script type="text/javascript">
-       function startup() {
-         var nrows = 2
-           for (var i = 0; i < nrows; i++)
-           {
-             CreateRow('MatrixA');
-             CreateColumn('MatrixA');
-             CreateRow('MatrixB');
-             CreateColumn('MatrixB');
-             CreateRow('MatrixC');
-             CreateColumn('MatrixC');
-           }
-       }
-       window.onload = startup;
-</script>
 <script>
+
+function ConvertStringToMat(chararray)
+{
+	var index = 0;
+	var matrows = chararray[index];
+	index++;
+	var matcols = chararray[index];
+	index++;
+
+	var mat = new Array(matcols);
+
+	for (var i = 0; i < matcols; i++)
+		{
+			mat[i] = new Array(matrows);
+		  for (var j = 0; j < matrows; j++)
+		  {
+				mat[i][j] = parseFloat(chararray[index]);
+		    index++;
+		  }
+		}
+	return mat;
+}
+
+
 
 function UpdateSizeValues(tablename)
 {
@@ -182,40 +191,58 @@ function GenerateMatrix(tablename, matrix)
 }
 function CopyPasteMatrix(tablename1, tablename2)
 {
-		Matrix = ConvertTo2dArray(tablename1)
-		GenerateMatrix(tablename2, Matrix);
+		var matrix = ConvertTo2dArray(tablename1)
+		GenerateMatrix(tablename2, matrix);
 
 }
 function SwapAandB()
 {
-	MatrixA = ConvertTo2dArray("MatrixA");
-	MatrixB = ConvertTo2dArray("MatrixB");
-	GenerateMatrix("MatrixA", MatrixB);
-	GenerateMatrix("MatrixB", MatrixA);
+	var matrixA = ConvertTo2dArray("MatrixA");
+	var matrixB = ConvertTo2dArray("MatrixB");
+	GenerateMatrix("MatrixA", matrixB);
+	GenerateMatrix("MatrixB", matrixA);
+
+
 
 }
 </script>
-<p>&nbsp;</p>
 
 
+<script type="text/javascript">
+
+       function startup() {
+				 var predefined = false;
+				 var matrixLetters = ["A", "B", "C"];
+				 var matrices = ["<%=matrixAString%>", "<%=matrixBString%>", "<%=matrixCString%>"];
+				 for (var i = 0; i < matrices.length; i++)
+				 {
+					 if (matrices[i] != "") {
+						 predefined = true;
+						 var matrix = ConvertStringToMat(matrices[i].split(" "));
+						 GenerateMatrix("Matrix" + matrixLetters[i], matrix);
+					 }
+
+				 }
+
+				 if (!predefined)
+				 {
+					 var nrows = 2
+	           for (var i = 0; i < nrows; i++)
+	           {
+	             CreateRow('MatrixA');
+	             CreateColumn('MatrixA');
+	             CreateRow('MatrixB');
+	             CreateColumn('MatrixB');
+	             CreateRow('MatrixC');
+	             CreateColumn('MatrixC');
+	           }
+				 }
+
+       }
+       window.onload = startup;
+</script>
 
 
-
-
-
-
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 </body>
