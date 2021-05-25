@@ -1,6 +1,6 @@
 // addon.cc
 #include <node.h>
-#include "dataparser.cpp"
+#include "operation-handler.cpp"
 using namespace std;
 
 using v8::Exception;
@@ -16,20 +16,12 @@ using v8::Value;
 void Main(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
   String::Utf8Value str(isolate, args[0]);
-  string cppStr(*str); //cppstr format: mat1rows mat1cols mat2rows mat2cols elements of mat1 elements of mat 2
-  cout << endl << "original string: " << cppStr << endl;
-  int mat1rows, mat1cols, mat2rows, mat2cols;
-  double mat1, mat2;
-  try
-  {
+  string cppStr(*str);
 
-    ParseStringTo2dArray(mat1rows, mat1cols, mat2rows, mat2cols, mat1, mat2, cppStr);
-  }
+  string returnstring = DoOperation(cppStr);
 
-  catch (const std::exception& e)
-  {
-    cout << e << endl;
-  }
+
+
   // Perform the operation
   //double value = args[0].As<Number>()->Value() + args[1].As<Number>()->Value();
   //Local<Number> num = Number::New(isolate, value);

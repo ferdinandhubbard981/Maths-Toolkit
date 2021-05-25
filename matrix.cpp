@@ -1,7 +1,7 @@
-#include <iostream>
+//#include <iostream>
 #include <stdexcept>
 #include <cmath>
-#include "arrays.cpp"
+//#include "arrays.cpp"
 void printmatrix(double** matrix, int height, int width) {
 
   for (int j = 0; j < height; j++) {

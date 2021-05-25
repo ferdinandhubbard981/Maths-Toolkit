@@ -2,13 +2,16 @@
 
 int main()
 {
-  cout << "test" << endl;
-  string inputstring = "1 2 3";
+
+  string inputstring = "2 2 1 3 2 4 2 2 5 7 6 8";
   try
   {
-    cout << "1" << endl;
-    cout << split(inputstring, ' ')[0];
-    cout << "2" << endl;
+    string optype;
+    int mat1rows, mat1cols, mat2rows, mat2cols;
+    double** mat1;
+    double** mat2;
+    ParseStringTo2dArray(optype, mat1rows, mat1cols, mat2rows, mat2cols, mat1, mat2, inputstring);
+    cout << mat2[1][1];
   }
 /*  catch(const exception &exc)
   {
