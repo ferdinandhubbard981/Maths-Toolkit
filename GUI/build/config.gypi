@@ -6,8 +6,8 @@
     "defines": [],
     "include_dirs": [],
     "libraries": [],
-    "msbuild_toolset": "v141",
-    "msvs_windows_target_platform_version": "10.0.17763.0"
+    "msbuild_toolset": "v142",
+    "msvs_windows_target_platform_version": "10.0.18362.0"
   },
   "variables": {
     "asan": 0,
@@ -79,6 +79,6 @@
     "want_separate_host_toolset": 0,
     "nodedir": "C:\\Users\\Ferdinand Hubbard\\AppData\\Local\\node-gyp\\Cache\\14.17.0",
     "standalone_static_library": 1,
-    "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe"
+    "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"
   }
 }

@@ -78,10 +78,11 @@ app.post('/matrix', function(req, res){
   var inputstring = "Matrix " + req.body["type"] + " " + matrixAString + matrixBString + req.body["cVal"];
   console.log("inputstring: " + inputstring);
   var outputstring = addon.main(inputstring);
-  console.log("outputstring: " + outputstring);
+  //console.log("outputstring: " + outputstring);
   //var outputmatrix = ConvertStringToMat(outputstring.split(" "));
-  if (outputstring.split(" ").length = 1)
+  if (outputstring.split(" ").length == 1)
   {
+    console.log(outputstring);
     res.render('matrix', {matrixAString: matrixAString, matrixBString: matrixBString, matrixCString: "", message: outputstring});
   }
   else {

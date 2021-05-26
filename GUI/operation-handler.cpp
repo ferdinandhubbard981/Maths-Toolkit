@@ -51,13 +51,13 @@ string DoMatrixOperation(string* inputarray, int index)
 
   if (optype == "DetA")
   {
-    outputstring = finddeterminant(matA, matArows, matAcols);
+    outputstring = to_string(finddeterminant(matA, matArows, matAcols));
     resultismatrix = false;
   }
 
-  if (optype == "DetA")
+  if (optype == "DetB")
   {
-    outputstring = finddeterminant(matB, matBrows, matBcols);
+    outputstring = to_string(finddeterminant(matB, matBrows, matBcols));
     resultismatrix = false;
   }
 
