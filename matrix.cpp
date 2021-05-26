@@ -13,6 +13,20 @@ void printmatrix(double** matrix, int height, int width) {
   std::cout << std::endl << std::endl << std::endl;
 }
 
+double** addmatrices(double** m1, double** m2, int m1rows, int m1cols, int m2rows, int m2cols)
+{
+  double** result = initializedouble2dpointerarray(m1rows, m1cols);
+  for (int i = 0; i < m1cols; i++)
+  {
+    for (int j = 0; j < m1rows; j++)
+    {
+      result[i][j] = m1[i][j] + m2[i][j];
+    }
+  }
+
+  return result;
+}
+
 double** multiplybyconstant(double** m, int height, int width, double constant) {
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {

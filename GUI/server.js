@@ -67,7 +67,7 @@ app.get('/simplex', function(req, res) {
 
 app.get('/matrix', function(req, res) {
 
-res.render('matrix', {matrixAString: "", matrixBString: "", matrixCString: ""});
+res.render('matrix', {matrixAString: "", matrixBString: "", matrixCString: "", message: ""});
 
 })
 
@@ -80,8 +80,15 @@ app.post('/matrix', function(req, res){
   var outputstring = addon.main(inputstring);
   console.log("outputstring: " + outputstring);
   //var outputmatrix = ConvertStringToMat(outputstring.split(" "));
-  res.render('matrix', {matrixAString: matrixAString, matrixBString: matrixBString, matrixCString: outputstring});
-});
+  if (outputstring.split(" ").length = 1)
+  {
+    res.render('matrix', {matrixAString: matrixAString, matrixBString: matrixBString, matrixCString: "", message: outputstring});
+  }
+  else {
+    res.render('matrix', {matrixAString: matrixAString, matrixBString: matrixBString, matrixCString: outputstring, message:""});
+
+  }
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

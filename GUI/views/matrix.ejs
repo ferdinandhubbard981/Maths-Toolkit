@@ -40,7 +40,7 @@
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="multconstA">cA</button>
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="multconstB">cB</button>
 				<input type="text" name="cVal" style="color: #0000ff; background-color: #eeffee; text-align:center; font: 20px Arial; width:35px; border-radius: 10px; " value="1">
-				<div id="msg" style="height:22px; margin:2px; font: 20px Arial; text-align: center; color: red; "></div></div>
+				<div id="msg" style="height:22px; margin:2px; font: 20px Arial; text-align: center; color: red; "><%=message%></div></div>
 				</form>
 				<div style="border: none;">
 					<div style="float:left; text-align: center;">
@@ -213,31 +213,33 @@ function SwapAandB()
 <script type="text/javascript">
 
        function startup() {
-				 var predefined = false;
+				 var predefined = [false, false, false];
+
 				 var matrixLetters = ["A", "B", "C"];
 				 var matrices = ["<%=matrixAString%>", "<%=matrixBString%>", "<%=matrixCString%>"];
 				 for (var i = 0; i < matrices.length; i++)
 				 {
 					 if (matrices[i] != "") {
-						 predefined = true;
+						 predefined[i] = true;
+						 //console.log("string for matrix" + matrixLetters[i] + ": " + matrices[i]);
 						 var matrix = ConvertStringToMat(matrices[i].split(" "));
 						 GenerateMatrix("Matrix" + matrixLetters[i], matrix);
 					 }
 
 				 }
-
-				 if (!predefined)
+				 
+				 for (var i = 0; i < matrices.length; i++)
 				 {
-					 var nrows = 2
-	           for (var i = 0; i < nrows; i++)
-	           {
-	             CreateRow('MatrixA');
-	             CreateColumn('MatrixA');
-	             CreateRow('MatrixB');
-	             CreateColumn('MatrixB');
-	             CreateRow('MatrixC');
-	             CreateColumn('MatrixC');
-	           }
+					 if (!predefined[i])
+					 {
+						 var nrows = 2
+						 for (var j = 0; j < nrows; j++)
+						 {
+							 //console.log("adding rows and cols for Matrix" + matrixLetters[i]);
+		           CreateRow("Matrix" + matrixLetters[i]);
+		           CreateColumn("Matrix" + matrixLetters[i]);
+		         }
+					 }
 				 }
 
        }

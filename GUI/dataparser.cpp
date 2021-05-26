@@ -68,7 +68,7 @@ void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat
 
   MakeMatrix(mat1, mat1rows, mat1cols, inputarray, index);
   MakeMatrix(mat2, mat2rows, mat2cols, inputarray, index);
-  constant = inputarray[index];
+  constant = stod(inputarray[index]);
   index++;
 
 

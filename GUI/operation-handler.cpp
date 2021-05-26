@@ -22,10 +22,19 @@ string DoMatrixOperation(string* inputarray, int index)
   if (optype == "Add")
   {
 
+    result = addmatrices(matA, matB, matArows, matAcols, matBrows, matBcols);
+    resultorder[0] = matArows;
+    resultorder[1] = matAcols;
+
   }
 
   if (optype == "Sub")
   {
+
+    matB =  multiplybyconstant(matB, matBrows, matBcols, -1);
+    result = addmatrices(matA, matB, matArows, matAcols, matBrows, matBcols);
+    resultorder[0] = matArows;
+    resultorder[1] = matAcols;
 
   }
 
