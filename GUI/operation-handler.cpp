@@ -2,7 +2,10 @@
 
 #include "dataparser.cpp"
 #include "../matrix.cpp"
-string DoOperation(string inputstring)
+
+
+
+string DoMatrixOperation(string* inputarray, int index)
 {
   bool resultismatrix = true;
   string outputstring;
@@ -14,7 +17,7 @@ string DoOperation(string inputstring)
   double** result;
   double constant;
 
-  ParseStringTo2dArray(optype, matArows, matAcols, matBrows, matBcols, matA, matB, inputstring);
+  ParseStringTo2dArray(optype, matArows, matAcols, matBrows, matBcols, matA, matB, inputarray, index, constant);
 
   if (optype == "Add")
   {
@@ -111,4 +114,19 @@ string DoOperation(string inputstring)
   }
   //cout << outputstring;
   return outputstring;
+}
+
+
+string DoOperation(string inputstring)
+{
+  int index = 0;
+  string* array = split(inputstring, ' ');
+  string opsource = array[index];
+  index++;
+
+  if (opsource == "Matrix")
+  {
+    return DoMatrixOperation(array, index);
+  }
+
 }

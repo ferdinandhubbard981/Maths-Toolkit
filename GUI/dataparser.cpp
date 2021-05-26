@@ -58,18 +58,18 @@ void MakeMatrix(double** &mat, int &matrows, int &matcols, string* array, int &i
     }
   }
 }
-void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string inputstring)
-{
-  int index = 0;
-  string* array = split(inputstring, ' ');
-  //array format: mat1rows, mat1cols, elements of mat1, mat2rows, mat2cols, elements of mat 2
+void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string* inputarray, int index, double &constant)
 
-  optype = array[index];
+  {
+  //inputarray format: mat1rows, mat1cols, elements of mat1, mat2rows, mat2cols, elements of mat 2
+
+  optype = inputarray[index];
   index++;
 
-  MakeMatrix(mat1, mat1rows, mat1cols, array, index);
-  MakeMatrix(mat2, mat2rows, mat2cols, array, index);
-
+  MakeMatrix(mat1, mat1rows, mat1cols, inputarray, index);
+  MakeMatrix(mat2, mat2rows, mat2cols, inputarray, index);
+  constant = inputarray[index];
+  index++;
 
 
 }

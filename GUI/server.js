@@ -75,7 +75,7 @@ app.post('/matrix', function(req, res){
   //console.log(req.body);
   var matrixAString = MatrixString(req.body, "A");
   var matrixBString = MatrixString(req.body, "B");
-  var inputstring = req.body["type"] + " " + matrixAString + matrixBString;
+  var inputstring = "Matrix " + req.body["type"] + " " + matrixAString + matrixBString + req.body["cVal"];
   console.log("inputstring: " + inputstring);
   var outputstring = addon.main(inputstring);
   console.log("outputstring: " + outputstring);
