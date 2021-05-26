@@ -33,13 +33,17 @@
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="InvA">inv(A)</button>
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="InvB">inv(B)</button>
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="button" value="Swap" onclick="SwapAandB(MatrixA, MatrixB)">A↔B</button>
-				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="TransA">A<sup>T</sup></button>
-				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="TransB">B<sup>T</sup></button>
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="SquareA">A<sup>2</sup></button>
 				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="SquareB">B<sup>2</sup></button>
-				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="multconstA">cA</button>
-				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="multconstB">cB</button>
-				<input type="text" name="cVal" style="color: #0000ff; background-color: #eeffee; text-align:center; font: 20px Arial; width:35px; border-radius: 10px; " value="1">
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="TransA">A<sup>T</sup></button>
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="TransB">B<sup>T</sup></button>
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="MinA">minor(A)</button>
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="MinB">minor(B)</button>
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="MultconstA">cA</button>
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="MultconstB">cB</button>
+				<input type="text" name="cVal" style="color: #0000ff; background-color: #eeffee; text-align:center; font: 20px Arial; width:35px; border-radius: 10px; " value="constant">
+				<input type="text" name="i" style="color: #0000ff; background-color: #eeffee; text-align:center; font: 20px Arial; width:35px; border-radius: 10px; " value="minorindex">
+				<input type="text" name="j" style="color: #0000ff; background-color: #eeffee; text-align:center; font: 20px Arial; width:35px; border-radius: 10px; " value="minorindex">
 				<div id="msg" style="height:22px; margin:2px; font: 20px Arial; text-align: center; color: red; "><%=message%></div></div>
 				</form>
 				<div style="border: none;">
@@ -143,17 +147,25 @@ function CreateColumn(tablename)
 
 function DeleteRow(tablename) {
   var table = document.getElementById(tablename);
-  table.deleteRow(table.rows.length - 1);
-	UpdateSizeValues(tablename);
+	if (table.rows.length > 1)
+	{
+		table.deleteRow(table.rows.length - 1);
+		UpdateSizeValues(tablename);
+	}
+
 }
 
 function DeleteColumn(tablename)
 {
   var table = document.getElementById(tablename);
-  for (var i = 0; i < table.rows.length; i++) {
-    table.rows[i].deleteCell(table.rows[i].cells.length - 1);
-  }
-	UpdateSizeValues(tablename);
+	if (table.rows[0].cells.length > 1)
+	{
+		for (var i = 0; i < table.rows.length; i++) {
+	    table.rows[i].deleteCell(table.rows[i].cells.length - 1);
+	  }
+		UpdateSizeValues(tablename);
+	}
+
 }
 
 function ConvertTo2dArray(tablename)
@@ -227,7 +239,7 @@ function SwapAandB()
 					 }
 
 				 }
-				 
+
 				 for (var i = 0; i < matrices.length; i++)
 				 {
 					 if (!predefined[i])

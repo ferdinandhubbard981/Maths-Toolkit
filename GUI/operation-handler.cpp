@@ -16,8 +16,8 @@ string DoMatrixOperation(string* inputarray, int index)
   int* resultorder = new int[2];
   double** result;
   double constant;
-
-  ParseStringTo2dArray(optype, matArows, matAcols, matBrows, matBcols, matA, matB, inputarray, index, constant);
+  int i, j; //index of minor
+  ParseStringTo2dArray(optype, matArows, matAcols, matBrows, matBcols, matA, matB, inputarray, index, constant, i, j);
 
   if (optype == "Add")
   {
@@ -48,16 +48,15 @@ string DoMatrixOperation(string* inputarray, int index)
 
   }
 
-
   if (optype == "DetA")
   {
-    outputstring = to_string(finddeterminant(matA, matArows, matAcols));
+    outputstring = "Det: " + to_string(finddeterminant(matA, matArows, matAcols));
     resultismatrix = false;
   }
 
   if (optype == "DetB")
   {
-    outputstring = to_string(finddeterminant(matB, matBrows, matBcols));
+    outputstring = "Det: " + to_string(finddeterminant(matB, matBrows, matBcols));
     resultismatrix = false;
   }
 
@@ -71,20 +70,6 @@ string DoMatrixOperation(string* inputarray, int index)
   if (optype == "InvB")
   {
     result = inversematrix(matB, matBrows, matBcols);
-    resultorder[0] = matBrows;
-    resultorder[1] = matBcols;
-  }
-
-  if (optype == "TransA")
-  {
-    result = transposematrix(matA, matArows, matAcols);
-    resultorder[0] = matArows;
-    resultorder[1] = matAcols;
-  }
-
-  if (optype == "TransB")
-  {
-    result = transposematrix(matB, matBrows, matBcols);
     resultorder[0] = matBrows;
     resultorder[1] = matBcols;
   }
@@ -103,14 +88,63 @@ string DoMatrixOperation(string* inputarray, int index)
     resultorder[1] = matBcols;
   }
 
-  if (optype == "multconstA")
+  if (optype == "TransA")
+  {
+    result = transposematrix(matA, matArows, matAcols);
+    resultorder[0] = matArows;
+    resultorder[1] = matAcols;
+  }
+
+  if (optype == "TransB")
+  {
+    result = transposematrix(matB, matBrows, matBcols);
+    resultorder[0] = matBrows;
+    resultorder[1] = matBcols;
+  }
+
+  if (optype == "MinA")
+  {
+    if (!isdigit(i))
+    {
+      throw invalid_argument("minor index i is not an integer");
+    }
+
+    if (!isdigit(j))
+    {
+      throw invalid_argument("minor index j is not an integer");
+    }
+
+    result = findminor(matA, matArows, matAcols, i, j);
+    resultorder[0] = matArows;
+    resultorder[1] = matAcols;
+  }
+
+  if (optype == "MinB")
+  {
+
+      if (!isdigit(i))
+      {
+        throw invalid_argument("minor index i is not an integer");
+      }
+
+      if (!isdigit(j))
+      {
+        throw invalid_argument("minor index j is not an integer");
+      }
+
+    result = findminor(matB, matBrows, matBcols, i, j);
+    resultorder[0] = matBrows;
+    resultorder[1] = matBcols;
+  }
+
+  if (optype == "MultconstA")
   {
     result = multiplybyconstant(matA, matArows, matAcols, constant);
     resultorder[0] = matArows;
     resultorder[1] = matAcols;
   }
 
-  if (optype == "multconstB")
+  if (optype == "MultconstB")
   {
     result = multiplybyconstant(matB, matBrows, matBcols, constant);
     resultorder[0] = matBrows;

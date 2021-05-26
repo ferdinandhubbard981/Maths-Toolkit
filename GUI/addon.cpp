@@ -17,8 +17,19 @@ void Main(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
   String::Utf8Value str(isolate, args[0]);
   string cppStr(*str);
+  string returnstring;
 
-  string returnstring = DoOperation(cppStr);
+  try
+  {
+    returnstring = DoOperation(cppStr);
+  }
+  catch(exception &e)
+  {
+    stringstream ss;
+    ss << "Error: " << e.what();
+    returnstring = ss.str();
+    //returnstring = "Error: " + e.what();
+  }
   //cout << returnstring;
   const char * returnchararray = returnstring.c_str();
   args.GetReturnValue().Set(String::NewFromUtf8(

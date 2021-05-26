@@ -53,12 +53,17 @@ void MakeMatrix(double** &mat, int &matrows, int &matcols, string* array, int &i
   {
     for (int j = 0; j < matrows; j++)
     {
-      mat[i][j] = stod(array[index]);
+      try {
+        mat[i][j] = stod(array[index]);
+      }
+      catch (invalid_argument &e) {
+        throw invalid_argument("Matrix contains invalid characters");
+      }
       index++;
     }
   }
 }
-void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string* inputarray, int index, double &constant)
+void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string* inputarray, int index, double &constant, int &i, int &j)
 
   {
   //inputarray format: mat1rows, mat1cols, elements of mat1, mat2rows, mat2cols, elements of mat 2
@@ -70,6 +75,16 @@ void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat
   MakeMatrix(mat2, mat2rows, mat2cols, inputarray, index);
   constant = stod(inputarray[index]);
   index++;
+  try
+  {
+    i = stoi(inputarray[index]);
+    index++;
+    j= stoi(inputarray[index]);
+    index++;
+  }
+  catch (invalid_argument) {
+    
+  }
 
 
 }

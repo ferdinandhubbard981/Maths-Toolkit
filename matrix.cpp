@@ -2,19 +2,24 @@
 #include <stdexcept>
 #include <cmath>
 //#include "arrays.cpp"
+using namespace std;
 void printmatrix(double** matrix, int height, int width) {
 
   for (int j = 0; j < height; j++) {
-    std::cout << std::endl;
+    cout << endl;
     for (int i = 0; i < width; i++) {
-      std::cout << matrix[i][j] << "    ";
+      cout << matrix[i][j] << "    ";
     }
   }
-  std::cout << std::endl << std::endl << std::endl;
+  cout << endl << endl << endl;
 }
 
 double** addmatrices(double** m1, double** m2, int m1rows, int m1cols, int m2rows, int m2cols)
 {
+  if (m1rows != m2rows || m1cols != m2cols)
+  {
+    throw invalid_argument("MatrixAOrder != MatrixBOrder");
+  }
   double** result = initializedouble2dpointerarray(m1rows, m1cols);
   for (int i = 0; i < m1cols; i++)
   {
@@ -39,7 +44,7 @@ double** multiplybyconstant(double** m, int height, int width, double constant) 
 double** multiplymatrices(double** m1, double** m2, int m1height, int m1width, int m2height, int m2width) {
 
   if (m1width != m2height) {
-    throw std::invalid_argument("The width of the first matrix is not equal to the height of the second");
+    throw invalid_argument("MatrixA width != MatrixB height");
   }
   double** result = initializedouble2dpointerarray(m2width, m1height);
   //check that m1width == m2height
@@ -58,6 +63,14 @@ double** multiplymatrices(double** m1, double** m2, int m1height, int m1width, i
 double** findminor(double** m, int height, int width, int i, int j) { // i and j are indexes starting at 0, 0 for top left
 
   // make copy so original doesn't get changed;
+  if (width != height) {
+    throw invalid_argument("non-square matrix has no minor");
+  }
+
+  if (height == 1) {
+    throw invalid_argument("matrix with order 1x1 has no minor");
+  }
+
   double** temp = copydouble2dpointerarray(m, width, height);
 
   // delete row
@@ -78,10 +91,13 @@ double** findminor(double** m, int height, int width, int i, int j) { // i and j
 }
 int finddeterminant(double** m, int height, int width) {
   if (width != height) {
-    throw std::invalid_argument("Cannot find determinant of a non-square matrix");
+    throw invalid_argument("non-square matrix has no determinant");
   }
   if (height == 2) {
     return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+  }
+  if (height == 1) {
+    return m[0][0];
   }
   int det = 0;
   for (int i = 0; i < width; i++) {
@@ -92,6 +108,9 @@ int finddeterminant(double** m, int height, int width) {
 }
 
 double** transposematrix(double** m, int height, int width) {
+  if (width != height) {
+    throw invalid_argument("Cannot transpose non-square matrix");
+  }
   double** result = initializedouble2dpointerarray(width, height);
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < i+1; j++) {
@@ -103,37 +122,41 @@ double** transposematrix(double** m, int height, int width) {
 }
 
 double** inversematrix(double** m, int height, int width) {
+  if (width != height) {
+    throw invalid_argument("non-square matrix has no inverse");
+  }
   double** result = initializedouble2dpointerarray(width, height);
   //find determinant
   int det = finddeterminant(m, height,  width);
   double constant = (double)1 / det;
-  //std::cout << "determinant = " << det << std::endl;
+  //cout << "determinant = " << det << endl;
   if (det == 0) {
-    throw std::invalid_argument("Determinant is 0, no inverse matrix");
+    throw invalid_argument("Determinant is 0 therefore matrix has no inverse");
   }
-  if (height < 2) {
-    throw std::invalid_argument("Order of matrix is less than 2, no inverse matrix");
+  if (height == 1) {
+    result[0][0] = 1/m[0][0];
+    return result;
   }
-  if (height == 2) {
+  /*if (height == 2) {
     result[0][0] = m[1][1];
     result[1][1] = m[0][0];
     result[0][1] = m[0][1] * -1;
     result[1][0] = m[1][0] * -1;
     result = multiplybyconstant(result, 2, 2, constant);
     return result;
-    }
+  }*/
   // find matrix of cofactors
 
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
       double** minor = findminor(m, height, width, i, j);
-      //std::cout << "minor " << i << ", " << j << ":" << std::endl;
+      //cout << "minor " << i << ", " << j << ":" << endl;
       //printmatrix(minor, height-1, width-1);
       result[i][j] = pow(-1, i+j) * finddeterminant(minor, height-1, width-1);
     }
   }
   //transpose matrix
-  //std::cout << "pretranspose: " << std::endl;
+  //cout << "pretranspose: " << endl;
   //printmatrix(result, height, width);
   result = transposematrix(result, height, width);
   result = multiplybyconstant(result, height, width, constant);
