@@ -18,7 +18,7 @@ double** addmatrices(double** m1, double** m2, int m1rows, int m1cols, int m2row
 {
   if (m1rows != m2rows || m1cols != m2cols)
   {
-    throw invalid_argument("MatrixAOrder != MatrixBOrder");
+    throw invalid_argument("MatrixAOrder != MatrixBOrder. Therefore matrix addition for A and B is not defined");
   }
   double** result = initializedouble2dpointerarray(m1rows, m1cols);
   for (int i = 0; i < m1cols; i++)
@@ -44,7 +44,7 @@ double** multiplybyconstant(double** m, int height, int width, double constant) 
 double** multiplymatrices(double** m1, double** m2, int m1height, int m1width, int m2height, int m2width) {
 
   if (m1width != m2height) {
-    throw invalid_argument("MatrixA width != MatrixB height");
+    throw invalid_argument("MatrixA width != MatrixB height. Therefore matrix multiplication for A and B is not defined");
   }
   double** result = initializedouble2dpointerarray(m2width, m1height);
   //check that m1width == m2height
@@ -64,11 +64,11 @@ double** findminor(double** m, int height, int width, int i, int j) { // i and j
 
   // make copy so original doesn't get changed;
   if (width != height) {
-    throw invalid_argument("non-square matrix has no minor");
+    throw invalid_argument("non-square matrix does not have a minor");
   }
 
   if (height == 1) {
-    throw invalid_argument("matrix with order 1x1 has no minor");
+    throw invalid_argument("matrix with order 1x1 does not have a minor");
   }
 
   double** temp = copydouble2dpointerarray(m, width, height);
@@ -91,7 +91,7 @@ double** findminor(double** m, int height, int width, int i, int j) { // i and j
 }
 int finddeterminant(double** m, int height, int width) {
   if (width != height) {
-    throw invalid_argument("non-square matrix has no determinant");
+    throw invalid_argument("non-square matrix does not have a determinant");
   }
   if (height == 2) {
     return m[0][0] * m[1][1] - m[0][1] * m[1][0];
@@ -109,7 +109,7 @@ int finddeterminant(double** m, int height, int width) {
 
 double** transposematrix(double** m, int height, int width) {
   if (width != height) {
-    throw invalid_argument("Cannot transpose non-square matrix");
+    throw invalid_argument("non-square matrix cannot be transposed");
   }
   double** result = initializedouble2dpointerarray(width, height);
   for (int i = 0; i < width; i++) {
@@ -131,7 +131,7 @@ double** inversematrix(double** m, int height, int width) {
   double constant = (double)1 / det;
   //cout << "determinant = " << det << endl;
   if (det == 0) {
-    throw invalid_argument("Determinant is 0 therefore matrix has no inverse");
+    throw invalid_argument("matrix with determinant = 0 does not have an inverse");
   }
   if (height == 1) {
     result[0][0] = 1/m[0][0];

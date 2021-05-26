@@ -4,6 +4,29 @@
 #include "../arrays.cpp"
 using namespace std;
 
+bool IsInteger(const std::string &s)
+{
+   if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
+
+   char * p;
+   strtol(s.c_str(), &p, 10);
+
+   return (*p == 0);
+}
+
+
+bool IsDouble(string str)
+{
+    const char* c = str.c_str();
+    char* endptr = 0;
+    strtod(c, &endptr);
+
+    if(*endptr != '\0' || endptr == c)
+        return false;
+    return true;
+}
+
+
 string ConvertMatToString(double** mat, int* order)
 {
   string outputstring = "";
@@ -63,7 +86,7 @@ void MakeMatrix(double** &mat, int &matrows, int &matcols, string* array, int &i
     }
   }
 }
-void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string* inputarray, int index, double &constant, int &i, int &j)
+void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string* inputarray, int index, string &constant, string &i, string &j)
 
   {
   //inputarray format: mat1rows, mat1cols, elements of mat1, mat2rows, mat2cols, elements of mat 2
@@ -73,18 +96,10 @@ void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat
 
   MakeMatrix(mat1, mat1rows, mat1cols, inputarray, index);
   MakeMatrix(mat2, mat2rows, mat2cols, inputarray, index);
-  constant = stod(inputarray[index]);
+  constant = inputarray[index];
   index++;
-  try
-  {
-    i = stoi(inputarray[index]);
-    index++;
-    j= stoi(inputarray[index]);
-    index++;
+  i = inputarray[index];
+  index++;
+  j = inputarray[index];
+  index++;
   }
-  catch (invalid_argument) {
-    
-  }
-
-
-}

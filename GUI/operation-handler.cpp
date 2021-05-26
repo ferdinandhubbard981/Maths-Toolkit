@@ -3,7 +3,7 @@
 #include "dataparser.cpp"
 #include "../matrix.cpp"
 
-
+using namespace std;
 
 string DoMatrixOperation(string* inputarray, int index)
 {
@@ -15,8 +15,8 @@ string DoMatrixOperation(string* inputarray, int index)
   double** matB;
   int* resultorder = new int[2];
   double** result;
-  double constant;
-  int i, j; //index of minor
+  string constant;
+  string i, j; //index of minor
   ParseStringTo2dArray(optype, matArows, matAcols, matBrows, matBcols, matA, matB, inputarray, index, constant, i, j);
 
   if (optype == "Add")
@@ -104,17 +104,17 @@ string DoMatrixOperation(string* inputarray, int index)
 
   if (optype == "MinA")
   {
-    if (!isdigit(i))
+    if (!IsInteger(i))
     {
-      throw invalid_argument("minor index i is not an integer");
+      throw invalid_argument("minor index i must be an integer");
     }
 
-    if (!isdigit(j))
+    if (!IsInteger(j))
     {
-      throw invalid_argument("minor index j is not an integer");
+      throw invalid_argument("minor index j must be an integer");
     }
 
-    result = findminor(matA, matArows, matAcols, i, j);
+    result = findminor(matA, matArows, matAcols, stoi(i), stoi(j));
     resultorder[0] = matArows;
     resultorder[1] = matAcols;
   }
@@ -122,31 +122,39 @@ string DoMatrixOperation(string* inputarray, int index)
   if (optype == "MinB")
   {
 
-      if (!isdigit(i))
-      {
-        throw invalid_argument("minor index i is not an integer");
-      }
+    if (!IsInteger(i))
+    {
+      throw invalid_argument("minor index i must be an integer");
+    }
 
-      if (!isdigit(j))
-      {
-        throw invalid_argument("minor index j is not an integer");
-      }
+    if (!IsInteger(j))
+    {
+      throw invalid_argument("minor index j must be an integer");
+    }
 
-    result = findminor(matB, matBrows, matBcols, i, j);
+    result = findminor(matB, matBrows, matBcols, stoi(i), stoi(j));
     resultorder[0] = matBrows;
     resultorder[1] = matBcols;
   }
 
   if (optype == "MultconstA")
   {
-    result = multiplybyconstant(matA, matArows, matAcols, constant);
+    if (!IsDouble(constant))
+    {
+      throw invalid_argument("constant must be a real number");
+    }
+    result = multiplybyconstant(matA, matArows, matAcols, stod(constant));
     resultorder[0] = matArows;
     resultorder[1] = matAcols;
   }
 
   if (optype == "MultconstB")
   {
-    result = multiplybyconstant(matB, matBrows, matBcols, constant);
+    if (!IsDouble(constant))
+    {
+      throw invalid_argument("constant must be a real number");
+    }
+    result = multiplybyconstant(matB, matBrows, matBcols, stod(constant));
     resultorder[0] = matBrows;
     resultorder[1] = matBcols;
   }
