@@ -1,0 +1,237 @@
+<body><div id="content" role="main"><!-- #BeginEditable "Body" -->
+			<h1 align="center">Simultaneous equations calculator</h1>
+
+<div style="position:relative; border-radius: 10px; display:block; background-color: hsla(240,100%,96%,1); ">
+
+
+					<form name="MatrixInputs" method="POST" action="/matrix">
+	<div style="display: inline-block; min-height:200px; min-width:300px; vertical-align: top; position: relative; background-color: hsla(240,100%,94%,1); border-radius: 10px; margin:2px; ">
+		<div id="MatrixATitle" style="margin-left:20px; font: bold 22px Arial; text-align: left; color: darkblue; ">A: 1x1</div>
+		<input type="hidden" id="MatrixASize" name="MatrixASize" value="1x1">
+		<button id="upBtn" type="button" style="position:absolute; left:172px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteRow('MatrixA')">▲</button>
+		<button id="dnBtn" type="button" style="position:absolute; left:202px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateRow('MatrixA')">▼</button>
+		<button id="ltBtn" type="button" style="position:absolute; left:232px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteColumn('MatrixA')">◀</button>
+		<button id="rtBtn" type="button" style="position:absolute; left:262px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateColumn('MatrixA')">▶</button>
+		<table id="MatrixA" style="margin: 25px 5px 5px 30px; text-align: left;">
+			<tbody>
+
+			</tbody>
+		</table></div>
+
+			<br>
+			<div style="padding:2px; margin-bottom:5px; text-align: center; background-color: lightskyblue;border-radius: 10px; ">
+				<button name="type" style="color: #000aae; font: 18px Arial;" class="togglebtn" type="SUBMIT" value="Solve">Solve</button>
+
+
+				<div id="msg" style="height:22px; margin:2px; font: 20px Arial; text-align: center; color: red; "></div></div>
+				</form></div>
+				<div style="font: 11px arial; color: #6600cc;">
+					<textarea id="w3review" name="w3review" rows="4" cols="50">
+							<%=result%>
+				</textarea></div>
+</div>
+
+
+<script>
+
+function ConvertStringToMat(chararray)
+{
+	var index = 0;
+	var matrows = chararray[index];
+	index++;
+	var matcols = chararray[index];
+	index++;
+
+	var mat = new Array(matcols);
+
+	for (var i = 0; i < matcols; i++)
+		{
+			mat[i] = new Array(matrows);
+		  for (var j = 0; j < matrows; j++)
+		  {
+				mat[i][j] = parseFloat(chararray[index]);
+		    index++;
+		  }
+		}
+	return mat;
+}
+
+
+function UpdateHeaderRow(tablename)
+{
+	var array = ["a", "b", "c", "d", "e", "f", "g", "h"]
+	table = document.getElementById(tablename)
+	table.deleteRow(0);
+	var row = table.insertRow(0);
+  for (var i = 0; i < table.rows[1].cells.length; i++)
+	{
+  	var headerCell = document.createElement("TH");
+    headerCell.innerHTML = array[i];
+    row.appendChild(headerCell);
+  }
+}
+function UpdateSizeValues(tablename)
+{
+	var table = document.getElementById(tablename);
+	var title = document.getElementById(tablename + "Title");
+	var titleinput = document.getElementById(tablename + "Size");
+	title.innerHTML = table.id.slice(-1) + ": " +  String(table.rows.length - 1) + "x" + String(table.rows[0].cells.length)
+	titleinput.value = String(table.rows.length) + "x" + String(table.rows[0].cells.length)
+}
+function CreateCell(columnindex, rowindex, table, textvalue) {
+
+  var cell = table.rows[rowindex].insertCell(columnindex);
+  cell.innerHTML = '';
+  var input = document.createElement('input');
+  //var text = "NEW CELL" + String(columnindex);
+  input.type = "text";
+  input.value = textvalue;
+  input.name = table.id.slice(-1) + "_" + String(columnindex) + "_" + String(rowindex); //first num is left to right, second num is from top to bottom.
+  input.style = "color: #0000ff; background-color: #eeffee; text-align:center; font: 15px Arial; width:40px; border-radius: 10px; ";
+  cell.appendChild(input);
+}
+function CreateRow(tablename) {
+  var table = document.getElementById(tablename);
+  var row = table.insertRow(table.rows.length);
+
+  for (var i = 0; i < table.rows[0].cells.length; i++) { //to add cells to the previous rows for square matrix
+    /*if (i < table.rows.length - 1) {
+    CreateCell(i, table.rows.length - 1, table, 0);
+  }*/
+    CreateCell(i, table.rows.length - 1, table, 0);
+  }
+	UpdateSizeValues(tablename);
+}
+
+function CreateColumn(tablename)
+{
+    var table = document.getElementById(tablename);
+    var len = table.rows[0].cells.length;
+    for (var j = 1; j < table.rows.length; j++)
+    {
+      for (var i = table.rows[j].cells.length; i < len+1; i++)
+        CreateCell(i, j, table, 0);
+    }
+		UpdateHeaderRow(tablename);
+		UpdateSizeValues(tablename);
+}
+
+function DeleteRow(tablename) {
+  var table = document.getElementById(tablename);
+	if (table.rows.length > 0)
+	{
+		table.deleteRow(table.rows.length - 1);
+		UpdateSizeValues(tablename);
+	}
+
+}
+
+function DeleteColumn(tablename)
+{
+  var table = document.getElementById(tablename);
+	if (table.rows[0].cells.length > 0)
+	{
+		for (var i = 0; i < table.rows.length; i++) {
+	    table.rows[i].deleteCell(table.rows[i].cells.length - 1);
+	  }
+		UpdateSizeValues(tablename);
+	}
+
+}
+
+function ConvertTo2dArray(tablename)
+{
+	  var table = document.getElementById(tablename);
+		var matrix = new Array(table.rows[0].cells.length);
+		for (var i = 0; i < table.rows[0].cells.length; i++)
+		{
+			matrix[i] = new Array(table.rows.length);
+			for (var j = 0; j < table.rows.length; j++)
+			{
+				matrix[i][j] = table.rows[j].cells[i].firstChild.value;
+			}
+		}
+		return matrix;
+}
+
+function GenerateMatrix(tablename, matrix)
+{
+	var table = document.getElementById(tablename);
+	// delete table
+	var len = table.rows.length
+	for (var i = 0; i < len; i++)
+	{
+		table.deleteRow(0);
+	}
+	for (var j = 0; j < matrix[0].length; j++)
+	{
+		table.insertRow(j);
+		for (var i = 0; i < matrix.length; i++)
+		{
+			CreateCell(i, j, table, matrix[i][j]);
+		}
+	}
+	UpdateSizeValues(tablename);
+
+}
+function CopyPasteMatrix(tablename1, tablename2)
+{
+		var matrix = ConvertTo2dArray(tablename1)
+		GenerateMatrix(tablename2, matrix);
+
+}
+function SwapAandB()
+{
+	var matrixA = ConvertTo2dArray("MatrixA");
+	var matrixB = ConvertTo2dArray("MatrixB");
+	GenerateMatrix("MatrixA", matrixB);
+	GenerateMatrix("MatrixB", matrixA);
+
+
+
+}
+</script>
+
+
+<script type="text/javascript">
+
+       function startup() {
+				 var predefined = [false];
+
+				 var matrixLetters = ["A"];
+				 var matrices = [""];
+				 for (var i = 0; i < matrices.length; i++)
+				 {
+					 if (matrices[i] != "") {
+						 predefined[i] = true;
+						 //console.log("string for matrix" + matrixLetters[i] + ": " + matrices[i]);
+						 var matrix = ConvertStringToMat(matrices[i].split(" "));
+						 GenerateMatrix("Matrix" + matrixLetters[i], matrix);
+					 }
+
+				 }
+
+				 for (var i = 0; i < matrices.length; i++)
+				 {
+					 if (!predefined[i])
+					 {
+						 var nrows = 2
+						 for (var j = 0; j < nrows; j++)
+						 {
+							 //console.log("adding rows and cols for Matrix" + matrixLetters[i]);
+		           CreateRow("Matrix" + matrixLetters[i]);
+		           CreateColumn("Matrix" + matrixLetters[i]);
+		         }
+					 }
+				 }
+       }
+       window.onload = startup;
+</script>
+
+
+
+
+
+
+
+</body>

@@ -52,14 +52,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.resolve( __dirname, 'views'));
 
+app.get('/simul', function(req, res) {
 
-app.get('/tutorial', function (req, res) {
-  res.render('tutorial', {})
+  res.render('simul', {matrixAString: "", message: "", result: ""});
+
 })
 
-app.post('/tutorial', function(req, res){
-    console.log(req.body);
-});
+app.post('/simul', function(req, res){
+  //console.log(req.body);
+  var matrixAString = MatrixString(req.body, "A");
+  var inputstring = "Simul " + req.body["type"] + " " + matrixAString;
+  console.log("inputstring: " + inputstring);
+  var outputstring = addon.main(inputstring);
+  //console.log("outputstring: " + outputstring);
+  //var outputmatrix = ConvertStringToMat(outputstring.split(" "));
+  if (outputstring.split(" ")[0] == "Error:")
+  {
+    console.log(outputstring);
+    res.render('simul', {matrixAString: matrixAString, message: outputstring, result: ""});
+  }
+  else {
+    res.render('simul', {matrixAString: matrixAString, message:"", result: outputstring});
+
+  }
+})
 
 app.get('/simplex', function(req, res) {
   res.render('simplex', {})

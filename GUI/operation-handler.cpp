@@ -115,8 +115,8 @@ string DoMatrixOperation(string* inputarray, int index)
     }
 
     result = findminor(matA, matArows, matAcols, stoi(i), stoi(j));
-    resultorder[0] = matArows;
-    resultorder[1] = matAcols;
+    resultorder[0] = matArows - 1;
+    resultorder[1] = matAcols - 1;
   }
 
   if (optype == "MinB")
@@ -133,8 +133,8 @@ string DoMatrixOperation(string* inputarray, int index)
     }
 
     result = findminor(matB, matBrows, matBcols, stoi(i), stoi(j));
-    resultorder[0] = matBrows;
-    resultorder[1] = matBcols;
+    resultorder[0] = matBrows - 1;
+    resultorder[1] = matBcols - 1;
   }
 
   if (optype == "MultconstA")
@@ -167,6 +167,14 @@ string DoMatrixOperation(string* inputarray, int index)
   return outputstring;
 }
 
+string DoSimul(string* array, int index)
+{
+  string result;
+  
+
+
+  return result;
+}
 
 string DoOperation(string inputstring)
 {
@@ -178,6 +186,12 @@ string DoOperation(string inputstring)
   if (opsource == "Matrix")
   {
     return DoMatrixOperation(array, index);
+  }
+
+  if (opsource == "Simul")
+  {
+    return DoSimul(array, index);
+
   }
 
 }
