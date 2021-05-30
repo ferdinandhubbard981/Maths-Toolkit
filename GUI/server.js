@@ -33,6 +33,7 @@ const port = 3000
 
 function MatrixString(dict, matLetter)
 {
+  //console.log("test log: " + dict["Matrix" + matLetter + "Size"]);
   var matSize = dict["Matrix" + matLetter + "Size"].split("x");
   var str = "";
   str += matSize[0] + " " + matSize[1] + " "
@@ -59,7 +60,7 @@ app.get('/simul', function(req, res) {
 })
 
 app.post('/simul', function(req, res){
-  //console.log(req.body);
+  console.log(req.body);
   var matrixAString = MatrixString(req.body, "A");
   var inputstring = "Simul " + req.body["type"] + " " + matrixAString;
   console.log("inputstring: " + inputstring);
@@ -78,7 +79,28 @@ app.post('/simul', function(req, res){
 })
 
 app.get('/simplex', function(req, res) {
-  res.render('simplex', {})
+
+  res.render('simplex', {matrixAString: "", message: "", result: ""});
+
+})
+
+app.post('/simplex', function(req, res){
+  console.log(req.body);
+  var matrixAString = MatrixString(req.body, "A");
+  var inputstring = "Simplex " + req.body["type"] + " " + matrixAString;
+  console.log("inputstring: " + inputstring);
+  var outputstring = addon.main(inputstring);
+  //console.log("outputstring: " + outputstring);
+  //var outputmatrix = ConvertStringToMat(outputstring.split(" "));
+  if (outputstring.split(" ")[0] == "Error:")
+  {
+    console.log(outputstring);
+    res.render('simplex', {matrixAString: matrixAString, message: outputstring, result: ""});
+  }
+  else {
+    res.render('simplex', {matrixAString: matrixAString, message:"", result: outputstring});
+
+  }
 })
 
 app.get('/matrix', function(req, res) {
@@ -88,7 +110,7 @@ res.render('matrix', {matrixAString: "", matrixBString: "", matrixCString: "", m
 })
 
 app.post('/matrix', function(req, res){
-  //console.log(req.body);
+  console.log(req.body);
   var matrixAString = MatrixString(req.body, "A");
   var matrixBString = MatrixString(req.body, "B");
   var inputstring = "Matrix " + req.body["type"] + " " + matrixAString + matrixBString + req.body["cVal"] + " " + req.body["i"] + " " + req.body["j"];

@@ -1,49 +1,62 @@
-#include "matrix.cpp"
-
-void printtable(std::string* varnames, double** coefficients, int numofvar) {
-  std::cout << std::endl << "simultaneous equations: " << std::endl << std::endl;
+//#include "matrix.cpp"
+using namespace std;
+string printtable(string* varnames, double** coefficients, int numofvar) {
+  stringstream buffer;
+  cout << endl << "simultaneous equations: " << endl << endl;
   for (int j = 0; j < numofvar; j++) {
     for (int i = 0; i < numofvar; i++) {
-      std::string sign = "+";
+      string sign = "+";
       if (numofvar - i == 1) {
-        std::cout << coefficients[i][j] << varnames[i] << " = " << coefficients[i+1][j] << std::endl;
+        buffer << coefficients[i][j] << varnames[i] << " = " << coefficients[i+1][j] << endl;
       }
       else
       {
-        std::cout << coefficients[i][j] << varnames[i] << " " << sign << " ";
+        buffer << coefficients[i][j] << varnames[i] << " " << sign << " ";
       }
 
     }
   }
-
+  return buffer.str();
 }
 
-void printresults(std::string* varnames, double* results, int numofvar) {
+string printresults(string* varnames, double* results, int numofvar) {
 
+  stringstream buffer;
+  buffer << endl;
   for (int i = 0; i < numofvar; i++) {
-    std::cout <<varnames[i] << " = " << results[i] << std::endl;
+    buffer << varnames[i] << " = " << results[i] << endl;
   }
+  return buffer.str();
 }
 
 
-double* solve(double** coefficients, int numofvariables) { //equations in coefficient form line by line, where there is no coefficient the entry is 0
+double* SimulSolve(double** coefficients, int numofvariables) { //equations in coefficient form line by line, where there is no coefficient the entry is 0
   //the right most coefficient is the RHS (right hand side of the equation) value and all other values are the coefficients of the variables in order on the left hand side of the equation
 
   //create square matrix from variables (nom of variables = num of equations) and matrix of order (numofvar x 1) from the RHS
 
   double** rhs = initializedouble2dpointerarray(1, numofvariables);
+  double** inverse;
   for (int j = 0; j < numofvariables; j++) {
     rhs[0][j] = coefficients[numofvariables][j];
   }
-  double** inverse = inversematrix(coefficients, numofvariables, numofvariables);
+  try
+  {
+    inverse = inversematrix(coefficients, numofvariables, numofvariables);
 
-  //std::cout << "rhs val" << std::endl;
+  }
+  catch (invalid_argument &exc)
+  {
+    throw invalid_argument("this system of simultaneous equations does not have a unique solution");
+  }
+
+  //cout << "rhs val" << endl;
   //printmatrix(rhs, numofvariables, 1);
-  //std::cout << "inverse val" << std::endl;
+  //cout << "inverse val" << endl;
   //printmatrix(inverse, numofvariables, numofvariables);
-  //std::cout << "inverse 1, 0 = " << inverse[1][0] << std::endl;
+  //cout << "inverse 1, 0 = " << inverse[1][0] << endl;
   double** results = multiplymatrices(inverse, rhs, numofvariables, numofvariables, numofvariables, 1); // yields an order (numofvar x 1) matrix
-  //std::cout << "result multiplication: " << std::endl;
+  //cout << "result multiplication: " << endl;
   //printmatrix(results, numofvariables, 1);
 
   return results[0];

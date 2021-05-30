@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addon", "addon.vcxproj", "{18AA0086-16F8-6984-95CC-5A2858C7AB53}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addon", "addon.vcxproj", "{B49635BC-BC27-1E57-9972-2213838E317B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,10 +8,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18AA0086-16F8-6984-95CC-5A2858C7AB53}.Debug|Win32.ActiveCfg = Debug|Win32
-		{18AA0086-16F8-6984-95CC-5A2858C7AB53}.Debug|Win32.Build.0 = Debug|Win32
-		{18AA0086-16F8-6984-95CC-5A2858C7AB53}.Release|Win32.ActiveCfg = Release|Win32
-		{18AA0086-16F8-6984-95CC-5A2858C7AB53}.Release|Win32.Build.0 = Release|Win32
+		{B49635BC-BC27-1E57-9972-2213838E317B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B49635BC-BC27-1E57-9972-2213838E317B}.Debug|Win32.Build.0 = Debug|Win32
+		{B49635BC-BC27-1E57-9972-2213838E317B}.Release|Win32.ActiveCfg = Release|Win32
+		{B49635BC-BC27-1E57-9972-2213838E317B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

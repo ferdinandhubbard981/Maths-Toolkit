@@ -2,7 +2,7 @@
 
 #include "dataparser.cpp"
 #include "../matrix.cpp"
-
+#include "../simultaneous-equations-solver.cpp"
 using namespace std;
 
 string DoMatrixOperation(string* inputarray, int index)
@@ -167,13 +167,29 @@ string DoMatrixOperation(string* inputarray, int index)
   return outputstring;
 }
 
+
 string DoSimul(string* array, int index)
 {
-  string result;
-  
+  string alphabet[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+  double* result;
+  double** coefficients;
+  int numOfVariables;
+  string optype;
+  int width, height;
 
-
-  return result;
+  parseSimulString(optype, coefficients, width, height, array, index);
+  //cout << "width: " << width << endl << "height: " << height << endl;
+  if (width != height + 1)
+  {
+    throw invalid_argument("number of equations must be equal to number of variables");
+  }
+  numOfVariables = height;
+  if (numOfVariables > 24) {
+    throw invalid_argument("too many variables entered");
+  }
+  result = SimulSolve(coefficients, numOfVariables);
+  string* variables = SliceAlphabet(alphabet, numOfVariables);
+  return printresults(variables, result, numOfVariables);
 }
 
 string DoOperation(string inputstring)

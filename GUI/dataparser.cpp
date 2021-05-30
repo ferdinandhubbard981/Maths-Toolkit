@@ -4,6 +4,17 @@
 #include "../arrays.cpp"
 using namespace std;
 
+string* SliceAlphabet(string alphabet[24], int numOfElements)
+{
+  string* outputstring = new string[numOfElements];
+  for (int i = 0; i < numOfElements; i++)
+  {
+    outputstring[i] = alphabet[i];
+  }
+  return outputstring;
+
+}
+
 bool IsInteger(const std::string &s)
 {
    if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
@@ -85,6 +96,21 @@ void MakeMatrix(double** &mat, int &matrows, int &matcols, string* array, int &i
       index++;
     }
   }
+}
+
+void parseSimulString(string &optype, double** &coeff, int &width, int &height, string* inputarray, int &index)
+{
+  optype = inputarray[index];
+  index++;
+  try
+  {
+    MakeMatrix(coeff, height, width, inputarray, index);
+  }
+  catch (invalid_argument &e) {
+    throw invalid_argument("simultaneous equations contain invalid characters");
+  }
+
+
 }
 void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat2rows, int &mat2cols, double** &mat1, double** &mat2, string* inputarray, int index, string &constant, string &i, string &j)
 
