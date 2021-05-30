@@ -2,16 +2,16 @@
 #include "simplex-method.cpp"
 
 void onestage() {
-  float tableau[7][4] = {{1, 0, 0, 0},
+  double tableau[7][4] = {{1, 0, 0, 0},
                          {-1, 1, 2, 3},
                          {-0.8, 1, 1, 2},
                          {0, 1, 0, 0},
                          {0, 0, 1, 0},
                          {0, 0, 0, 1},
                          {0, 1000, 1500, 2400}};
-  float** pointertableau = new float*[7];
+  double** pointertableau = new double*[7];
   for (int i = 0; i < 7; i++) {
-    pointertableau[i] = new float[4];
+    pointertableau[i] = new double[4];
     for (int j = 0; j < 4; j++) {
       pointertableau[i][j] = tableau[i][j];
     }
@@ -24,7 +24,7 @@ void onestage() {
 }
 
 void twostage() {
-  float tableau[12][6] = {{1, 0, 0, 0, 0, 0},
+  double tableau[12][6] = {{1, 0, 0, 0, 0, 0},
                           {0, 1, 0, 0, 0, 0},
                           {2, -2, 1, 0, 0, 2},
                           {0, -3, 1, 2, 0, 0},
@@ -36,9 +36,9 @@ void twostage() {
                           {0, 0, 0, 0, 1, 0},
                           {0, 0, 0, 0, 0, 1},
                           {19, 0, 20, 22, 4, 15}};
-  float** pointertableau = new float*[12];
+  double** pointertableau = new double*[12];
   for (int i = 0; i <  12; i++) {
-    pointertableau[i] = new float[6];
+    pointertableau[i] = new double[6];
     for (int j = 0; j < 6; j++) {
       pointertableau[i][j] = tableau[i][j];
     }

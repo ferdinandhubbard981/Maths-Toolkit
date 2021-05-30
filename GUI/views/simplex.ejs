@@ -16,7 +16,36 @@
 			<tbody>
 
 			</tbody>
-		</table></div>
+		</table>
+	</div>
+
+	<table id="MatrixA" style="margin: 25px 5px 5px 30px; text-align: left;">
+			<tbody>
+			<tr>
+				<th style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 80px; border-radius: 20px;">num of var </th>
+				<th style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 80px; border-radius: 20px;">num of slackvar</th>
+				<th style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 80px; border-radius: 20px;">num of constraints</th>
+				<th style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 80px; border-radius: 20px;">num of artificial var</th>
+
+			</tr>
+			<tr>
+				<td>
+					<input type="text" id="numofvar" name="numofvar" placeholder="3" style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 40px; border-radius: 10px;">
+				</td>
+				<td>
+					<input type="text" id="numofslackvar" name="numofslackvar" placeholder="3" style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 40px; border-radius: 10px;">
+				</td>
+				<td>
+					<input type="text" id="numofconstraints" name="numofconstraints" placeholder="3" style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 40px; border-radius: 10px;">
+				</td>
+				<td>
+					<input type="text" id="numofartificialvar" name="numofartificialvar" placeholder="0" style="color: rgb(0, 0, 255); background-color: rgb(238, 255, 238); text-align: center; font: 15px Arial; width: 40px; border-radius: 10px;">
+				</td>
+				</tr>
+			</tbody>
+		</table>
+		<button id="gentable" type="button" style="font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="GenTable('MatrixA')">generatetable</button>
+
 
 			<br>
 			<div style="padding:2px; margin-bottom:5px; text-align: center; background-color: lightskyblue;border-radius: 10px; ">
@@ -188,8 +217,53 @@ function SwapAandB()
 	var matrixB = ConvertTo2dArray("MatrixB");
 	GenerateMatrix("MatrixA", matrixB);
 	GenerateMatrix("MatrixB", matrixA);
+}
+
+function AddHeaderElement(row, value)
+{
+
+	var headerCell = document.createElement("TH");
+  headerCell.innerHTML = value;
+  row.appendChild(headerCell);
+}
+function GenTable(tablename)
+{
+	var table = document.getElementById(tablename);
+	var numofvar = parseInt(document.getElementById("numofvar").value);
+	var numofconstraints = parseInt(document.getElementById("numofconstraints").value);
+	var numofslackvar = parseInt(document.getElementById("numofslackvar").value);
+	var numofartificialvar = parseInt(document.getElementById("numofartificialvar").value);
+	var varnames = ["P", "X", "Y", "Z", "W", "V", "U", "T"];
+	var len = table.rows.length;
+	for (var i = 0; i < len; i++)
+	{
+		table.deleteRow(0);
+	}
 
 
+	var row = table.insertRow(0);
+	if (numofartificialvar != 0)
+	{
+		AddHeaderElement(row, "A");
+	}
+  for (var i = 0; i < numofvar+1; i++)
+	{
+		AddHeaderElement(row, varnames[i]);
+  }
+	for (var i = 0; i < numofslackvar; i++)
+	{
+		AddHeaderElement(row, "s" + String(i+1));
+	}
+	for (var i = 0; i < numofartificialvar; i++)
+	{
+		AddHeaderElement(row, "a" + String(i+1));
+	}
+	AddHeaderElement(row, "RHS");
+	var numofcols = table.rows[0].cells.length;
+	for (var i = 0; i < numofconstraints+1; i++)
+	{
+		CreateRow(tablename);
+	}
 
 }
 </script>

@@ -87,7 +87,7 @@ app.get('/simplex', function(req, res) {
 app.post('/simplex', function(req, res){
   console.log(req.body);
   var matrixAString = MatrixString(req.body, "A");
-  var inputstring = "Simplex " + req.body["type"] + " " + matrixAString;
+  var inputstring = "Simplex " + req.body["type"] + " " + req.body["numofvar"] + " " + req.body["numofslackvar"] + " " + req.body["numofartificialvar"] + " " + matrixAString;
   console.log("inputstring: " + inputstring);
   var outputstring = addon.main(inputstring);
   //console.log("outputstring: " + outputstring);

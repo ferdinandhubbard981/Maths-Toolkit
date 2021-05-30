@@ -129,3 +129,50 @@ void ParseStringTo2dArray(string &optype, int &mat1rows, int &mat1cols, int &mat
   j = inputarray[index];
   index++;
   }
+
+  void parseTableau(double** &tableau, int &numOfVar, int &numOfConstraints, int &numOfSlackVar, int &numOfArtificialVar, int &startingRowIndex, string &opType, string* &varnames, string* array, int index)
+  {
+    string variablenames[8] = {"P", "X", "Y", "Z", "W", "V", "U", "T"};
+    opType = array[index];
+    index++;
+
+    numOfVar = stoi(array[index]);
+    index++;
+
+    numOfSlackVar = stoi(array[index]);
+    index++;
+
+    numOfArtificialVar = stoi(array[index]);
+    index++;
+
+    if (numOfArtificialVar == 0)
+    {
+      startingRowIndex = 1;
+    }
+    else
+    {
+      startingRowIndex = 2;
+    }
+    int matrows, matcols;
+    MakeMatrix(tableau, matrows, matcols, array, index);
+
+    varnames = new string[matcols - startingRowIndex];
+    int temp = 0;
+    for (int i = 0; i < numOfVar+1; i++)
+    {
+      varnames[i] = variablenames[i];
+      temp++;
+    }
+    for (int i = 0; i < numOfSlackVar; i++)
+    {
+      varnames[temp] = "s" + to_string(i+1);
+      temp++;
+    }
+    for (int i = 0; i < numOfArtificialVar; i++)
+    {
+      varnames[temp] = "a" + to_string(i+1);
+      temp++;
+    }
+    numOfConstraints = matrows - startingRowIndex;
+
+  }

@@ -3,6 +3,7 @@
 #include "dataparser.cpp"
 #include "../matrix.cpp"
 #include "../simultaneous-equations-solver.cpp"
+#include "../simplex-method.cpp"
 using namespace std;
 
 string DoMatrixOperation(string* inputarray, int index)
@@ -192,6 +193,24 @@ string DoSimul(string* array, int index)
   return printresults(variables, result, numOfVariables);
 }
 
+string DoSimplex(string* array, int index)
+{
+  stringstream buffer;
+  string* varnames;
+  double** result;
+  double** tableau;
+  int numOfVar, numOfConstraints, numOfSlackVar, numOfArtificialVar, startingRowIndex;
+  string opType;
+  parseTableau(tableau, numOfVar, numOfConstraints, numOfSlackVar, numOfArtificialVar, startingRowIndex, opType, varnames, array, index);
+  cout << "numOfVar: " << numOfVar << endl << "nconstraints: " << numOfConstraints << endl << "numOfSlackVar: " << numOfSlackVar << endl << "numOfArtificialVar: " << numOfArtificialVar << endl << "starting row index: " << startingRowIndex << endl;
+  int width =  numOfVar + numOfSlackVar + numOfArtificialVar + 1 + startingRowIndex;
+  int height = numOfConstraints + startingRowIndex;
+  printtableau(tableau, width, height);
+  result = apply_simplex(tableau, numOfVar, numOfConstraints, numOfSlackVar, numOfArtificialVar, startingRowIndex, varnames, buffer);
+  return buffer.str();
+
+
+}
 string DoOperation(string inputstring)
 {
   int index = 0;
@@ -208,6 +227,11 @@ string DoOperation(string inputstring)
   {
     return DoSimul(array, index);
 
+  }
+
+  else if (opsource == "Simplex")
+  {
+    return DoSimplex(array, index);
   }
 
 }
