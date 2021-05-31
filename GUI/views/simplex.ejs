@@ -8,10 +8,6 @@
 	<div style="display: inline-block; min-height:200px; min-width:300px; vertical-align: top; position: relative; background-color: hsla(240,100%,94%,1); border-radius: 10px; margin:2px; ">
 		<div id="MatrixATitle" style="margin-left:20px; font: bold 22px Arial; text-align: left; color: darkblue; ">A: 1x1</div>
 		<input type="hidden" id="MatrixASize" name="MatrixASize" value="1x1">
-		<button id="upBtn" type="button" style="position:absolute; left:172px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteRow('MatrixA')">▲</button>
-		<button id="dnBtn" type="button" style="position:absolute; left:202px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateRow('MatrixA')">▼</button>
-		<button id="ltBtn" type="button" style="position:absolute; left:232px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="DeleteColumn('MatrixA')">◀</button>
-		<button id="rtBtn" type="button" style="position:absolute; left:262px; top:20px; height:23px; font: 14px/16px Arial; color: #000aae; " class="togglebtn" onclick="CreateColumn('MatrixA')">▶</button>
 		<table id="MatrixA" style="margin: 25px 5px 5px 30px; text-align: left;">
 			<tbody>
 
@@ -86,19 +82,7 @@ function ConvertStringToMat(chararray)
 }
 
 
-function UpdateHeaderRow(tablename)
-{
-	var array = ["a", "b", "c", "d", "e", "f", "g", "h"]
-	table = document.getElementById(tablename)
-	table.deleteRow(0);
-	var row = table.insertRow(0);
-  for (var i = 0; i < table.rows[1].cells.length; i++)
-	{
-  	var headerCell = document.createElement("TH");
-    headerCell.innerHTML = array[i];
-    row.appendChild(headerCell);
-  }
-}
+
 function UpdateSizeValues(tablename)
 {
 	var table = document.getElementById(tablename);
@@ -145,28 +129,9 @@ function CreateColumn(tablename)
 		UpdateSizeValues(tablename);
 }
 
-function DeleteRow(tablename) {
-  var table = document.getElementById(tablename);
-	if (table.rows.length > 0)
-	{
-		table.deleteRow(table.rows.length - 1);
-		UpdateSizeValues(tablename);
-	}
 
-}
 
-function DeleteColumn(tablename)
-{
-  var table = document.getElementById(tablename);
-	if (table.rows[0].cells.length > 0)
-	{
-		for (var i = 0; i < table.rows.length; i++) {
-	    table.rows[i].deleteCell(table.rows[i].cells.length - 1);
-	  }
-		UpdateSizeValues(tablename);
-	}
 
-}
 
 function ConvertTo2dArray(tablename)
 {
@@ -204,19 +169,6 @@ function GenerateMatrix(tablename, matrix)
 	}
 	UpdateHeaderRow(tablename);
 	UpdateSizeValues(tablename);
-}
-function CopyPasteMatrix(tablename1, tablename2)
-{
-		var matrix = ConvertTo2dArray(tablename1)
-		GenerateMatrix(tablename2, matrix);
-
-}
-function SwapAandB()
-{
-	var matrixA = ConvertTo2dArray("MatrixA");
-	var matrixB = ConvertTo2dArray("MatrixB");
-	GenerateMatrix("MatrixA", matrixB);
-	GenerateMatrix("MatrixB", matrixA);
 }
 
 function AddHeaderElement(row, value)

@@ -63,6 +63,10 @@ double** multiplymatrices(double** m1, double** m2, int m1height, int m1width, i
 double** findminor(double** m, int height, int width, int i, int j) { // i and j are indexes starting at 0, 0 for top left
 
   // make copy so original doesn't get changed;
+  if (i >= width || j >= height)
+  {
+    throw invalid_argument("The indexes of i and/or j are out of the range of the matrix");
+  }
   if (width != height) {
     throw invalid_argument("non-square matrix does not have a minor");
   }
@@ -89,7 +93,7 @@ double** findminor(double** m, int height, int width, int i, int j) { // i and j
   width -= 1;
   return temp;
 }
-int finddeterminant(double** m, int height, int width) {
+double finddeterminant(double** m, int height, int width) {
   if (width != height) {
     throw invalid_argument("non-square matrix does not have a determinant");
   }
@@ -99,7 +103,7 @@ int finddeterminant(double** m, int height, int width) {
   if (height == 1) {
     return m[0][0];
   }
-  int det = 0;
+  double det = 0;
   for (int i = 0; i < width; i++) {
     double** minor = findminor(m, height, width, i, 0);
     det += pow(-1, i) * m[i][0] * finddeterminant(minor, height-1, width-1);
@@ -127,7 +131,7 @@ double** inversematrix(double** m, int height, int width) {
   }
   double** result = initializedouble2dpointerarray(width, height);
   //find determinant
-  int det = finddeterminant(m, height,  width);
+  double det = finddeterminant(m, height,  width);
   double constant = (double)1 / det;
   //cout << "determinant = " << det << endl;
   if (det == 0) {

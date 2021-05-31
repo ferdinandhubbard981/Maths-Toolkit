@@ -176,22 +176,6 @@ function GenerateMatrix(tablename, matrix)
 	UpdateHeaderRow(tablename);
 	UpdateSizeValues(tablename);
 }
-function CopyPasteMatrix(tablename1, tablename2)
-{
-		var matrix = ConvertTo2dArray(tablename1)
-		GenerateMatrix(tablename2, matrix);
-
-}
-function SwapAandB()
-{
-	var matrixA = ConvertTo2dArray("MatrixA");
-	var matrixB = ConvertTo2dArray("MatrixB");
-	GenerateMatrix("MatrixA", matrixB);
-	GenerateMatrix("MatrixB", matrixA);
-
-
-
-}
 </script>
 
 
