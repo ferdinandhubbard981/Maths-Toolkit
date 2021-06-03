@@ -112,12 +112,13 @@ function CreateCell(columnindex, rowindex, table, textvalue) {
 
   var cell = table.rows[rowindex].insertCell(columnindex);
   cell.innerHTML = '';
+	cell.style = "width: fit-content;";
   var input = document.createElement('input');
   //var text = "NEW CELL" + String(columnindex);
   input.type = "text";
   input.value = textvalue;
   input.name = table.id.slice(-1) + "_" + String(columnindex) + "_" + String(rowindex); //first num is left to right, second num is from top to bottom.
-  input.style = "color: #0000ff; background-color: #eeffee; text-align:center; font: 15px Arial; width:40px; border-radius: 10px; ";
+  input.style = "color: #0000ff; background-color: #eeffee; text-align:center; font: 15px Arial; width:40px; border-radius: 10px;";
   cell.appendChild(input);
 }
 function CreateRow(tablename) {

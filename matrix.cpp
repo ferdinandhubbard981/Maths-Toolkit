@@ -18,7 +18,7 @@ double** addmatrices(double** m1, double** m2, int m1rows, int m1cols, int m2row
 {
   if (m1rows != m2rows || m1cols != m2cols)
   {
-    throw invalid_argument("MatrixAOrder != MatrixBOrder. Therefore matrix addition for A and B is not defined");
+    throw invalid_argument("MatrixAOrder != MatrixBOrder. Therefore matrix addition/subtraction for A and B is not defined");
   }
   double** result = initializedouble2dpointerarray(m1rows, m1cols);
   for (int i = 0; i < m1cols; i++)
@@ -50,11 +50,11 @@ double** multiplymatrices(double** m1, double** m2, int m1height, int m1width, i
   //check that m1width == m2height
   for (int j = 0; j < m1height; j++) {
     for (int i = 0; i < m2width; i++) {
-      double tempsum = 0;
+      double resultsum = 0;
       for (int k = 0; k < m2height; k++) {
-        tempsum += m1[k][j] * m2[i][k];
+        resultsum += m1[k][j] * m2[i][k];
       }
-      result[i][j] = tempsum;
+      result[i][j] = resultsum;
     }
   }
   return result;
@@ -75,23 +75,23 @@ double** findminor(double** m, int height, int width, int i, int j) { // i and j
     throw invalid_argument("matrix with order 1x1 does not have a minor");
   }
 
-  double** temp = copydouble2dpointerarray(m, width, height);
+  double** result = copydouble2dpointerarray(m, width, height);
 
   // delete row
   for (int x = 0; x < width; x++) {
     for (int y = j; y < height - 1; y++) {
-      temp[x][y] = temp[x][y+1];
+      result[x][y] = result[x][y+1];
     }
   }
   // delete column
   for (int y = 0; y < height; y++) {
     for(int x = i; x < width - 1; x++) {
-      temp[x][y] = temp[x+1][y];
+      result[x][y] = result[x+1][y];
     }
   }
   height -= 1;
   width -= 1;
-  return temp;
+  return result;
 }
 double finddeterminant(double** m, int height, int width) {
   if (width != height) {
@@ -125,6 +125,20 @@ double** transposematrix(double** m, int height, int width) {
   return result;
 }
 
+double** matrixofcofactors(double** m, int height, int width)
+{
+  double** result = initializedouble2dpointerarray(width, height);
+  for (int i = 0; i < width; i++) {
+    for (int j = 0; j < height; j++) {
+      double** minor = findminor(m, height, width, i, j);
+      //cout << "minor " << i << ", " << j << ":" << endl;
+      //printmatrix(minor, height-1, width-1);
+      result[i][j] = pow(-1, i+j) * finddeterminant(minor, height-1, width-1);
+    }
+  }
+  return result;
+}
+
 double** inversematrix(double** m, int height, int width) {
   if (width != height) {
     throw invalid_argument("non-square matrix has no inverse");
@@ -150,7 +164,7 @@ double** inversematrix(double** m, int height, int width) {
     return result;
   }*/
   // find matrix of cofactors
-
+  /*
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
       double** minor = findminor(m, height, width, i, j);
@@ -159,6 +173,8 @@ double** inversematrix(double** m, int height, int width) {
       result[i][j] = pow(-1, i+j) * finddeterminant(minor, height-1, width-1);
     }
   }
+  */
+  result = matrixofcofactors(m, height, width);
   //transpose matrix
   //cout << "pretranspose: " << endl;
   //printmatrix(result, height, width);

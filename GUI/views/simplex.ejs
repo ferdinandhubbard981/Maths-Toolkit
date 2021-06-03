@@ -192,11 +192,12 @@ function GenTable(tablename)
 		table.deleteRow(0);
 	}
 
-
+	var hasartificialvar = false;
 	var row = table.insertRow(0);
 	if (numofartificialvar != 0)
 	{
 		AddHeaderElement(row, "A");
+		hasartificialvar = true;
 	}
   for (var i = 0; i < numofvar+1; i++)
 	{
@@ -212,6 +213,10 @@ function GenTable(tablename)
 	}
 	AddHeaderElement(row, "RHS");
 	var numofcols = table.rows[0].cells.length;
+	if (hasartificialvar)
+	{
+		CreateRow(tablename);
+	}
 	for (var i = 0; i < numofconstraints+1; i++)
 	{
 		CreateRow(tablename);
