@@ -59,6 +59,14 @@ app.get('/simul', function(req, res) {
 
 })
 
+
+app.get('/', function(req, res) {
+
+res.render('menu', {});
+
+})
+
+
 app.post('/simul', function(req, res){
   console.log(req.body);
   var matrixAString = MatrixString(req.body, "A");
