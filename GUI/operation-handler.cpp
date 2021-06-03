@@ -231,7 +231,14 @@ string DoOperation(string inputstring)
 
   else if (opsource == "Simplex")
   {
-    return DoSimplex(array, index);
+    try{
+
+      return DoSimplex(array, index);
+    }
+    catch(exception &e)
+    {
+      throw invalid_argument("invalid input");
+    }
   }
 
 }

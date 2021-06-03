@@ -169,10 +169,18 @@ double** convert_to_standard_form(double** tableau,int &width, int &height, int 
   }
   //cout << "works" << endl;
   height -= 1;
-  for (int i = 0; i < height; i++) {
+  for (int i = 0; i < height; i++) { // move RHS column to first art variable then change width index to effectively remove all art var
     tableau[width - 1 - nartificialvar][i] = tableau[width - 1][i];
   }
   width -= nartificialvar;
+  for (int j = 0; j < height; j++) // remove art var "A" at beginning
+  {
+    for (int i = 0; i < width; i++)
+    {
+      tableau[i][j] = tableau[i+1][j]; //need to shift all var back by 1 along row (horizontally)
+    }
+  }
+  width -= 1; // move index
   return tableau;
 }
 double** apply_simplex(double** tableau, int nvar, int nconstraints, int nslackvar, int nartificialvar, int startingrowindex, string* varnames, stringstream &buffer) {
