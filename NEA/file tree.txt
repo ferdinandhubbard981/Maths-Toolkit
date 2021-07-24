@@ -1,0 +1,30 @@
+Folder PATH listing for volume Blade 15 SSD
+Volume serial number is 3226-871E
+maths-toolkit:
+│   arrays.cpp
+│   matrix-test.cpp
+│   matrix.cpp
+│   polynomial-solver-test.cpp
+│   polynomial-solver.cpp
+│   simplex-method.cpp
+│   simplex-test.cpp
+│   simultaneous-equations-solver-test.cpp
+│   simultaneous-equations-solver.cpp
+│                          
+└───GUI
+    │   addon.cpp
+    │   binding.gyp
+    │   dataparser.cpp
+    │   operation-handler.cpp
+    │   server.js
+    │   
+    │      
+    └───views
+            matrix.ejs
+            simplex.ejs
+            simul.ejs
+            menu.ejs
+
+//start of code
+
+// end of code
