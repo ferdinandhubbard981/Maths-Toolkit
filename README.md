@@ -1,5 +1,20 @@
 # Maths-Toolkit
  
+ 
+ Install instructions:
+ git clone https://github.com/ferdinandhubbard981/Maths-Toolkit.git
+ install nodejs from website
+ npm install node-gyp
+ npm install all the other relevant packages
+ node node_modules/node-gyp/bin/node-gyp configure build
+ 
+ Run instructions:
+ node server.js
+ 
+ 
+ ///////////////////////////////////////////////////
+ 
+ 
  simplex-method.cpp:
  Solves a simplex tableau
  
